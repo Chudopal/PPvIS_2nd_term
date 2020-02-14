@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/graphiceditor/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/graphiceditor/sample/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/graphiceditor/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/graphiceditor/sample/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/graphiceditor/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/graphiceditor/sample/sample.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/sample.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,8 +66,12 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectId" id="1Xli8p8CKl43TkDC1rzaMY0RApn" />
+  <component name="ProjectId" id="1XoSrk8pt054nsa8wqQMuWq0BHe" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
   </component>
@@ -111,7 +125,7 @@
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="sample.Main" />
       <module name="graphiceditor" />
-      <option name="VM_PARAMETERS" value="--module-path $USER_HOME$/javafx-sdk-11.0.2/lib --add-modules=javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path $USER_HOME$/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml  " />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="sample.*" />
@@ -184,49 +198,33 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="418" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581627165959">
+    <state x="418" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581711217297">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="418" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1581627165959" />
-    <state x="631" y="283" width="637" height="509" key="FileChooserDialogImpl" timestamp="1581626993364">
+    <state x="418" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1581711217297" />
+    <state x="631" y="283" width="637" height="509" key="FileChooserDialogImpl" timestamp="1581711239319">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="631" y="283" width="637" height="509" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1581626993364" />
-    <state width="1878" height="288" key="GridCell.Tab.0.bottom" timestamp="1581627167956">
+    <state x="631" y="283" width="637" height="509" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1581711239319" />
+    <state width="1878" height="288" key="GridCell.Tab.0.bottom" timestamp="1581715036329">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="288" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1581627167956" />
-    <state width="1878" height="288" key="GridCell.Tab.0.center" timestamp="1581627167956">
+    <state width="1878" height="288" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1581715036329" />
+    <state width="1878" height="288" key="GridCell.Tab.0.center" timestamp="1581715036329">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="288" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1581627167956" />
-    <state width="1878" height="288" key="GridCell.Tab.0.left" timestamp="1581627167955">
+    <state width="1878" height="288" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1581715036329" />
+    <state width="1878" height="288" key="GridCell.Tab.0.left" timestamp="1581715036328">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="288" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1581627167955" />
-    <state width="1878" height="288" key="GridCell.Tab.0.right" timestamp="1581627167956">
+    <state width="1878" height="288" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1581715036328" />
+    <state width="1878" height="288" key="GridCell.Tab.0.right" timestamp="1581715036329">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="288" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1581627167956" />
-    <state width="1878" height="356" key="GridCell.Tab.1.bottom" timestamp="1581627112845">
+    <state width="1878" height="288" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1581715036329" />
+    <state x="443" y="117" width="1024" height="843" key="SettingsEditor" timestamp="1581711242715">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="356" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1581627112845" />
-    <state width="1878" height="356" key="GridCell.Tab.1.center" timestamp="1581627112845">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1878" height="356" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1581627112845" />
-    <state width="1878" height="356" key="GridCell.Tab.1.left" timestamp="1581627112845">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1878" height="356" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1581627112845" />
-    <state width="1878" height="356" key="GridCell.Tab.1.right" timestamp="1581627112845">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1878" height="356" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1581627112845" />
-    <state x="443" y="117" width="1024" height="843" key="SettingsEditor" timestamp="1581626997655">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="443" y="117" width="1024" height="843" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1581626997655" />
+    <state x="443" y="117" width="1024" height="843" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1581711242715" />
   </component>
 </project>
