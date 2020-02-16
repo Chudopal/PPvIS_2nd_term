@@ -16,6 +16,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ToggleGroup?>
+
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="sample.Controller"
@@ -50,11 +51,13 @@
             <HBox>
                 <TextField fx:id="brushSize" text="18"/>
                 <ColorPicker fx:id="colorPicker"/>
+
             </HBox>
         </VBox>
     </top>
 
     <center>
+        <Canvas fx:id="real_canvas" width="600" height="600"/>
         <Canvas fx:id="canvas" width="600" height="600"/>
     </center>
 </BorderPane>
