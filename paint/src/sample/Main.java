@@ -1,33 +1,19 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
+/**
+ *The drawing application
+ * This program allows to draw and erase some figure on the canvas and
+ * save them in png-format, if it necessary. Also an user can copy, paste
+ * some fragments, zoom the canvas, and write text.
+ @author Chudopal Alexandr*/
 
 package sample;
-
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.fxml.FXML;
-
-import java.awt.*;
 
 public class Main extends Application {
-    public Main() {
-    }
-    @FXML
-    private Canvas real_canvas;
-    @FXML
-    private Canvas canvas;
 
     public void start(Stage stage) throws Exception {
-
-        stage.setScene(new Scene((Parent)FXMLLoader.load(this.getClass().getResource("sample.fxml"))));
-        stage.setTitle("Graphic editor");
-        stage.show();
-
+        //stage.setScene(new Scene((Parent)FXMLLoader.load(this.getClass().getResource("sample.fxml"))));
+        MainWindow mainWindow = new MainWindow(stage, 800, 800);
     }
 
     public static void main(String[] args) {
