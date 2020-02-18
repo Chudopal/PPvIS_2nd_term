@@ -13,7 +13,7 @@ public class Main extends Application {
 
     public void start(Stage stage) throws Exception {
         //stage.setScene(new Scene((Parent)FXMLLoader.load(this.getClass().getResource("sample.fxml"))));
-        MainWindow mainWindow = new MainWindow(stage, 800, 800);
+        MainWindow mainWindow = new MainWindow(stage, 1000, 1000);
     }
 
     public static void main(String[] args) {

@@ -11,9 +11,10 @@ import javafx.scene.layout.VBox;
 /**This class is a graphic interface.*/
 public class WorkingArea {
 
-    protected Canvas canvas;
+    protected Canvas mainCanvas;
     private BorderPane borderPane;
     protected RadioButton radio_cursor;
+    protected RadioButton radio_erase;
     protected RadioButton radio_pencil;
     protected RadioButton radio_line;
     protected RadioButton radio_rectangle;
@@ -26,6 +27,8 @@ public class WorkingArea {
     protected Button exit_btn;
     protected MenuItem saveItem;
     protected MenuItem exitItem;
+    protected ColorPicker colorPicker;
+    protected TextField brushSize;
 
     protected double sizeX;
     protected double sizeY;
@@ -42,12 +45,13 @@ public class WorkingArea {
         this.sizeY = sizeY;
         this.makeCanvas();
         this.makeTopLevel();
+
     }
 
     /**This method creates a canvas*/
     private void makeCanvas(){
-        this.canvas = new Canvas(this.sizeX, this.sizeY);
-        this.borderPane.setCenter(this.canvas);
+        this.mainCanvas = new Canvas(this.sizeX, this.sizeY);
+        this.borderPane.setCenter(this.mainCanvas);
     }
 
     /**This method creates menu, each button, and radiobutton in borderpane.
@@ -66,6 +70,9 @@ public class WorkingArea {
         //Pencil button
         this.radio_pencil = new RadioButton("Pencil");
         this.radio_pencil.setToggleGroup(group);
+        //erase button
+        this.radio_erase = new RadioButton("Erase");
+        this.radio_erase.setToggleGroup(group);
         //Line draw button
         this.radio_line = new RadioButton("Line");
         this.radio_line.setToggleGroup(group);
@@ -93,7 +100,7 @@ public class WorkingArea {
         this.exit_btn = new Button("Exit");
 
         modesBox.getChildren().addAll(radio_cursor, radio_pencil,
-                radio_line, radio_rectangle,
+                radio_erase, radio_line, radio_rectangle,
                 radio_oval, radio_copy, radio_paste,
                 radio_text, radio_zoom, save_btn,
                 exit_btn);
@@ -106,9 +113,9 @@ public class WorkingArea {
         menuBar.getMenus().addAll(fileMenu);
         //Make the setting layer
         HBox settingBox = new HBox();
-        TextField brushSize = new TextField("10");
-        ColorPicker colorPicker = new ColorPicker();
-        settingBox.getChildren().addAll(brushSize, colorPicker);
+        this.brushSize = new TextField("10");
+        this.colorPicker = new ColorPicker();
+        settingBox.getChildren().addAll(this.brushSize, colorPicker);
         settingBox.setStyle("-fx-background-color: #eeffe4;");
         //Add all in the border pane
         VBox vBox = new VBox();
