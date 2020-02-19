@@ -8,17 +8,13 @@ public class Figure {
     private double beginY = 0;
     private double endX = 0;
     private double endY = 0;
-    private Color color = Color.BLACK;
-    private int size = 0;
 
     /**The constructor of figure's class. Also this method
      * make begin in the top left pint of the figure.
      * @param beginX  the first point on the x-coordinate of figure,
      * @param beginY the first point on the y-coordinate of figure,
      * @param endX the last point on the x-coordinate of figure,
-     * @param endY the last point on the y-coordinate of figure,
-     * @param color the color of the figure,
-     * @param size the thickness of figure's stroke.
+     * @param endY the last point on the y-coordinate of figure.
      */
     public Figure(double beginX, double beginY,
                   double endX, double endY,
@@ -27,9 +23,15 @@ public class Figure {
         this.beginY = beginY > endY ? endY : beginY;
         this.endX = endX < beginX ? beginX : endX;
         this.endY = endY < beginY ? beginY : endY;
-        this.color = color;
-        this.size = size;
     }
+
+    public void setBeginX(double beginX){ this.beginX = beginX; }
+
+    public void setBeginY(double beginY){ this.beginY = beginY; }
+
+    public void setEndX(double endX){ this.endX = endX; }
+
+    public void setEndY(double endY){ this.endX = endY; }
 
     public double getBeginX(){
         return beginX;
