@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 public class WorkingArea {
 
     protected Canvas mainCanvas;
+    protected Canvas buffCanvas;
     private BorderPane borderPane;
     protected RadioButton radio_cursor;
     protected RadioButton radio_erase;
@@ -51,6 +52,7 @@ public class WorkingArea {
     /**This method creates a canvas*/
     private void makeCanvas(){
         this.mainCanvas = new Canvas(this.sizeX, this.sizeY);
+        this.buffCanvas = new Canvas(this.sizeX, this.sizeY);
         this.borderPane.setCenter(this.mainCanvas);
     }
 

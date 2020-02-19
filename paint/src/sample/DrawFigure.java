@@ -8,19 +8,17 @@ import javafx.scene.paint.Color;
 
 public class DrawFigure {
     protected GraphicsContext mainContext;
-    protected Canvas bufferCanvas = new Canvas();
-    protected GraphicsContext bufferContext = bufferCanvas.getGraphicsContext2D();
+    protected GraphicsContext bufferContext;
 
-    public DrawFigure(GraphicsContext mainContext){
+    public DrawFigure(GraphicsContext mainContext, GraphicsContext bufferContext){
         this.mainContext = mainContext;
-        this.bufferCanvas.setHeight(this.mainContext.getCanvas().getHeight());
-        this.bufferCanvas.setWidth(this.mainContext.getCanvas().getWidth());
+        this.bufferContext = bufferContext;
     }
 
     protected void copyBufToMain(){
         SnapshotParameters params = new SnapshotParameters();
         params.setFill(Color.TRANSPARENT);
-        WritableImage image = bufferCanvas.snapshot(params, null);
+        WritableImage image = bufferContext.getCanvas().snapshot(params, null);
         mainContext.drawImage(image, 0, 0);
     }
 
@@ -32,6 +30,7 @@ public class DrawFigure {
     }
 
     protected void clearCanvas(){
-        mainContext.clearRect(0, 0, bufferCanvas.getHeight(), bufferCanvas.getWidth());
+        mainContext.clearRect(0, 0, bufferContext.getCanvas().getHeight(),
+                bufferContext.getCanvas().getWidth());
     }
 }

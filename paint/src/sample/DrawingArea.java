@@ -6,8 +6,7 @@ import javafx.scene.layout.BorderPane;
 public class DrawingArea extends WorkingArea {
 
     protected GraphicsContext mainContext = mainCanvas.getGraphicsContext2D();
-    private double xEvent = 0;
-    private double yEvent = 0;
+    protected GraphicsContext buffContext = buffCanvas.getGraphicsContext2D();
     private double size = 0;
 
     public DrawingArea(BorderPane borderPane,
@@ -29,7 +28,7 @@ public class DrawingArea extends WorkingArea {
             });
 
             radio_line.setOnAction(e->{
-                Line line = new Line(this.mainContext, this.colorPicker, this.brushSize);
+                Line line = new Line(this.mainContext, this.buffContext, this.colorPicker, this.brushSize);
 
             });
 

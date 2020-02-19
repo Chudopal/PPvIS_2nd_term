@@ -14,8 +14,9 @@ public class Line extends DrawFigure{
     private double beginX;
     private double beginY;
 
-    public Line(GraphicsContext mainContext, ColorPicker colorPicker, TextField textField){
-        super(mainContext);
+    public Line(GraphicsContext mainContext, GraphicsContext buffContext,
+                ColorPicker colorPicker, TextField textField){
+        super(mainContext, buffContext);
         this.colorPicker = colorPicker;
         this.textField = textField;
         this.draw();
@@ -27,8 +28,8 @@ public class Line extends DrawFigure{
             //this.line.setBeginY(e.getY());
             beginX = e.getX();
             beginY = e.getY();
-            this.bufferContext.setStroke(this.colorPicker.getValue());
-            this.bufferContext.setLineWidth(Double.parseDouble(textField.getText()));
+            this.mainContext.setStroke(this.colorPicker.getValue());
+            this.mainContext.setLineWidth(Double.parseDouble(textField.getText()));
         });
         mainContext.getCanvas().setOnMouseDragged(e->{
             this.clearCanvas();
@@ -36,7 +37,6 @@ public class Line extends DrawFigure{
             this.mainContext.strokeLine(beginX, beginY, e.getX(), e.getY());
         });
         mainContext.getCanvas().setOnMouseReleased(e->{
-            System.out.println("w");
             this.copyMainToBuf();
         });
 
