@@ -106,6 +106,7 @@ public class WorkingArea {
                 radio_oval, radio_copy, radio_paste,
                 radio_text, radio_zoom, save_btn,
                 exit_btn);
+
         //Make the menu
         MenuBar menuBar = new MenuBar();
         Menu fileMenu = new Menu("File");
@@ -117,7 +118,7 @@ public class WorkingArea {
         HBox settingBox = new HBox();
         this.brushSize = new TextField("10");
         this.colorPicker = new ColorPicker();
-        settingBox.getChildren().addAll(this.brushSize, colorPicker);
+        settingBox.getChildren().addAll(this.brushSize, this.colorPicker);
         settingBox.setStyle("-fx-background-color: #eeffe4;");
         //Add all in the border pane
         VBox vBox = new VBox();

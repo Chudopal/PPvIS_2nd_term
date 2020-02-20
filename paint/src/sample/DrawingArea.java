@@ -8,6 +8,8 @@ public class DrawingArea extends WorkingArea {
     protected GraphicsContext mainContext = mainCanvas.getGraphicsContext2D();
     protected GraphicsContext buffContext = buffCanvas.getGraphicsContext2D();
     private double size = 0;
+    private Copy copy;
+
 
     public DrawingArea(BorderPane borderPane,
                        double sizeX,
@@ -17,13 +19,14 @@ public class DrawingArea extends WorkingArea {
     }
 
     private void handler(){
+
             radio_pencil.setOnAction(e ->{
                 Pencil pencil = new Pencil(this.mainContext,
                         this.size, colorPicker, brushSize);
             });
 
             radio_erase.setOnAction(e->{
-                Erase erase = new Erase(this.mainContext,
+                Erase erase = new Erase(this.mainContext, this.buffContext,
                         this.size, brushSize);
             });
 
@@ -32,7 +35,20 @@ public class DrawingArea extends WorkingArea {
 
             });
 
+            radio_rectangle.setOnAction(e->{
+                Rectangle rectangle = new Rectangle(this.mainContext, this.buffContext, this.colorPicker, this.brushSize);
+            });
+
+            radio_oval.setOnAction(e->{
+                Oval oval = new Oval(this.mainContext, this.buffContext, this.colorPicker, this.brushSize);
+            });
+
+            radio_copy.setOnAction(e-> {
+                this.copy = new Copy(this.mainContext, this.buffContext);
+            });
+
+            radio_paste.setOnAction(e-> {
+               // Paste paste = new Paste();
+            });
     }
-
-
 }

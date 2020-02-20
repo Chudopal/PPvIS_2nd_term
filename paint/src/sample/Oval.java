@@ -4,14 +4,14 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
 
-public class Line extends DrawFigure{
-    private ColorPicker colorPicker;
-    private TextField textField;
+public class Oval extends DrawFigure {
+    private ColorPicker colorPicker = new ColorPicker();
+    private TextField textField = new TextField();
     private double beginX;
     private double beginY;
 
-    public Line(GraphicsContext mainContext, GraphicsContext buffContext,
-                ColorPicker colorPicker, TextField textField){
+    public Oval(GraphicsContext mainContext, GraphicsContext buffContext,
+                     ColorPicker colorPicker, TextField textField){
         super(mainContext, buffContext);
         this.colorPicker = colorPicker;
         this.textField = textField;
@@ -26,11 +26,15 @@ public class Line extends DrawFigure{
             this.mainContext.setLineWidth(Double.parseDouble(this.textField.getText()));
             this.copyMainToBuf();
         });
+
         mainContext.getCanvas().setOnMouseDragged(e->{
             this.clearCanvas();
             this.copyBufToMain();
-            this.mainContext.strokeLine(this.beginX, this.beginY, e.getX(), e.getY());
+            Figure rectangle = new Figure(this.beginX, this.beginY, e.getX(), e.getY());
+            this.mainContext.strokeOval(rectangle.getBeginX(), rectangle.getBeginY(),
+                    rectangle.getXSide(), rectangle.getYSide());
         });
+
         mainContext.getCanvas().setOnMouseReleased(e->{
             this.copyMainToBuf();
         });

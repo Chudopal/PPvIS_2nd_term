@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     public void start(Stage stage) throws Exception {
-       MainWindow mainWindow = new MainWindow(stage, 1000, 1000);
+        MainWindow mainWindow = new MainWindow(stage, 600, 600);
     }
 
     public static void main(String[] args) {
