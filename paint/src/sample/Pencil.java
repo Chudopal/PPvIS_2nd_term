@@ -3,7 +3,6 @@ package sample;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
 
 
 public class Pencil {
@@ -11,7 +10,7 @@ public class Pencil {
     private ColorPicker colorPicker;
     private TextField sizeBrush;
 
-    public Pencil(GraphicsContext mainContext, double size, ColorPicker colorPicker,
+    public Pencil(GraphicsContext mainContext, ColorPicker colorPicker,
                   TextField sizeBrush){
         this.mainContext = mainContext;
         this.sizeBrush = sizeBrush;

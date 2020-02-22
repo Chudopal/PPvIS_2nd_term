@@ -5,7 +5,7 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
-public class Rectangle extends DrawFigure {
+public class CopyRectangle extends DrawFigure {
     protected ColorPicker colorPicker = new ColorPicker();
     protected TextField textField = new TextField();
     private Figure rectangle;
@@ -14,20 +14,18 @@ public class Rectangle extends DrawFigure {
     protected double endX;
     protected double endY;
 
-    public Rectangle(GraphicsContext mainContext, GraphicsContext buffContext,
-                     ColorPicker colorPicker, TextField textField){
+    public CopyRectangle(GraphicsContext mainContext, GraphicsContext buffContext,
+                     Color color, double size){
         super(mainContext, buffContext);
-        this.colorPicker = colorPicker;
-        this.textField = textField;
-        this.draw();
+        this.copyRect(color, size);
     }
 
-    private void draw(){
+    private void copyRect(Color color, double size){
         mainContext.getCanvas().setOnMousePressed(e->{
             this.beginX = e.getX();
             this.beginY = e.getY();
-            this.mainContext.setStroke(this.colorPicker.getValue());
-            this.mainContext.setLineWidth(Double.parseDouble(this.textField.getText()));
+            this.mainContext.setStroke(color);
+            this.mainContext.setLineWidth(size);
             this.copyMainToBuf();
         });
 
@@ -54,3 +52,4 @@ public class Rectangle extends DrawFigure {
 
     public double getYSide(){return rectangle.getYSide(); }
 }
+
