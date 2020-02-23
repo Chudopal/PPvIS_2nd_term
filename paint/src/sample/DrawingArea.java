@@ -137,7 +137,7 @@ public class DrawingArea extends WorkingArea {
         });
     }
 
-    static private void copyFirstCanvasOntoSecondCanvas(Canvas firstCanvas, Canvas secondCanvas,
+    public static void copyFirstCanvasOntoSecondCanvas(Canvas firstCanvas, Canvas secondCanvas,
                                                  double shiftX, double shiftY){
         SnapshotParameters params = new SnapshotParameters();
         params.setFill(Color.TRANSPARENT);
