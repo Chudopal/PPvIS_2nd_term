@@ -30,6 +30,7 @@ public class MainWindow {
     /**This func allows to create the main window*/
     private void createWindow(){
         this.stage.setTitle("Graphic editor");
+        stage.setResizable(false);
         scene = new Scene(root, this.sizeX, this.sizeX);
         this.stage.setScene(scene);
         this.stage.show();

@@ -23,13 +23,14 @@ public class WorkingArea {
     protected RadioButton radio_copy;
     protected RadioButton radio_paste;
     protected RadioButton radio_text;
-    protected RadioButton radio_zoom;
+    protected Button zoom_btn;
     protected Button save_btn;
     protected Button exit_btn;
     protected MenuItem saveItem;
     protected MenuItem exitItem;
     protected ColorPicker colorPicker;
     protected TextField brushSize;
+    protected TextField textPrint;
 
     protected double sizeX;
     protected double sizeY;
@@ -62,7 +63,7 @@ public class WorkingArea {
     private void makeTopLevel(){
         HBox modesBox = new HBox();
         modesBox.setPadding(new Insets(15, 12, 15, 12));
-        modesBox.setSpacing(10);
+        modesBox.setSpacing(15);
         modesBox.setStyle("-fx-background-color: #ccffcc;");
 
         ToggleGroup group = new ToggleGroup();
@@ -94,8 +95,7 @@ public class WorkingArea {
         this.radio_text = new RadioButton("Text");
         this.radio_text.setToggleGroup(group);
         //Zoom button
-        this.radio_zoom = new RadioButton("Zoom");
-        this.radio_zoom.setToggleGroup(group);
+        this.zoom_btn = new Button("Zoom");;
         //Save button
         this.save_btn = new Button("Save");
         //exit button
@@ -104,8 +104,7 @@ public class WorkingArea {
         modesBox.getChildren().addAll(radio_cursor, radio_pencil,
                 radio_erase, radio_line, radio_rectangle,
                 radio_oval, radio_copy, radio_paste,
-                radio_text, radio_zoom, save_btn,
-                exit_btn);
+                radio_text);
 
         //Make the menu
         MenuBar menuBar = new MenuBar();
@@ -116,9 +115,11 @@ public class WorkingArea {
         menuBar.getMenus().addAll(fileMenu);
         //Make the setting layer
         HBox settingBox = new HBox();
+        settingBox.setSpacing(10);
         this.brushSize = new TextField("10");
+        this.textPrint = new TextField("Text");
         this.colorPicker = new ColorPicker();
-        settingBox.getChildren().addAll(this.brushSize, this.colorPicker);
+        settingBox.getChildren().addAll(this.brushSize, this.colorPicker, save_btn, exit_btn, zoom_btn, this.textPrint);
         settingBox.setStyle("-fx-background-color: #eeffe4;");
         //Add all in the border pane
         VBox vBox = new VBox();

@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
@@ -10,7 +11,9 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 
-import java.awt.*;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
 
 public class DrawingArea extends WorkingArea {
 
@@ -28,6 +31,10 @@ public class DrawingArea extends WorkingArea {
     }
 
     private void handler(){
+
+        radio_cursor.setOnAction(e->{
+            mainCanvas.getScene().setCursor(ImageCursor.DEFAULT);
+        });
 
         radio_pencil.setOnAction(e ->{
             changeCursor("pencil.png");
@@ -70,6 +77,23 @@ public class DrawingArea extends WorkingArea {
 
         radio_text.setOnAction(e->{
             changeCursor("text.png");
+            Text text = new Text(mainContext, buffContext, radio_text, colorPicker, textPrint, brushSize);
+        });
+
+        save_btn.setOnAction(e->{
+            this.save();
+        });
+
+        saveItem.setOnAction(e->{
+            this.save();
+        });
+
+        exit_btn.setOnAction(e->{
+            System.exit(0);
+        });
+
+        exitItem.setOnAction(e->{
+            System.exit(0);
         });
 
 
@@ -108,12 +132,12 @@ public class DrawingArea extends WorkingArea {
         mainCanvas.setOnMouseClicked(event -> {
             if(radio_paste.isSelected()) {
                 System.out.println("GER");
-                this.copyFirstCanvasOntoSecondCanvas(copyCanvas, mainCanvas, event.getX(), event.getY());
+                copyFirstCanvasOntoSecondCanvas(copyCanvas, mainCanvas, event.getX(), event.getY());
             }
         });
     }
 
-    private void copyFirstCanvasOntoSecondCanvas(Canvas firstCanvas, Canvas secondCanvas,
+    static private void copyFirstCanvasOntoSecondCanvas(Canvas firstCanvas, Canvas secondCanvas,
                                                  double shiftX, double shiftY){
         SnapshotParameters params = new SnapshotParameters();
         params.setFill(Color.TRANSPARENT);
@@ -127,8 +151,14 @@ public class DrawingArea extends WorkingArea {
         Image img = new Image(getClass().getResourceAsStream("./icons/" + name));
         ImageCursor cursor = new ImageCursor(img, 30, 30);
         scene.setCursor(cursor);
-        //Image curImage = Toolkit.getDefaultToolkit().createImage(getClass().getResource("./src/icons/pencil.png"));
-        //save_btn.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(curImage, new Point(8,8), "CustomCursor"));
+    }
 
+    private void save(){
+        try {
+            Image snapshot = this.mainCanvas.snapshot((SnapshotParameters)null, (WritableImage)null);
+            ImageIO.write(SwingFXUtils.fromFXImage(snapshot, (BufferedImage)null), "png", new File("paint.png"));
+        } catch (Exception var2) {
+            System.out.print("Failed to save image:" + var2);
+        }
     }
 }
