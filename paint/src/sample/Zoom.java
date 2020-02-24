@@ -39,9 +39,15 @@ public class Zoom {
     }
 
     private void makeZoom(double coefficient){
-        this.makeTransform(coefficient);
-        this.makeTransform(coefficient);
-        this.makeBigger(coefficient);
+        if(coefficient > 1){
+            this.makeBigger(coefficient);
+            this.makeTransform(coefficient);
+            this.makeTransform(coefficient);
+        } else {
+            this.makeTransform(coefficient);
+            this.makeTransform(coefficient);
+            this.makeBigger(coefficient);
+        }
         this.mainContext.clearRect(0, 0, this.mainContext.getCanvas().getWidth(), this.mainContext.getCanvas().getHeight());
         this.buffContext.clearRect(0, 0, this.buffContext.getCanvas().getWidth(), this.buffContext.getCanvas().getHeight());
         DrawingArea.copyFirstCanvasOntoSecondCanvas(trashCanvas, this.mainContext.getCanvas(), 0, 0);
@@ -51,6 +57,7 @@ public class Zoom {
     private void makeTransform(double coefficient){
         trashContext.clearRect(0,0, trashContext.getCanvas().getWidth(), trashContext.getCanvas().getHeight());
         DrawingArea.copyFirstCanvasOntoSecondCanvas(mainContext.getCanvas(), trashCanvas, 0,0);
+        //trashContext.setTransform(coefficient, 0, 0, coefficient, 0, 0);
         trashContext.setTransform(coefficient, 0, 0, coefficient, 0, 0);
     }
 

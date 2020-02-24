@@ -113,8 +113,8 @@ public class DrawingArea extends WorkingArea {
                     double sideX = copyRectangle.getXSide();
                     double sideY = copyRectangle.getYSide();
                     Canvas reserveCanvas = new Canvas(mainCanvas.getWidth(), mainCanvas.getHeight());
-                    this.copyFirstCanvasOntoSecondCanvas(buffCanvas, reserveCanvas, 0, 0);
-                    this.copyFirstCanvasOntoSecondCanvas(reserveCanvas, copyCanvas, -beginX, -beginY);
+                    copyFirstCanvasOntoSecondCanvas(buffCanvas, reserveCanvas, 0, 0);
+                    copyFirstCanvasOntoSecondCanvas(reserveCanvas, copyCanvas, -beginX, -beginY);
                     copyCanvas.getGraphicsContext2D().clearRect(sideX, 0,
                             this.copyCanvas.getWidth(), this.copyCanvas.getHeight());
                     copyCanvas.getGraphicsContext2D().clearRect(0, sideY,
@@ -123,7 +123,7 @@ public class DrawingArea extends WorkingArea {
                             mainContext.getCanvas().getHeight());
                     buffContext.clearRect(0, 0, buffContext.getCanvas().getWidth(),
                             buffContext.getCanvas().getHeight());
-                    this.copyFirstCanvasOntoSecondCanvas(reserveCanvas, mainCanvas, 0, 0);
+                    copyFirstCanvasOntoSecondCanvas(reserveCanvas, mainCanvas, 0, 0);
                 }
             });
 
