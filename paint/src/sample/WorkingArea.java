@@ -1,11 +1,10 @@
 package sample;
 
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.*;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.layout.HBox;
 import javafx.geometry.Insets;
-import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 
 /**This class is a graphic interface.*/
@@ -45,17 +44,25 @@ public class WorkingArea {
         this.borderPane = borderPane;
         this.sizeX = sizeX;
         this.sizeY = sizeY;
-        this.makeCanvas();
+        this.makeCenter();
         this.makeTopLevel();
-
     }
 
-    /**This method creates a canvas*/
-    private void makeCanvas(){
-        this.mainCanvas = new Canvas(this.sizeX, this.sizeY);
+    /**This method creates a canvas
+     * and its scrollbar*/
+    private void makeCenter(){
+        VBox center = new VBox();
+        this.mainCanvas = new Canvas(this.sizeX, this.sizeY );
         this.buffCanvas = new Canvas(this.sizeX, this.sizeY);
-        this.borderPane.setCenter(this.mainCanvas);
+
+        ScrollPane scrollPane = new ScrollPane(this.mainCanvas);
+        scrollPane.setPrefViewportHeight(this.sizeY - 120);
+        scrollPane.setPrefViewportWidth(this.sizeX-45);
+
+        center.getChildren().addAll(mainCanvas, scrollPane);
+        this.borderPane.setCenter(center);
     }
+
 
     /**This method creates menu, each button, and radiobutton in borderpane.
      * It creates the layer with menu,
@@ -64,8 +71,7 @@ public class WorkingArea {
         HBox modesBox = new HBox();
         modesBox.setPadding(new Insets(15, 12, 15, 12));
         modesBox.setSpacing(15);
-        modesBox.setStyle("-fx-background-color: #ccffcc;");
-
+        modesBox.setBackground(new Background(new BackgroundFill(Color.gray(0.8), CornerRadii.EMPTY, Insets.EMPTY)));
         ToggleGroup group = new ToggleGroup();
         //Cursor button
         this.radio_cursor = new RadioButton("Cursor");
@@ -120,7 +126,7 @@ public class WorkingArea {
         this.textPrint = new TextField("Text");
         this.colorPicker = new ColorPicker();
         settingBox.getChildren().addAll(this.brushSize, this.colorPicker, save_btn, exit_btn, zoom_btn, this.textPrint);
-        settingBox.setStyle("-fx-background-color: #eeffe4;");
+        settingBox.setBackground(new Background(new BackgroundFill(Color.gray(0.8), CornerRadii.EMPTY, Insets.EMPTY)));
         //Add all in the border pane
         VBox vBox = new VBox();
         vBox.getChildren().addAll(menuBar, modesBox, settingBox);

@@ -2,6 +2,7 @@ package sample;
 
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -22,7 +23,6 @@ public class MainWindow {
         this.stage = stage;
         this.sizeX = sizeX;
         this.sizeY = sizeY;
-
         this.makeGroup();
         this.createWindow();
     }

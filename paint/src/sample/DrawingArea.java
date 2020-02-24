@@ -77,7 +77,7 @@ public class DrawingArea extends WorkingArea {
 
         radio_text.setOnAction(e->{
             changeCursor("text.png");
-            Text text = new Text(mainContext, buffContext, radio_text, colorPicker, textPrint, brushSize);
+            Text text = new Text(mainContext, radio_text, colorPicker, textPrint, brushSize);
         });
 
         save_btn.setOnAction(e->{
@@ -96,7 +96,9 @@ public class DrawingArea extends WorkingArea {
             System.exit(0);
         });
 
-
+        zoom_btn.setOnAction(e->{
+            Zoom zoom = new Zoom(mainContext, buffContext, this.sizeX, zoom_btn);
+        });
     }
 
     private void copy(){
@@ -106,7 +108,6 @@ public class DrawingArea extends WorkingArea {
                     this.buffContext, this.colorPicker, this.brushSize);
             mainCanvas.setOnMouseReleased(event -> {
                 if(radio_copy.isSelected()) {
-                    System.out.println("HERE");
                     double beginX = copyRectangle.getBeginX();
                     double beginY = copyRectangle.getBeginY();
                     double sideX = copyRectangle.getXSide();
@@ -131,7 +132,6 @@ public class DrawingArea extends WorkingArea {
     private void paste(){
         mainCanvas.setOnMouseClicked(event -> {
             if(radio_paste.isSelected()) {
-                System.out.println("GER");
                 copyFirstCanvasOntoSecondCanvas(copyCanvas, mainCanvas, event.getX(), event.getY());
             }
         });
