@@ -6,6 +6,7 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
+/**This class allows to create text*/
 public class Text {
     private GraphicsContext mainContext;
     private RadioButton radio_text;
@@ -13,6 +14,12 @@ public class Text {
     private TextField textPrint;
     private TextField brushSize;
 
+    /**The constructor.
+     * @param mainContext is Graphics context of the visible main canvas,
+     * @param colorPicker is a color of text,
+     * @param textPrint is a text,
+     * @param brushSize is a size of text,
+     * @param radio_text if it is clicked, the text will be drawn.*/
     public Text(GraphicsContext mainContext, RadioButton radio_text,
                 ColorPicker colorPicker, TextField textPrint, TextField brushSize){
         this.mainContext = mainContext;
@@ -23,13 +30,13 @@ public class Text {
         this.putOntoTheScreen();
     }
 
+    /**Allows to put the text onto the main canvas*/
     private void putOntoTheScreen(){
         mainContext.getCanvas().setOnMouseClicked(e->{
             if(radio_text.isSelected()){
                 Canvas timeCanvas = new Canvas(mainContext.getCanvas().getWidth(), mainContext.getCanvas().getHeight());
                 Canvas textCanvas = new Canvas(mainContext.getCanvas().getWidth(),mainContext.getCanvas().getHeight());
                 timeCanvas.getGraphicsContext2D().setStroke(this.colorPicker.getValue());
-                //timeCanvas.getGraphicsContext2D().setTransform(1, 0, 0, 1, 0, 0);
                 double z = Double.parseDouble(brushSize.getText());
                 timeCanvas.getGraphicsContext2D().clearRect(0,0,timeCanvas.getWidth(), timeCanvas.getHeight());
                 timeCanvas.getGraphicsContext2D().setTransform(z, 0, 0, z, 0, 0);

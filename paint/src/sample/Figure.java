@@ -24,14 +24,6 @@ public class Figure {
         this.endY = endY < beginY ? beginY : endY;
     }
 
-    //public void setBeginX(double beginX){ this.beginX = beginX; }
-
-    //public void setBeginY(double beginY){ this.beginY = beginY; }
-
-    //public void setEndX(double endX){ this.endX = endX; }
-
-    //public void setEndY(double endY){ this.endX = endY; }
-
     public double getBeginX(){
         return this.beginX;
     }
@@ -40,22 +32,14 @@ public class Figure {
         return this.beginY;
     }
 
-    public double getEndX(){
-        return this.endX;
-    }
-
-    public double getEndY(){
-        return this.endY;
-    }
-
-    /**This method is calculated length of figure's x-side.
+    /**This method is calculating length of figure's x-side.
      * @return length of the x-side.
      */
     public double getXSide(){
         return Math.abs(this.endX - this.beginX);
     }
 
-    /**This method is calculated length of figure's y-side.
+    /**This method is calculating length of figure's y-side.
      * @return length of the y-side.
      */
     public double getYSide(){

@@ -7,7 +7,7 @@ import javafx.geometry.Insets;
 import javafx.scene.paint.Color;
 
 
-/**This class is a graphic interface.*/
+/**This class is doing a graphic interface.*/
 public class WorkingArea {
 
     protected Canvas mainCanvas;

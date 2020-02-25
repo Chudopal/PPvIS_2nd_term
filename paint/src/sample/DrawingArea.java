@@ -10,19 +10,21 @@ import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
-
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
+/**This class is a background of all GUI.
+ * Here is the functions for the each button.*/
 public class DrawingArea extends WorkingArea {
-
     protected GraphicsContext mainContext = mainCanvas.getGraphicsContext2D();
     protected GraphicsContext buffContext = buffCanvas.getGraphicsContext2D();
-    private double size = 0;
     private Canvas copyCanvas = new Canvas(mainCanvas.getWidth(), mainCanvas.getHeight());
 
-
+    /**The constructor
+     * @param borderPane is the main pane of the app.
+     * @param sizeX the size of the x-coord of the borderPane,
+     * @param sizeY the size of the y-coord of the borderPane.*/
     public DrawingArea(BorderPane borderPane,
                        double sizeX,
                        double sizeY) {
@@ -30,6 +32,7 @@ public class DrawingArea extends WorkingArea {
         this.handler();
     }
 
+    /** Here is the decision of the each button.*/
     private void handler(){
 
         radio_cursor.setOnAction(e->{
@@ -38,41 +41,42 @@ public class DrawingArea extends WorkingArea {
 
         radio_pencil.setOnAction(e ->{
             changeCursor("pencil.png");
-            Pencil pencil = new Pencil(this.mainContext, colorPicker, brushSize);
-            this.copyFirstCanvasOntoSecondCanvas(mainCanvas, buffCanvas, 0 ,0);
+            Pencil pencil = new Pencil(this.mainContext, colorPicker, brushSize, radio_pencil);
+            copyFirstCanvasOntoSecondCanvas(mainCanvas, buffCanvas, 0 ,0);
         });
 
         radio_erase.setOnAction(e->{
             changeCursor("erase.png");
-            Erase erase = new Erase(this.mainContext, this.buffContext,
-                        this.size, brushSize);
+            Erase erase = new Erase(this.mainContext, this.buffContext, brushSize);
         });
 
         radio_line.setOnAction(e->{
             changeCursor("line.png");
-            Line line = new Line(this.mainContext, this.buffContext, this.colorPicker, this.brushSize);
+            DrawLine drawLine = new DrawLine(this.mainContext, this.buffContext,
+                    this.colorPicker, this.brushSize, radio_line);
 
         });
 
         radio_rectangle.setOnAction(e->{
             changeCursor("rectangle.png");
-            Rectangle rectangle = new Rectangle(this.mainContext,
-            this.buffContext, this.colorPicker, this.brushSize);
+            DrawRectangle drawRectangle = new DrawRectangle(this.mainContext,
+                    this.buffContext, this.colorPicker, this.brushSize, this.radio_rectangle);
         });
 
         radio_oval.setOnAction(e->{
             changeCursor("oval.png");
-            Oval oval = new Oval(this.mainContext, this.buffContext, this.colorPicker, this.brushSize);
+            DrawOval drawOval = new DrawOval(this.mainContext, this.buffContext,
+                    this.colorPicker, this.brushSize, this.radio_oval);
         });
 
         radio_copy.setOnAction(e-> {
             changeCursor("copy.png");
-            copy();
+            this.copy();
         });
 
         radio_paste.setOnAction(e-> {
             changeCursor("paste.png");
-            paste();
+            this.paste();
         });
 
         radio_text.setOnAction(e->{
@@ -101,17 +105,18 @@ public class DrawingArea extends WorkingArea {
         });
     }
 
+    /**Allows to copy a fragment of one canvas onto other canvas.
+     * Save this fragment in copyCanvas*/
     private void copy(){
-
             copyCanvas.getGraphicsContext2D().clearRect(0, 0, copyCanvas.getWidth(), copyCanvas.getHeight());
-            Rectangle copyRectangle = new Rectangle(this.mainContext,
-                    this.buffContext, this.colorPicker, this.brushSize);
+            DrawRectangle copyDrawRectangle = new DrawRectangle(this.mainContext,
+                    this.buffContext, this.colorPicker, this.brushSize, radio_copy);
             mainCanvas.setOnMouseReleased(event -> {
                 if(radio_copy.isSelected()) {
-                    double beginX = copyRectangle.getBeginX();
-                    double beginY = copyRectangle.getBeginY();
-                    double sideX = copyRectangle.getXSide();
-                    double sideY = copyRectangle.getYSide();
+                    double beginX = copyDrawRectangle.getBeginX();
+                    double beginY = copyDrawRectangle.getBeginY();
+                    double sideX = copyDrawRectangle.getXSide();
+                    double sideY = copyDrawRectangle.getYSide();
                     Canvas reserveCanvas = new Canvas(mainCanvas.getWidth(), mainCanvas.getHeight());
                     copyFirstCanvasOntoSecondCanvas(buffCanvas, reserveCanvas, 0, 0);
                     copyFirstCanvasOntoSecondCanvas(reserveCanvas, copyCanvas, -beginX, -beginY);
@@ -129,6 +134,7 @@ public class DrawingArea extends WorkingArea {
 
     }
 
+    /**Allows to paste the fragment from the copyCanvas onto the mainCanvas*/
     private void paste(){
         mainCanvas.setOnMouseClicked(event -> {
             if(radio_paste.isSelected()) {
@@ -137,6 +143,7 @@ public class DrawingArea extends WorkingArea {
         });
     }
 
+    /**Allows to copy the first canvas onto the second canvas.*/
     public static void copyFirstCanvasOntoSecondCanvas(Canvas firstCanvas, Canvas secondCanvas,
                                                  double shiftX, double shiftY){
         SnapshotParameters params = new SnapshotParameters();
@@ -146,6 +153,7 @@ public class DrawingArea extends WorkingArea {
 
     }
 
+    /**Allows to change the cursor*/
     private void changeCursor( String name){
         Scene scene = mainCanvas.getScene();
         Image img = new Image(getClass().getResourceAsStream("./icons/" + name));
@@ -153,6 +161,7 @@ public class DrawingArea extends WorkingArea {
         scene.setCursor(cursor);
     }
 
+    /**Allows to save the picture onto the canvas in png-file.*/
     private void save(){
         try {
             Image snapshot = this.mainCanvas.snapshot((SnapshotParameters)null, (WritableImage)null);
