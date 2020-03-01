@@ -5,7 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 /**This class is the parent class for each figure on the canvas.
  * It copies the main canvas onto the buff canvas and buff canvas onto the
  * main canvas each time after drawing.*/
-public class DrawFigure {
+public class DrawFigure implements FigInterface {
     protected GraphicsContext mainContext;
     protected GraphicsContext bufferContext;
 
@@ -17,16 +17,16 @@ public class DrawFigure {
         this.bufferContext = bufferContext;
     }
 
-    protected void copyBufToMain(){
+    public void copyBufToMain(){
         DrawingArea.copyFirstCanvasOntoSecondCanvas(bufferContext.getCanvas(), mainContext.getCanvas(), 0,0);
     }
 
-    protected void copyMainToBuf(){
+    public void copyMainToBuf(){
         DrawingArea.copyFirstCanvasOntoSecondCanvas(mainContext.getCanvas(), bufferContext.getCanvas(), 0,0);
     }
 
     /**Clear the main canvas*/
-    protected void clearCanvas(){
+    public void clearCanvas(){
         mainContext.clearRect(0, 0, bufferContext.getCanvas().getHeight(),
                 bufferContext.getCanvas().getWidth());
     }

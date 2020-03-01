@@ -30,6 +30,8 @@ public class WorkingArea {
     protected ColorPicker colorPicker;
     protected TextField brushSize;
     protected TextField textPrint;
+    protected TextArea printLog;
+
 
     protected double sizeX;
     protected double sizeY;
@@ -46,18 +48,19 @@ public class WorkingArea {
         this.sizeY = sizeY;
         this.makeCenter();
         this.makeTopLevel();
+        this.makeBottom();
     }
 
     /**This method creates a canvas
      * and its scrollbar*/
     private void makeCenter(){
         VBox center = new VBox();
-        this.mainCanvas = new Canvas(this.sizeX, this.sizeY );
+        this.mainCanvas = new Canvas(this.sizeX, this.sizeY - 120 );
         this.buffCanvas = new Canvas(this.sizeX, this.sizeY);
 
         ScrollPane scrollPane = new ScrollPane(this.mainCanvas);
-        scrollPane.setPrefViewportHeight(this.sizeY - 120);
-        scrollPane.setPrefViewportWidth(this.sizeX-45);
+        scrollPane.setPrefViewportHeight(this.mainCanvas.getHeight() - 120);
+        scrollPane.setPrefViewportWidth(this.mainCanvas.getWidth() - 45);
 
         center.getChildren().addAll(mainCanvas, scrollPane);
         this.borderPane.setCenter(center);
@@ -131,5 +134,18 @@ public class WorkingArea {
         VBox vBox = new VBox();
         vBox.getChildren().addAll(menuBar, modesBox, settingBox);
         this.borderPane.setTop(vBox);
+
     }
+
+    /**This method creates the Bottom of the borgerpane, in
+     * which is logs text area*/
+    private void makeBottom(){
+        HBox hBox = new HBox();
+        this.printLog = new TextArea("Here is your actions\n");
+        this.printLog.setPrefWidth(this.mainCanvas.getWidth());
+        this.printLog.setPrefHeight(120);
+        hBox.getChildren().addAll(printLog);
+        this.borderPane.setBottom(hBox);
+    }
+
 }

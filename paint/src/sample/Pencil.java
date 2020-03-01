@@ -6,7 +6,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
 /**The class allows drawing like a pencil*/
-public class Pencil {
+public class Pencil implements Draw {
     private GraphicsContext mainContext;
     private ColorPicker colorPicker;
     private TextField sizeBrush;
@@ -27,7 +27,7 @@ public class Pencil {
     }
 
     /**This method is showing the picture on the canvas*/
-    private void draw(){
+    public void draw(){
         this.mainContext.getCanvas().setOnMouseDragged(e -> {
             if(radio_pencil.isSelected()) {
                 double size = Double.parseDouble(this.sizeBrush.getText());

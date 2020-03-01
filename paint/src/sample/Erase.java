@@ -4,7 +4,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.TextField;
 
 /**This class allows to clear the main and buffer canvas*/
-public class Erase {
+public class Erase implements Draw {
     private GraphicsContext mainContext;
     private GraphicsContext buffContext;
     private TextField sizeBrush;
@@ -18,11 +18,11 @@ public class Erase {
         this.mainContext = mainContext;
         this.buffContext = buffContext;
         this.sizeBrush = sizeBrush;
-        clear();
+        draw();
     }
 
     /**Allow to make clear the main and buffer canvas.*/
-    private void clear(){
+    public void draw(){
         this.mainContext.getCanvas().setOnMouseDragged(e -> {
             double size = Double.parseDouble(this.sizeBrush.getText());
             double xEvent = e.getX() - size / 2;

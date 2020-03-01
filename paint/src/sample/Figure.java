@@ -46,5 +46,3 @@ public class Figure {
         return Math.abs(endY - this.beginY);
     }
 }
-
-

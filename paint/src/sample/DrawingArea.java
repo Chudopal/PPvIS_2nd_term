@@ -20,6 +20,7 @@ public class DrawingArea extends WorkingArea {
     protected GraphicsContext mainContext = mainCanvas.getGraphicsContext2D();
     protected GraphicsContext buffContext = buffCanvas.getGraphicsContext2D();
     private Canvas copyCanvas = new Canvas(mainCanvas.getWidth(), mainCanvas.getHeight());
+    private String log = "Here is your actions:\n";
 
     /**The constructor
      * @param borderPane is the main pane of the app.
@@ -36,21 +37,29 @@ public class DrawingArea extends WorkingArea {
     private void handler(){
 
         radio_cursor.setOnAction(e->{
+            log += "Select cursor\n";
+            this.printLog.setText(log);
             mainCanvas.getScene().setCursor(ImageCursor.DEFAULT);
         });
 
         radio_pencil.setOnAction(e ->{
+            log += "Select pencil\n";
+            this.printLog.setText(log);
             changeCursor("pencil.png");
             Pencil pencil = new Pencil(this.mainContext, colorPicker, brushSize, radio_pencil);
             copyFirstCanvasOntoSecondCanvas(mainCanvas, buffCanvas, 0 ,0);
         });
 
         radio_erase.setOnAction(e->{
+            log += "Select erase\n";
+            this.printLog.setText(log);
             changeCursor("erase.png");
             Erase erase = new Erase(this.mainContext, this.buffContext, brushSize);
         });
 
         radio_line.setOnAction(e->{
+            log += "Select line\n";
+            this.printLog.setText(log);
             changeCursor("line.png");
             DrawLine drawLine = new DrawLine(this.mainContext, this.buffContext,
                     this.colorPicker, this.brushSize, radio_line);
@@ -58,37 +67,51 @@ public class DrawingArea extends WorkingArea {
         });
 
         radio_rectangle.setOnAction(e->{
+            log += "Select rectangle\n";
+            this.printLog.setText(log);
             changeCursor("rectangle.png");
             DrawRectangle drawRectangle = new DrawRectangle(this.mainContext,
                     this.buffContext, this.colorPicker, this.brushSize, this.radio_rectangle);
         });
 
         radio_oval.setOnAction(e->{
+            log += "Select oval\n";
+            this.printLog.setText(log);
             changeCursor("oval.png");
             DrawOval drawOval = new DrawOval(this.mainContext, this.buffContext,
                     this.colorPicker, this.brushSize, this.radio_oval);
         });
 
         radio_copy.setOnAction(e-> {
+            log += "Copy\n";
+            this.printLog.setText(log);
             changeCursor("copy.png");
             this.copy();
         });
 
         radio_paste.setOnAction(e-> {
+            log += "Paste\n";
+            this.printLog.setText(log);
             changeCursor("paste.png");
             this.paste();
         });
 
         radio_text.setOnAction(e->{
+            log += "Select text\n";
+            this.printLog.setText(log);
             changeCursor("text.png");
             Text text = new Text(mainContext, radio_text, colorPicker, textPrint, brushSize);
         });
 
         save_btn.setOnAction(e->{
+            log += "Save\n";
+            this.printLog.setText(log);
             this.save();
         });
 
         saveItem.setOnAction(e->{
+            log += "Save\n";
+            this.printLog.setText(log);
             this.save();
         });
 
@@ -101,6 +124,8 @@ public class DrawingArea extends WorkingArea {
         });
 
         zoom_btn.setOnAction(e->{
+            log += "Make zoom\n";
+            this.printLog.setText(log);
             Zoom zoom = new Zoom(mainContext, buffContext, this.sizeX, zoom_btn);
         });
     }
@@ -108,29 +133,29 @@ public class DrawingArea extends WorkingArea {
     /**Allows to copy a fragment of one canvas onto other canvas.
      * Save this fragment in copyCanvas*/
     private void copy(){
-            copyCanvas.getGraphicsContext2D().clearRect(0, 0, copyCanvas.getWidth(), copyCanvas.getHeight());
-            DrawRectangle copyDrawRectangle = new DrawRectangle(this.mainContext,
+        DrawRectangle copyDrawRectangle = new DrawRectangle(this.mainContext,
                     this.buffContext, this.colorPicker, this.brushSize, radio_copy);
-            mainCanvas.setOnMouseReleased(event -> {
-                if(radio_copy.isSelected()) {
-                    double beginX = copyDrawRectangle.getBeginX();
-                    double beginY = copyDrawRectangle.getBeginY();
-                    double sideX = copyDrawRectangle.getXSide();
-                    double sideY = copyDrawRectangle.getYSide();
-                    Canvas reserveCanvas = new Canvas(mainCanvas.getWidth(), mainCanvas.getHeight());
-                    copyFirstCanvasOntoSecondCanvas(buffCanvas, reserveCanvas, 0, 0);
-                    copyFirstCanvasOntoSecondCanvas(reserveCanvas, copyCanvas, -beginX, -beginY);
-                    copyCanvas.getGraphicsContext2D().clearRect(sideX, 0,
-                            this.copyCanvas.getWidth(), this.copyCanvas.getHeight());
-                    copyCanvas.getGraphicsContext2D().clearRect(0, sideY,
-                            this.copyCanvas.getWidth(), this.copyCanvas.getHeight());
-                    mainContext.clearRect(0, 0, mainContext.getCanvas().getWidth(),
-                            mainContext.getCanvas().getHeight());
-                    buffContext.clearRect(0, 0, buffContext.getCanvas().getWidth(),
-                            buffContext.getCanvas().getHeight());
-                    copyFirstCanvasOntoSecondCanvas(reserveCanvas, mainCanvas, 0, 0);
+        mainCanvas.setOnMouseReleased(event -> {
+            if(radio_copy.isSelected()) {
+                copyCanvas.getGraphicsContext2D().clearRect(0, 0, copyCanvas.getWidth(), copyCanvas.getHeight());
+                double beginX = copyDrawRectangle.getBeginX();
+                double beginY = copyDrawRectangle.getBeginY();
+                double sideX = copyDrawRectangle.getXSide();
+                double sideY = copyDrawRectangle.getYSide();
+                Canvas reserveCanvas = new Canvas(mainCanvas.getWidth(), mainCanvas.getHeight());
+                copyFirstCanvasOntoSecondCanvas(buffCanvas, reserveCanvas, 0, 0);
+                copyFirstCanvasOntoSecondCanvas(reserveCanvas, copyCanvas, -beginX, -beginY);
+                copyCanvas.getGraphicsContext2D().clearRect(sideX, 0,
+                        this.copyCanvas.getWidth(), this.copyCanvas.getHeight());
+                copyCanvas.getGraphicsContext2D().clearRect(0, sideY,
+                        this.copyCanvas.getWidth(), this.copyCanvas.getHeight());
+                mainContext.clearRect(0, 0, mainContext.getCanvas().getWidth(),
+                        mainContext.getCanvas().getHeight());
+                buffContext.clearRect(0, 0, buffContext.getCanvas().getWidth(),
+                        buffContext.getCanvas().getHeight());
+                copyFirstCanvasOntoSecondCanvas(reserveCanvas, mainCanvas, 0, 0);
                 }
-            });
+        });
 
     }
 
