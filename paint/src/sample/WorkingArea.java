@@ -125,7 +125,7 @@ public class WorkingArea {
         //Make the setting layer
         HBox settingBox = new HBox();
         settingBox.setSpacing(10);
-        this.brushSize = new TextField("10");
+        this.brushSize = new TextField("5");
         this.textPrint = new TextField("Text");
         this.colorPicker = new ColorPicker();
         settingBox.getChildren().addAll(this.brushSize, this.colorPicker, save_btn, exit_btn, zoom_btn, this.textPrint);

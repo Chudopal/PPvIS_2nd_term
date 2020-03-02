@@ -44,9 +44,10 @@ public class DrawingArea extends WorkingArea {
 
         radio_pencil.setOnAction(e ->{
             log += "Select pencil\n";
-            this.printLog.setText(log);
+
             changeCursor("pencil.png");
             Pencil pencil = new Pencil(this.mainContext, colorPicker, brushSize, radio_pencil);
+            this.printLog.setText(pencil.log());
             copyFirstCanvasOntoSecondCanvas(mainCanvas, buffCanvas, 0 ,0);
         });
 

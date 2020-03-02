@@ -38,4 +38,9 @@ public class Pencil implements Draw {
             }
         });
     }
+
+    @Override
+    public String log() {
+        return "Pencil";
+    }
 }

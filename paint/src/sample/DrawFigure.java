@@ -5,7 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 /**This class is the parent class for each figure on the canvas.
  * It copies the main canvas onto the buff canvas and buff canvas onto the
  * main canvas each time after drawing.*/
-public class DrawFigure implements FigInterface {
+public class DrawFigure implements DrawingFigureInterface {
     protected GraphicsContext mainContext;
     protected GraphicsContext bufferContext;
 

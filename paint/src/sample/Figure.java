@@ -1,9 +1,8 @@
 package sample;
-import javafx.scene.paint.Color;
 
 /**The parent class for each figure on the canvas*/
 
-public class Figure {
+public class Figure implements FigureInterface {
     private double beginX = 0;
     private double beginY = 0;
     private double endX = 0;
@@ -44,5 +43,10 @@ public class Figure {
      */
     public double getYSide(){
         return Math.abs(endY - this.beginY);
+    }
+
+    @Override
+    public String log() {
+        return endX+", "+endY;
     }
 }

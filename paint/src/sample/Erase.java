@@ -31,4 +31,9 @@ public class Erase implements Draw {
             this.buffContext.clearRect(xEvent, yEvent, size, size);
         });
     }
+
+    @Override
+    public String log() {
+        return "Erase";
+    }
 }
