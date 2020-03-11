@@ -13,7 +13,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Controller controller = new Controller(primaryStage, 600, 600);
+        Controller controller = new Controller(primaryStage, 800, 500);
     }
 
     public static void main(String[] args) {

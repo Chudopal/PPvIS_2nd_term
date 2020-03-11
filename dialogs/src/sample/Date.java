@@ -4,10 +4,16 @@ public class Date {
 
     private int year, month, day;
 
-    Date(int year, int month, int day){
+    Date(int day, int month, int year){
         this.year = year;
         this.month = month;
         this.day = day;
+    }
+
+    Date(String date){
+        this.day = Integer.parseInt(date.substring(0, date.length() - 8));
+        this.month = Integer.parseInt(date.substring(3, date.length() - 5));
+        this.year = Integer.parseInt(date.substring(6, date.length()));//xx:xx:xxxx
     }
 
     private int getYear(){
@@ -24,7 +30,7 @@ public class Date {
 
     public String getStringDate(){
         String date = "";
-        date += this.year + ":" + this.month + ":" + this.day;
+        date += this.day + ":" + this.month + ":" + this.year;
         return date;
     }
 }

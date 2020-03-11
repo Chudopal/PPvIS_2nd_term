@@ -1,19 +1,19 @@
 package sample;
 
-public class RowTable {
-
+public class Footballer {
     private String surName = "";
     private String firstName = "";
     private String middleName = "";
-    private String birthDate = "";
+    private Date birthDate;
     private String team = "";
     private String homeCity = "";
     private String commandStructure = "";
     private String position = "";
 
-    RowTable(String surName, String firstName, String middleName,
-             String birthDate, String team, String homeCity,
-             String commandStructure, String position){
+    Footballer(String surName, String firstName, String middleName,
+               Date birthDate, String team, String homeCity,
+               String commandStructure, String position){
+
         this.surName = surName;
         this.firstName = firstName;
         this.middleName = middleName;
@@ -22,6 +22,7 @@ public class RowTable {
         this.homeCity = homeCity;
         this.commandStructure = commandStructure;
         this.position = position;
+
     }
 
     public String getSurName(){
@@ -36,7 +37,7 @@ public class RowTable {
         return this.middleName;
     }
 
-    public String getBirthDate(){
+    public Date getBirthDate(){
         return this.birthDate;
     }
 
