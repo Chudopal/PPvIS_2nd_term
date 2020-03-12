@@ -2,51 +2,35 @@ package sample;
 
 public class RowTable {
 
-    private String surName = "";
-    private String firstName = "";
-    private String middleName = "";
-    private String birthDate = "";
-    private String team = "";
-    private String homeCity = "";
-    private String commandStructure = "";
-    private String position = "";
+    Footballer footballer;
 
-    RowTable(String surName, String firstName, String middleName,
-             String birthDate, String team, String homeCity,
-             String commandStructure, String position){
-        this.surName = surName;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.birthDate = birthDate;
-        this.team = team;
-        this.homeCity = homeCity;
-        this.commandStructure = commandStructure;
-        this.position = position;
+    RowTable(Footballer footballer){
+        this.footballer = footballer;
     }
 
     public String getSurName(){
-        return this.surName;
+        return this.footballer.getSurName();
     }
 
     public String getFirstName(){
-        return this.firstName;
+        return this.footballer.getFirstName();
     }
 
     public String getMiddleName(){
-        return this.middleName;
+        return this.footballer.getMiddleName();
     }
 
     public String getBirthDate(){
-        return this.birthDate;
+        return this.footballer.getBirthDate().getStringDate();
     }
 
     public String getTeam(){
-        return this.team;
+        return this.footballer.getTeam();
     }
 
-    public String getHomeCity() {return this.homeCity;}
+    public String getHomeCity() {return this.footballer.getHomeCity();}
 
-    public String getCommandStructure(){return this.commandStructure;}
+    public String getCommandStructure(){return this.footballer.getCommandStructure();}
 
-    public String getPosition(){return this.position; }
+    public String getPosition(){return this.footballer.getPosition(); }
 }

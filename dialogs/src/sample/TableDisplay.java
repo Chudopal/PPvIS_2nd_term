@@ -17,16 +17,11 @@ public class TableDisplay {
 
     private void createTable(Group root){
 
-        ObservableList <RowTable>  people = FXCollections.observableArrayList(
-            new RowTable("chudopal", "alexandr", "sergeevich",
-                    "23.09.2000", "Teaaam", "Minsk", "Str",
-                    "Pos"),
-            new RowTable("asdas", "wef", "sergeevich",
-                    "23.09.2000", "wef", "wefv", "ef",
-                    "afc")
-        );
+        Table tableOfFootballers = new Table();
 
-        TableView<RowTable> table = new TableView<RowTable>(people);
+        tableOfFootballers.addRow();
+
+        TableView<RowTable> table = new TableView<RowTable>(tableOfFootballers.getList());
 
         table.setPrefWidth(800);
 
@@ -70,7 +65,7 @@ public class TableDisplay {
 
         surnameCol.setSortType(TableColumn.SortType.DESCENDING);
 
-        table.setItems(people);
+        table.setItems(tableOfFootballers.getList());
 
 
         table.getColumns().addAll(fullNameCol, birthDateCol, teamCol, homeCityCol, structureCol, positionCol);
