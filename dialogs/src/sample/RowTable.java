@@ -1,5 +1,10 @@
 package sample;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.util.ArrayList;
+
 public class RowTable {
 
     Footballer footballer;
@@ -10,6 +15,16 @@ public class RowTable {
 
     public String getSurName(){
         return this.footballer.getSurName();
+    }
+
+    public ObservableList <RowTable> makeListOnFootballersList(ArrayList <Footballer> footballers){
+        ObservableList <RowTable> rows = FXCollections.observableArrayList();
+
+        for (int i = 0; i < footballers.size(); i++){
+            rows.add(new RowTable(footballers.get(i)));
+        }
+
+        return rows;
     }
 
     public String getFirstName(){

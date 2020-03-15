@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
@@ -7,9 +8,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import javax.swing.*;
+
 
 public class TableDisplay {
-    //Table table;
 
     TableDisplay(Group root){
         this.createTable(root);
@@ -17,11 +19,38 @@ public class TableDisplay {
 
     private void createTable(Group root){
 
-        Table tableOfFootballers = new Table();
 
-        tableOfFootballers.addRow();
+        Date date = new Date(1,2,2000);
 
-        TableView<RowTable> table = new TableView<RowTable>(tableOfFootballers.getList());
+        ObservableList <Footballer> footballers = FXCollections.observableArrayList(
+                new Footballer("Surname",
+                        "firstName",
+                        "MiddleName",
+                        date,
+                        "Team",
+                        "HomeCity",
+                        "Struct",
+                        "Pos")
+
+        );
+
+        footballers.add(new Footballer(
+                "Chudopal",
+                "Alex",
+                "Sergeevich",
+                new Date(1,2,1999),
+                "Blia",
+                "Kir",
+                "Govno",
+                "Str")
+        );
+
+        ObservableList <RowTable> rows = FXCollections.observableArrayList(
+                new RowTable(footballers.get(0)),
+                new RowTable(footballers.get(1))
+        );
+
+        TableView<RowTable> table = new TableView<RowTable>(rows);
 
         table.setPrefWidth(800);
 
@@ -32,8 +61,10 @@ public class TableDisplay {
 
         TableColumn<RowTable, String> surnameCol
                 = new TableColumn<RowTable, String>("Surname");
+
         TableColumn<RowTable, String> firstNameCol
                 = new TableColumn<RowTable, String>("First Name");
+
         TableColumn<RowTable, String> middleNameCol
                 = new TableColumn<RowTable, String>("Middle name");
 
@@ -65,7 +96,6 @@ public class TableDisplay {
 
         surnameCol.setSortType(TableColumn.SortType.DESCENDING);
 
-        table.setItems(tableOfFootballers.getList());
 
 
         table.getColumns().addAll(fullNameCol, birthDateCol, teamCol, homeCityCol, structureCol, positionCol);

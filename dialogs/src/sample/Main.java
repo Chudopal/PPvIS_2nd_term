@@ -13,6 +13,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        SAXPar saxPar = new SAXPar();
         Controller controller = new Controller(primaryStage, 800, 500);
     }
 

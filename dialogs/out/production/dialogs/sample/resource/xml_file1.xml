@@ -1,4 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<team>
+<footballers>
+    <footballer>
+        <name surname = "Chudopal" firstname="Alexandr" middlename="Sergeevich" />
+        <date date="18:2:2000"/>
+        <team>Hater</team>
+        <homeCity>Minsk</homeCity>
+        <commandStructure>Runner</commandStructure>
+        <position>Pos</position>
+    </footballer>
 
-</team>
+    <footballer>
+        <name surname = "Other" firstname="Fire" middlename="Mda" />
+        <date date="12:5:2000"/>
+        <team>Sun</team>
+        <homeCity>Minsk</homeCity>
+        <commandStructure>Runner</commandStructure>
+        <position>Pos</position>
+    </footballer>
+
+    <footballer>
+        <name surname = "New" firstname="Idk" middlename="Sergeevich" />
+        <date date="18:2:2000"/>
+        <team>Hater</team>
+        <homeCity>Minsk</homeCity>
+        <commandStructure>Runner</commandStructure>
+        <position>Pos</position>
+    </footballer>
+
+    <footballer>
+        <name surname = "Chudopal" firstname="Alexandr" middlename="Sergeevich" />
+        <date date="18:2:2000"/>
+        <team>Hater</team>
+        <homeCity>Minsk</homeCity>
+        <commandStructure>Runner</commandStructure>
+        <position>Pos</position>
+    </footballer>
+</footballers>

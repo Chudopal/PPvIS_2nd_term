@@ -24,9 +24,12 @@ public class Table {
     }
 
     public void createTableOnList(ObservableList<Footballer> footballers){
+
         for(int i = 0; i < footballers.size(); i++){
             RowTable row = new RowTable(footballers.get(i));
+            this.addRow(row);
         }
+
     }
 
     public ObservableList <RowTable> getList(){
