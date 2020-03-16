@@ -9,12 +9,22 @@ package sample;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        System.out.println("HERE");
+        ArrayList <Footballer> footballers = new ArrayList<>();
+
+        footballers.add(new Footballer("surName", "FirstName", "Middle name", new Date("12:03:2000"), "Team", "City", "Struct", "pos"));
+
+        footballers.add(new Footballer("Chudopal", "Alex", "Serg", new Date("12:03:2000"), "Team", "City", "Struct", "pos"));
+
+        DOMParser domParser = new DOMParser(footballers, "xml_file1.xml");
         SAXPar saxPar = new SAXPar();
-        Controller controller = new Controller(primaryStage, 800, 500);
+        //Controller controller = new Controller(primaryStage, 800, 500);
     }
 
     public static void main(String[] args) {
