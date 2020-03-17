@@ -15,16 +15,20 @@ public class SAXPar extends DefaultHandler {
 
     private static ArrayList <Footballer> footballers = new ArrayList<>();
 
-    SAXPar() throws ParserConfigurationException, SAXException, IOException {
+    SAXPar(String name) throws ParserConfigurationException, SAXException, IOException {
         System.out.println("here");
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser parser = factory.newSAXParser();
 
         XMLHandler handler = new XMLHandler();
-        parser.parse(new File("./xml_file1.xml"), handler);
+        parser.parse(new File("./" + name), handler);
 
         for (Footballer  footballer : footballers)
             System.out.println(footballer.getSurName() + "\t" + footballer.getHomeCity());
+    }
+
+    public ArrayList <Footballer> getFootballers(){
+        return footballers;
     }
 
     private static class XMLHandler extends DefaultHandler {
