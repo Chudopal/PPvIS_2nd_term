@@ -1,6 +1,5 @@
 package sample;
 
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
@@ -8,22 +7,35 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import javax.swing.*;
+import java.util.ArrayList;
 
 
 public class TableDisplay {
 
-    TableDisplay(Group root){
-        this.createTable(root);
+    private Group root;
+    private double sizeX;
+    private double sizeY;
+    private ObservableList<Footballer> footballers = FXCollections.observableArrayList();
+
+    private TableView<Footballer> table = new TableView<Footballer>(footballers);
+
+    TableDisplay(Group root, double sizeX, double sizeY){
+        this.sizeX = sizeX;
+        this.sizeY = sizeY;
+        this.root = root;
+        this.createTable();
     }
 
-    private void createTable(Group root){
+    public void setFootballers(ArrayList<Footballer> footballers){
+        this.footballers.addAll(footballers);
+        this.createTable();
+    }
 
+    private void createTable(){
 
         Date date = new Date(1,2,2000);
 
-        ObservableList <Footballer> footballers = FXCollections.observableArrayList(
-                new Footballer("Surname",
+        footballers.add(new Footballer("Surnamenamenamenamenamenamenamena",
                         "firstName",
                         "MiddleName",
                         date,
@@ -33,6 +45,8 @@ public class TableDisplay {
                         "Pos")
 
         );
+
+        //System.out.println(footballers.get(0).getSurName());
 
         footballers.add(new Footballer(
                 "Chudopal",
@@ -45,43 +59,38 @@ public class TableDisplay {
                 "Str")
         );
 
-        ObservableList <RowTable> rows = FXCollections.observableArrayList(
-                new RowTable(footballers.get(0)),
-                new RowTable(footballers.get(1))
-        );
+        //System.out.println(rows.get(0).getSurName());
 
-        TableView<RowTable> table = new TableView<RowTable>(rows);
+        table.setPrefWidth(sizeX);
 
-        table.setPrefWidth(800);
+        table.setPrefHeight(sizeY/2);
 
-        table.setPrefHeight(500);
+        TableColumn<Footballer, String> fullNameCol
+            = new TableColumn<Footballer, String>("Full Name");
 
-        TableColumn<RowTable, String> fullNameCol
-            = new TableColumn<RowTable, String>("Full Name");
+        TableColumn<Footballer, String> surnameCol
+                = new TableColumn<Footballer, String>("Surname");
 
-        TableColumn<RowTable, String> surnameCol
-                = new TableColumn<RowTable, String>("Surname");
+        TableColumn<Footballer, String> firstNameCol
+                = new TableColumn<Footballer, String>("First Name");
 
-        TableColumn<RowTable, String> firstNameCol
-                = new TableColumn<RowTable, String>("First Name");
+        TableColumn<Footballer, String> middleNameCol
+                = new TableColumn<Footballer, String>("Middle name");
 
-        TableColumn<RowTable, String> middleNameCol
-                = new TableColumn<RowTable, String>("Middle name");
+        TableColumn<Footballer, String> birthDateCol
+                = new TableColumn<Footballer, String>("Birth date");
 
-        TableColumn<RowTable, String> birthDateCol
-                = new TableColumn<RowTable, String>("Birth date");
+        TableColumn<Footballer, String> teamCol
+                = new TableColumn<Footballer, String>("Team");
 
-        TableColumn<RowTable, String> teamCol
-                = new TableColumn<RowTable, String>("Team");
+        TableColumn<Footballer, String> homeCityCol
+                = new TableColumn<Footballer, String>("Home City");
 
-        TableColumn<RowTable, String> homeCityCol
-                = new TableColumn<RowTable, String>("Home City");
+        TableColumn<Footballer, String> structureCol
+                = new TableColumn<Footballer, String>("Structure of the team");
 
-        TableColumn<RowTable, String> structureCol
-                = new TableColumn<RowTable, String>("Structure of the team");
-
-        TableColumn<RowTable, String> positionCol
-                = new TableColumn<RowTable, String>("Position");
+        TableColumn<Footballer, String> positionCol
+                = new TableColumn<Footballer, String>("Position");
 
         fullNameCol.getColumns().addAll(surnameCol, firstNameCol, middleNameCol);
 
@@ -95,8 +104,6 @@ public class TableDisplay {
         positionCol.setCellValueFactory(new PropertyValueFactory<>("position"));
 
         surnameCol.setSortType(TableColumn.SortType.DESCENDING);
-
-
 
         table.getColumns().addAll(fullNameCol, birthDateCol, teamCol, homeCityCol, structureCol, positionCol);
 

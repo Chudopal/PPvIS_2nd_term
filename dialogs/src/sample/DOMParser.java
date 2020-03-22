@@ -78,8 +78,8 @@ public class DOMParser {
         footballer.appendChild(date);
 
         Attr birthDate = doc.createAttribute("date");
-        birthDate.setValue(realFootballer.getBirthDate().getStringDate());
-        date.setAttribute("date", realFootballer.getBirthDate().getStringDate());
+        birthDate.setValue(realFootballer.getBirthDate());
+        date.setAttribute("date", realFootballer.getBirthDate());
 
         Element team = doc.createElement("team");
         team.appendChild(doc.createTextNode(realFootballer.getTeam()));

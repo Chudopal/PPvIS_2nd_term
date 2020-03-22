@@ -15,8 +15,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-
-        View view = new View(primaryStage, 800, 800);
+        FootballerController footballerController = new FootballerController(primaryStage, 800, 800);
     }
 
     public static void main(String[] args) {

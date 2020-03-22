@@ -37,8 +37,8 @@ public class Footballer {
         return this.middleName;
     }
 
-    public Date getBirthDate(){
-        return this.birthDate;
+    public String getBirthDate(){
+        return this.birthDate.getStringDate();
     }
 
     public String getTeam(){
