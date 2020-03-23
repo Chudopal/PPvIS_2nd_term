@@ -16,51 +16,23 @@ public class TableDisplay {
     private double sizeX;
     private double sizeY;
     private ObservableList<Footballer> footballers = FXCollections.observableArrayList();
-
     private TableView<Footballer> table = new TableView<Footballer>(footballers);
 
     TableDisplay(Group root, double sizeX, double sizeY){
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.root = root;
-        this.createTable();
     }
 
     public void setFootballers(ArrayList<Footballer> footballers){
         this.footballers.addAll(footballers);
-        this.createTable();
     }
 
-    private void createTable(){
+    public void clearTable(){
+        table.getItems().clear();
+    }
 
-        Date date = new Date(1,2,2000);
-
-        footballers.add(new Footballer("Surnamenamenamenamenamenamenamena",
-                        "firstName",
-                        "MiddleName",
-                        date,
-                        "Team",
-                        "HomeCity",
-                        "Struct",
-                        "Pos")
-
-        );
-
-        //System.out.println(footballers.get(0).getSurName());
-
-        footballers.add(new Footballer(
-                "Chudopal",
-                "Alex",
-                "Sergeevich",
-                new Date(1,2,1999),
-                "Blia",
-                "Kir",
-                "Govno",
-                "Str")
-        );
-
-        //System.out.println(rows.get(0).getSurName());
-
+    public void createTable(){
         table.setPrefWidth(sizeX);
 
         table.setPrefHeight(sizeY/2);

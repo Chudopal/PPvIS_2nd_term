@@ -12,6 +12,8 @@ public class MainWindow{
     protected Group root;
     protected double sizeX;
     protected double sizeY;
+
+
     /**Constructor of class
      * @param primaryStage -- the main window,
      * @param sizeX -- x-size of main window,
@@ -47,7 +49,20 @@ public class MainWindow{
                 "Pos"
         ));
 
-        //tableDisplay.setFootballers(footballers);
+        tableDisplay.setFootballers(footballers);
+        tableDisplay.createTable();
+        footballers.add(new Footballer(
+                "name",
+                "newName",
+                "Oldname",
+                new Date("00:00:2000"),
+                "team",
+                "HC",
+                "CommStr",
+                "Pos"
+        ));
+        tableDisplay.clearTable();
+        tableDisplay.setFootballers(footballers);
     }
 
 }
