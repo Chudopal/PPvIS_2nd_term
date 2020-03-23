@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Pars {
 
     private String name;
-    private ArrayList <Footballer> footballers;
+    private ArrayList <Footballer> footballers = new ArrayList<>();
 
 
     Pars(String name){
@@ -26,10 +26,11 @@ public class Pars {
         catch (Exception e){
             e.printStackTrace();
         }
+        System.out.println("HERE");
         return footballers;
     }
 
-    public void writeIntoFile(ArrayList <Footballer> footballers){
+    public void writeFile(ArrayList <Footballer> footballers){
         DOMParser domParser = new DOMParser(footballers, this.name);
     }
 }

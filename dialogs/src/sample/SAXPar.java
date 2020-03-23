@@ -16,7 +16,6 @@ public class SAXPar extends DefaultHandler {
     private static ArrayList <Footballer> footballers = new ArrayList<>();
 
     SAXPar(String name) throws ParserConfigurationException, SAXException, IOException {
-        System.out.println("here");
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser parser = factory.newSAXParser();
 
