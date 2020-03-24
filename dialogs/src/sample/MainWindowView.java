@@ -4,13 +4,12 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
 
 /**This class is creating a space for other
  * buttons, text boxes, and labels*/
 public class MainWindowView {
 
-    protected TableDisplay tableDisplay;
+    protected Table table;
 
     private double sizeX;
     private double sizeY;
@@ -37,6 +36,6 @@ public class MainWindowView {
     }
 
     private void mainBox(Group root){
-        this.tableDisplay = new TableDisplay(root, this.sizeX, this.sizeY);
+        this.table = new Table(root, this.sizeX, this.sizeY);
     }
 }

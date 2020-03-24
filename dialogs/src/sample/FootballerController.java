@@ -16,8 +16,8 @@ public class FootballerController extends MainWindowView {
     private void Handler(){
         Pars pars = new Pars("file.xml");
         footballers.clear();
-        tableDisplay.setFootballers(pars.readFile());
-        tableDisplay.createTable();
+        table.setFootballers(pars.readFile());
+        table.createTable();
     }
 
 }

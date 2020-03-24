@@ -2,23 +2,23 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.Group;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
 
 
 public class TableDisplay {
 
-    private Group root;
+    private VBox root;
     private double sizeX;
     private double sizeY;
     private ObservableList<Footballer> footballers = FXCollections.observableArrayList();
     private TableView<Footballer> table = new TableView<Footballer>(footballers);
 
-    TableDisplay(Group root, double sizeX, double sizeY){
+    TableDisplay(VBox root, double sizeX, double sizeY){
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.root = root;
