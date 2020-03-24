@@ -21,9 +21,6 @@ public class SAXPar extends DefaultHandler {
 
         XMLHandler handler = new XMLHandler();
         parser.parse(new File("./" + name), handler);
-
-        for (Footballer  footballer : footballers)
-            System.out.println(footballer.getSurName() + "\t" + footballer.getHomeCity());
     }
 
     public ArrayList <Footballer> getFootballers(){

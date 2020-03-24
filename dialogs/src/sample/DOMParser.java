@@ -47,7 +47,6 @@ public class DOMParser {
             DOMSource source = new DOMSource(doc);
             StreamResult result = new StreamResult(new File("./" + name));
             transformer.transform(source, result);
-            System.out.println("File saved!");
         } catch (ParserConfigurationException pce) {
             pce.printStackTrace();
         } catch (TransformerException tfe) {

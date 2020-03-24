@@ -26,7 +26,6 @@ public class Pars {
         catch (Exception e){
             e.printStackTrace();
         }
-        System.out.println("HERE");
         return footballers;
     }
 

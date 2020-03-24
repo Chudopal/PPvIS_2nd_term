@@ -1,1 +1,163 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><footballers><footballer><name firstname="FirstName" middlename="Middle name" surname="surName"/><date date="01:03:0000"/><team>Team</team><homeCity>City</homeCity><commandStructure>Struct</commandStructure><position>pos</position></footballer><footballer><name firstname="Alex" middlename="Serg" surname="Chudopal"/><date date="01:30:0200"/><team>Team</team><homeCity>City</homeCity><commandStructure>Struct</commandStructure><position>pos</position></footballer></footballers>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<footballers>
+    <footballer>
+        <name firstname="FirstName" middlename="Middle name" surname="surName"/>
+        <date date="11:23:2000"/>
+        <team>Team</team>
+        <homeCity>City</homeCity>
+        <commandStructure>Struct</commandStructure>
+        <position>pos</position>
+    </footballer>
+    <footballer>
+        <name firstname="Alex" middlename="Serg" surname="Chudopal"/>
+        <date date="11:30:2000"/>
+        <team>Team</team>
+        <homeCity>City</homeCity>
+        <commandStructure>Struct</commandStructure>
+        <position>pos</position>
+    </footballer>
+    <footballer>
+        <name firstname="Alex" middlename="Serg" surname="Chudopal"/>
+        <date date="11:30:2000"/>
+        <team>Team</team>
+        <homeCity>City</homeCity>
+        <commandStructure>Struct</commandStructure>
+        <position>pos</position>
+    </footballer>
+    <footballer>
+        <name firstname="Alex" middlename="Serg" surname="Chudopal"/>
+        <date date="11:30:2000"/>
+        <team>Team</team>
+        <homeCity>City</homeCity>
+        <commandStructure>Struct</commandStructure>
+        <position>pos</position>
+    </footballer>
+    <footballer>
+        <name firstname="Alex" middlename="Serg" surname="Chudopal"/>
+        <date date="11:30:2000"/>
+        <team>Team</team>
+        <homeCity>City</homeCity>
+        <commandStructure>Struct</commandStructure>
+        <position>pos</position>
+    </footballer>
+    <footballer>
+        <name firstname="Alex" middlename="Serg" surname="Chudopal"/>
+        <date date="11:30:2000"/>
+        <team>Team</team>
+        <homeCity>City</homeCity>
+        <commandStructure>Struct</commandStructure>
+        <position>pos</position>
+    </footballer>
+    <footballer>
+        <name firstname="Alex" middlename="Serg" surname="Chudopal"/>
+        <date date="11:30:2000"/>
+        <team>Team</team>
+        <homeCity>City</homeCity>
+        <commandStructure>Struct</commandStructure>
+        <position>pos</position>
+    </footballer>
+    <footballer>
+        <name firstname="Alex" middlename="Serg" surname="Chudopal"/>
+        <date date="11:30:2000"/>
+        <team>Team</team>
+        <homeCity>City</homeCity>
+        <commandStructure>Struct</commandStructure>
+        <position>pos</position>
+    </footballer>
+    <footballer>
+        <name firstname="Alex" middlename="Serg" surname="Chudopal"/>
+        <date date="11:30:2000"/>
+        <team>Team</team>
+        <homeCity>City</homeCity>
+        <commandStructure>Struct</commandStructure>
+        <position>pos</position>
+    </footballer>
+    <footballer>
+        <name firstname="Alex" middlename="Serg" surname="Chudopal"/>
+        <date date="11:30:2000"/>
+        <team>Team</team>
+        <homeCity>City</homeCity>
+        <commandStructure>Struct</commandStructure>
+        <position>pos</position>
+    </footballer>
+    <footballer>
+        <name firstname="Flex" middlename="Serg" surname="AHAHAHAHA"/>
+        <date date="11:30:2000"/>
+        <team>Team</team>
+        <homeCity>City</homeCity>
+        <commandStructure>Struct</commandStructure>
+        <position>pos</position>
+    </footballer>
+    <footballer>
+        <name firstname="Alex" middlename="Serg" surname="Chudopal"/>
+        <date date="11:30:2000"/>
+        <team>Team</team>
+        <homeCity>City</homeCity>
+        <commandStructure>Struct</commandStructure>
+        <position>pos</position>
+    </footballer>
+    <footballer>
+        <name firstname="Alex" middlename="Serg" surname="Chudopal"/>
+        <date date="11:30:2000"/>
+        <team>Team</team>
+        <homeCity>City</homeCity>
+        <commandStructure>Struct</commandStructure>
+        <position>pos</position>
+    </footballer>
+    <footballer>
+        <name firstname="Alex" middlename="Serg" surname="Chudopal"/>
+        <date date="11:30:2000"/>
+        <team>Team</team>
+        <homeCity>City</homeCity>
+        <commandStructure>Struct</commandStructure>
+        <position>pos</position>
+    </footballer>
+    <footballer>
+        <name firstname="Alex" middlename="Serg" surname="Chudopal"/>
+        <date date="11:30:2000"/>
+        <team>Team</team>
+        <homeCity>City</homeCity>
+        <commandStructure>Struct</commandStructure>
+        <position>pos</position>
+    </footballer>
+    <footballer>
+        <name firstname="Alex" middlename="Serg" surname="Chudopal"/>
+        <date date="11:30:2000"/>
+        <team>Team</team>
+        <homeCity>City</homeCity>
+        <commandStructure>Struct</commandStructure>
+        <position>pos</position>
+    </footballer>
+    <footballer>
+        <name firstname="Alex" middlename="Serg" surname="Chudopal"/>
+        <date date="11:30:2000"/>
+        <team>Team</team>
+        <homeCity>City</homeCity>
+        <commandStructure>Struct</commandStructure>
+        <position>pos</position>
+    </footballer>
+    <footballer>
+        <name firstname="Alex" middlename="Serg" surname="Chudopal"/>
+        <date date="11:30:2000"/>
+        <team>Team</team>
+        <homeCity>City</homeCity>
+        <commandStructure>Struct</commandStructure>
+        <position>pos</position>
+    </footballer>
+    <footballer>
+        <name firstname="Alex" middlename="Serg" surname="Chudopal"/>
+        <date date="11:30:2000"/>
+        <team>Team</team>
+        <homeCity>City</homeCity>
+        <commandStructure>Struct</commandStructure>
+        <position>pos</position>
+    </footballer>
+    <footballer>
+        <name firstname="Alex" middlename="Serg" surname="Chudopal"/>
+        <date date="11:30:2000"/>
+        <team>Team</team>
+        <homeCity>City</homeCity>
+        <commandStructure>Struct</commandStructure>
+        <position>pos</position>
+    </footballer>
+</footballers>

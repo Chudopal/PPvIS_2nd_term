@@ -2,29 +2,29 @@ package sample;
 
 public class Date {
 
-    private int year, month, day;
+    private String year, month, day;
 
-    Date(int day, int month, int year){
+    Date(String day, String month, String year){
         this.year = year;
         this.month = month;
         this.day = day;
     }
 
     Date(String date){
-        this.day = Integer.parseInt(date.substring(0, date.length() - 8));
-        this.month = Integer.parseInt(date.substring(3, date.length() - 5));
-        this.year = Integer.parseInt(date.substring(6, date.length()));//xx:xx:xxxx
+        this.day = date.substring(0, date.length() - 8);
+        this.month = date.substring(3, date.length() - 5);
+        this.year = date.substring(6, date.length());//xx:xx:xxxx
     }
 
-    private int getYear(){
+    private String getYear(){
         return this.year;
     }
 
-    public int getMonth(){
+    public String getMonth(){
         return this.month;
     }
 
-    public int getDay(){
+    public String getDay(){
         return this.day;
     }
 
