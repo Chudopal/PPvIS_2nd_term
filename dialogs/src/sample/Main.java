@@ -13,7 +13,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FootballerController footballerController = new FootballerController(primaryStage, 800, 800);
+        FootballerController footballerController = new FootballerController();
+        MainWindowView mainWindowView = new MainWindowView(
+                footballerController,
+                primaryStage,
+                800,
+                600);
     }
 
     public static void main(String[] args) {

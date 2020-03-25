@@ -3,11 +3,11 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 
 import java.util.ArrayList;
 
@@ -19,10 +19,10 @@ public class Table {
     private Button btnRight = new Button(">");
     private Button btnBegin = new Button("<<");;
     private Button btnEnd = new Button(">>");
-    private ChoiceBox numbOfStr = new ChoiceBox<String>(FXCollections.observableArrayList("5", "10"));;
+    private ChoiceBox numbOfStr = new ChoiceBox<String>(FXCollections.observableArrayList("5", "10"));
+    private Button btnOpen = new Button("Open");
 
-    Table(Group root, double sizeX, double sizeY){
-        mainBox.setSpacing(10);
+    Table(VBox root, double sizeX, double sizeY){
         tableDisplay = new TableDisplay(this.mainBox, sizeX, sizeY);
         this.createButtons();
         root.getChildren().add(this.mainBox);
@@ -32,7 +32,13 @@ public class Table {
         HBox buttonLayout = new HBox();
         buttonLayout.setSpacing(20);
         buttonLayout.setAlignment(Pos.BASELINE_CENTER);
-        buttonLayout.getChildren().addAll(this.btnBegin, this.btnLeft, this.btnRight, this.btnEnd, this.numbOfStr);
+        buttonLayout.getChildren().addAll(this.btnOpen,
+                this.btnBegin,
+                this.btnLeft,
+                this.btnRight,
+                this.btnEnd,
+                this.numbOfStr
+        );
         this.mainBox.getChildren().add(buttonLayout);
     }
 
@@ -52,4 +58,7 @@ public class Table {
     public Button getBtnRight(){return btnRight;}
     public Button getBtnBegin(){return btnBegin;}
     public Button getBtnEnd(){return btnEnd;}
+    public Button getBtnOpen() {
+        return btnOpen;
+    }
 }

@@ -1,23 +1,28 @@
 package sample;
 
-import javafx.stage.Stage;
-
+import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
-public class FootballerController extends MainWindowView {
+public class FootballerController {
 
-    private ArrayList <Footballer> footballers = new ArrayList<>();
+    private ArrayList<Footballer> footballers = new ArrayList<>();
 
-    FootballerController(Stage stage, double sizeX, double sizeY){
-        super(stage, sizeX, sizeY);
-        this.Handler();
+    FootballerController(){}
+
+    public void readFile(File file){
+        SAXPar.getSaxPar();
+        try {
+            SAXPar.getSaxPar().setFile(file);
+            footballers.addAll(SAXPar.getSaxPar().getFootballers());
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
-    private void Handler(){
-        Pars pars = new Pars("file.xml");
-        footballers.clear();
-        table.setFootballers(pars.readFile());
-        table.createTable();
+    public void writeFile(File file, List<Footballer> footballers){
+        DOMParser.getDomParser().createXML(footballers, file);
     }
 
+    public ArrayList<Footballer> getFootballers(){return footballers;}
 }

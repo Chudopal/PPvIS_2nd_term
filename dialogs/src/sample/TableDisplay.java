@@ -26,19 +26,8 @@ public class TableDisplay {
 
     public void setFootballers(ArrayList<Footballer> footballers){
         this.footballers.addAll(footballers);
-    }
-
-    public void clearTable(){
-        table.getItems().clear();
-    }
-
-    public void createTable(){
-        table.setPrefWidth(sizeX);
-
-        table.setPrefHeight(sizeY/2);
-
         TableColumn<Footballer, String> fullNameCol
-            = new TableColumn<Footballer, String>("Full Name");
+                = new TableColumn<Footballer, String>("Full Name");
 
         TableColumn<Footballer, String> surnameCol
                 = new TableColumn<Footballer, String>("Surname");
@@ -78,6 +67,20 @@ public class TableDisplay {
         surnameCol.setSortType(TableColumn.SortType.DESCENDING);
 
         table.getColumns().addAll(fullNameCol, birthDateCol, teamCol, homeCityCol, structureCol, positionCol);
+
+
+    }
+
+
+
+    public void clearTable(){
+        table.getItems().clear();
+    }
+
+    public void createTable(){
+        table.setPrefWidth(sizeX);
+
+        table.setPrefHeight(sizeY/2);
 
         root.getChildren().add(table);
 

@@ -1,17 +1,20 @@
 package sample;
 
+import java.time.LocalDate;
+
 public class Footballer {
     private String surName = "";
     private String firstName = "";
     private String middleName = "";
-    private Date birthDate;
+    private LocalDate birthDate;
+
     private String team = "";
     private String homeCity = "";
     private String commandStructure = "";
     private String position = "";
 
     Footballer(String surName, String firstName, String middleName,
-               Date birthDate, String team, String homeCity,
+               LocalDate birthDate, String team, String homeCity,
                String commandStructure, String position){
 
         this.surName = surName;
@@ -37,8 +40,8 @@ public class Footballer {
         return this.middleName;
     }
 
-    public String getBirthDate(){
-        return this.birthDate.getStringDate();
+    public LocalDate getBirthDate(){
+        return this.birthDate;
     }
 
     public String getTeam(){

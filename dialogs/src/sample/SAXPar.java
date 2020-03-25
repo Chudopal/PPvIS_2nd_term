@@ -9,21 +9,32 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SAXPar extends DefaultHandler {
 
     private static ArrayList <Footballer> footballers = new ArrayList<>();
+    private static SAXPar saxPar;
 
-    SAXPar(String name) throws ParserConfigurationException, SAXException, IOException {
-        SAXParserFactory factory = SAXParserFactory.newInstance();
-        SAXParser parser = factory.newSAXParser();
+    private SAXPar(){}
 
-        XMLHandler handler = new XMLHandler();
-        parser.parse(new File("./" + name), handler);
+    public static SAXPar getSaxPar(){
+        if(saxPar == null){
+            saxPar = new SAXPar();
+        }
+        return saxPar;
     }
 
-    public ArrayList <Footballer> getFootballers(){
+    public void setFile(File file) throws ParserConfigurationException, SAXException, IOException {
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        SAXParser parser = factory.newSAXParser();
+        XMLHandler handler = new XMLHandler();
+        parser.parse(file, handler);
+    }
+
+    public ArrayList<Footballer> getFootballers(){
         return footballers;
     }
 
@@ -31,7 +42,7 @@ public class SAXPar extends DefaultHandler {
         private String surName;
         private String firstName;
         private String middleName;
-        private Date birthDate;
+        private LocalDate birthDate;
         private String team;
         private String homeCity;
         private String commandStructure;
@@ -46,9 +57,12 @@ public class SAXPar extends DefaultHandler {
                 this.middleName = attributes.getValue("middlename");
             } else if (qName.equals("date")) {
                 String date = attributes.getValue("date");
-                this.birthDate = new Date(date);
+                this.birthDate = LocalDate.parse(date);
             } else {
                 lastElementName = qName;
+            }
+            for(Footballer footballer: footballers){
+                System.out.println(footballer.getSurName());
             }
         }
 

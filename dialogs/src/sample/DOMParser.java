@@ -1,7 +1,7 @@
 package sample;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -17,16 +17,18 @@ import org.w3c.dom.Element;
 
 public class DOMParser {
 
-    private ArrayList <Footballer> footballers;
-    private String name;
+    private static DOMParser domParser;
 
-    DOMParser(ArrayList<Footballer> footballers, String name) {
-        this.footballers = footballers;
-        this.name = name;
-        this.createXML();
+    public static DOMParser getDomParser(){
+        if(domParser == null){
+            domParser = new DOMParser();
+        }
+        return domParser;
     }
 
-    private void createXML(){
+    private DOMParser() {}
+
+    public void createXML(List<Footballer> footballers, File file){
         System.out.println("here");
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -45,7 +47,7 @@ public class DOMParser {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File("./" + name));
+            StreamResult result = new StreamResult(file);
             transformer.transform(source, result);
         } catch (ParserConfigurationException pce) {
             pce.printStackTrace();
@@ -77,8 +79,8 @@ public class DOMParser {
         footballer.appendChild(date);
 
         Attr birthDate = doc.createAttribute("date");
-        birthDate.setValue(realFootballer.getBirthDate());
-        date.setAttribute("date", realFootballer.getBirthDate());
+        birthDate.setValue(realFootballer.getBirthDate().toString());
+        date.setAttribute("date", realFootballer.getBirthDate().toString());
 
         Element team = doc.createElement("team");
         team.appendChild(doc.createTextNode(realFootballer.getTeam()));
