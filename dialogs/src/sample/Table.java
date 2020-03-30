@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 public class Table {
     TableDisplay tableDisplay;
     private VBox mainBox = new VBox();
+    private Label siteOfPage = new Label("1");
     private Button btnLeft = new Button("<");
     private Button btnRight = new Button(">");
     private Button btnBegin = new Button("<<");;
@@ -35,6 +37,7 @@ public class Table {
         buttonLayout.getChildren().addAll(this.btnOpen,
                 this.btnBegin,
                 this.btnLeft,
+                this.siteOfPage,
                 this.btnRight,
                 this.btnEnd,
                 this.numbOfStr
@@ -60,5 +63,9 @@ public class Table {
     public Button getBtnEnd(){return btnEnd;}
     public Button getBtnOpen() {
         return btnOpen;
+    }
+
+    public ChoiceBox getNumbOfStr() {
+        return numbOfStr;
     }
 }

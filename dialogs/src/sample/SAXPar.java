@@ -11,7 +11,6 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 public class SAXPar extends DefaultHandler {
 
@@ -30,6 +29,7 @@ public class SAXPar extends DefaultHandler {
     public void setFile(File file) throws ParserConfigurationException, SAXException, IOException {
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser parser = factory.newSAXParser();
+        footballers.clear();
         XMLHandler handler = new XMLHandler();
         parser.parse(file, handler);
     }
@@ -60,9 +60,6 @@ public class SAXPar extends DefaultHandler {
                 this.birthDate = LocalDate.parse(date);
             } else {
                 lastElementName = qName;
-            }
-            for(Footballer footballer: footballers){
-                System.out.println(footballer.getSurName());
             }
         }
 

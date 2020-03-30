@@ -7,6 +7,7 @@ import java.util.List;
 public class FootballerController {
 
     private ArrayList<Footballer> footballers = new ArrayList<>();
+    private PageOfTable pageOfTable;
 
     FootballerController(){}
 
@@ -14,10 +15,16 @@ public class FootballerController {
         SAXPar.getSaxPar();
         try {
             SAXPar.getSaxPar().setFile(file);
+            footballers.clear();
             footballers.addAll(SAXPar.getSaxPar().getFootballers());
         } catch (Exception e){
             e.printStackTrace();
         }
+        this.pageOfTable = new PageOfTable(footballers);
+    }
+
+    public ArrayList<Footballer> getPage(int numberOfSide, int numbOfRecOnOneSide){
+        return new ArrayList<Footballer>(pageOfTable.getCurrentSide(numberOfSide, numbOfRecOnOneSide));
     }
 
     public void writeFile(File file, List<Footballer> footballers){

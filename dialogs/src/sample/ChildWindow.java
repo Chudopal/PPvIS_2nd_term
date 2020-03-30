@@ -1,4 +1,5 @@
 package sample;
 
-public class ChildWindow {
+public interface ChildWindow{
+
 }

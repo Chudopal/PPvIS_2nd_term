@@ -14,7 +14,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         FootballerController footballerController = new FootballerController();
-        MainWindowView mainWindowView = new MainWindowView(
+        MainWindowHandler mainWindowHandler = new MainWindowHandler(
                 footballerController,
                 primaryStage,
                 800,
