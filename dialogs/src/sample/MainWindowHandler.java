@@ -28,7 +28,9 @@ public class MainWindowHandler extends MainWindowView {
             footballerController.readFile(file);
 
             this.table.clearTable();
-            this.table.setFootballers(footballerController.getPage(1, 5));
+            this.numbSide = 1;
+            this.numbOfRecOnSide = 5;
+            this.table.setFootballers(footballerController.getPage(numbSide, this.numbOfRecOnSide));
         });
 
         this.table.getBtnRight().setOnAction(e -> {
@@ -36,7 +38,30 @@ public class MainWindowHandler extends MainWindowView {
         });
 
         this.table.getNumbOfStr().setOnAction(e ->{
-            //this.numbOfRecOnSide = this.table.getNumbOfStr().getValue();
+            this.numbOfRecOnSide = Integer.parseInt((String) this.table.getNumbOfStr().getValue());
+            numbSide = 1;
+            this.table.getSideOfPage().setText(Integer.toString(this.numbSide));
+            this.table.setFootballers(footballerController.getPage(this.numbSide, numbOfRecOnSide));
+        });
+
+        this.table.getBtnRight().setOnAction(e -> {
+            this.numbSide++;
+            //this.table.clearTable();
+            this.table.getSideOfPage().setText(Integer.toString(this.numbSide));
+            this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
+        });
+
+        this.table.getBtnLeft().setOnAction(e -> {
+            this.numbSide--;
+            //this.table.clearTable();
+            this.table.getSideOfPage().setText(Integer.toString(this.numbSide));
+            this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
+        });
+
+        this.table.getBtnBegin().setOnAction(e -> {
+            this.numbSide = 1;
+            this.table.getSideOfPage().setText(Integer.toString(this.numbSide));
+            this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
         });
 
         this.btnDel.setOnAction(e -> {
