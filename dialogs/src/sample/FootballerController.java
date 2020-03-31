@@ -41,4 +41,8 @@ public class FootballerController {
         this.footballers.clear();
         this.footballers.addAll(footballers);
     }
+
+    public void add(Footballer footballer){
+        this.footballers.add(footballer);
+    }
 }

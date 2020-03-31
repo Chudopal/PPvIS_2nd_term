@@ -1,14 +1,15 @@
 package sample;
 
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import java.util.ArrayList;
 
-public class DeleteWindow {
-    DeleteWindow(double sizeX, double sizeY){
-        Stage stage = new Stage();
-        Group root = new Group();
-        stage.setScene(new Scene(root, 400, 400));
-        stage.show();
+public class DeleteWindow extends ChildWindow {
+    DeleteWindow(double sizeX, double sizeY, FootballerController footballerController){
+        super(sizeX, sizeY, footballerController);
+        this.add();
     }
+
+    private void add(){
+        this.button.setText("Delete");
+    }
+
 }

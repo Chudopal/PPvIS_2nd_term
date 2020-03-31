@@ -103,19 +103,19 @@ public class MainWindowHandler extends MainWindowView {
         });
 
         this.btnDel.setOnAction(e -> {
-            DeleteWindow deleteWindow = new DeleteWindow(800, 400);
+            DeleteWindow deleteWindow = new DeleteWindow(800, 400, this.footballerController);
         });
 
         this.btnAdd.setOnAction(e -> {
-            AddWindow addWindow = new AddWindow(600, 400, this.footballerController.getFootballers());
-            this.footballerController.setFootballers(addWindow.getFootballers());
-            this.numbSide = 1;
-            this.table.getSideOfPage().setText(Integer.toString(this.numbSide)+ "/" + this.maxNumbOfSides);
-            this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
+            AddWindow addWindow = new AddWindow(800, 400, this.footballerController);
+            //this.footballerController.setFootballers(addWindow.getFootballers());
+            //this.numbSide = 1;
+            //this.table.getSideOfPage().setText(Integer.toString(this.numbSide)+ "/" + this.maxNumbOfSides);
+            //this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
         });
 
         this.btnFind.setOnAction(e -> {
-            DeleteWindow deleteWindow = new DeleteWindow(400, 400);
+            DeleteWindow deleteWindow = new DeleteWindow(800, 400, this.footballerController);
         });
     }
 }

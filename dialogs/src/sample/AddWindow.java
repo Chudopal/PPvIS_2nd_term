@@ -1,13 +1,33 @@
 package sample;
 
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
 import java.util.ArrayList;
 
 public class AddWindow extends ChildWindow {
-    AddWindow(double sizeX, double sizeY, ArrayList<Footballer> footballers){
-        super(sizeX, sizeY, footballers);
+    AddWindow(double sizeX, double sizeY, FootballerController footballerController){
+        super(sizeX, sizeY, footballerController);
+        this.add();
     }
+
+    private void add(){
+        this.button.setText("Add");
+        this.table.setFootballers(footballerController.getFootballers());
+        this.handler();
+    }
+
+    private void handler(){
+        this.button.setOnAction(e -> {
+            footballerController.add(new Footballer(
+                    this.surName.getText(),
+                    this.firstName.getText(),
+                    this.middleName.getText(),
+                    this.dateOfBirth.getValue(),
+                    this.team.getText(),
+                    this.homeCity.getText(),
+                    this.structure.getText(),
+                    this.position.getText()
+            ));
+            this.table.setFootballers(footballerController.getFootballers());
+        });
+    }
+
 }
