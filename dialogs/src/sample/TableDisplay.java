@@ -55,12 +55,8 @@ public class TableDisplay {
 
     public void setFootballers(ArrayList<Footballer> footballers){
         this.footballers.clear();
-
-        //ObservableList<Footballer> buffFootballers = FXCollections.observableArrayList(footballers);
         this.footballers.setAll(footballers);
-
     }
-
 
 
     public void clearTable(){

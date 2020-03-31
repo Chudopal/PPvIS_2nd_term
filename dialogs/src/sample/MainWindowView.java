@@ -17,6 +17,7 @@ public class MainWindowView {
     protected Button btnAdd = new Button("Add a record");
     protected Button btnDel = new Button("Delete a record");
     protected Button btnFind = new Button("Find a record");
+    protected Button btnSave = new Button("Save");
     private double sizeX;
     private double sizeY;
 
@@ -49,8 +50,9 @@ public class MainWindowView {
         this.btnAdd.setMinSize(600, 50);
         this.btnFind.setMinSize(600, 50);
         this.btnDel.setMinSize(600, 50);
-        mainStruct.setSpacing(20);
+        this.btnSave.setMinSize(200, 40);
+        mainStruct.setSpacing(15);
         mainStruct.setAlignment(Pos.BOTTOM_CENTER);
-        mainStruct.getChildren().addAll(this.btnAdd, this.btnDel, this.btnFind);
+        mainStruct.getChildren().addAll(this.btnAdd, this.btnDel, this.btnFind, this.btnSave);
     }
 }

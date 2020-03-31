@@ -23,7 +23,6 @@ public class FootballerController {
         this.pageOfTable = new PageOfTable(footballers);
     }
 
-
     public ArrayList<Footballer> getPage(int numberOfSide, int numbOfRecOnOneSide){
         return new ArrayList<Footballer>(pageOfTable.getCurrentSide(numberOfSide, numbOfRecOnOneSide));
     }
@@ -37,4 +36,9 @@ public class FootballerController {
     }
 
     public ArrayList<Footballer> getFootballers(){return footballers;}
+
+    public void setFootballers(ArrayList<Footballer> footballers){
+        this.footballers.clear();
+        this.footballers.addAll(footballers);
+    }
 }
