@@ -12,6 +12,15 @@ public class PageOfTable {
     }
 
     public List<Footballer> getCurrentSide(int currentSide, int numbOfRecOnOneSide){
-        return footballers.subList((currentSide-1)*numbOfRecOnOneSide, currentSide*numbOfRecOnOneSide);
+        try {
+            return footballers.subList((currentSide - 1) * numbOfRecOnOneSide, currentSide * numbOfRecOnOneSide);
+        }catch (Exception e){
+            return footballers.subList((currentSide - 1) * numbOfRecOnOneSide, footballers.size());
+        }
     }
+
+    public int getMaxPage(int numbOfRecOnOneSide){
+        return footballers.size()/numbOfRecOnOneSide + 1;
+    }
+
 }

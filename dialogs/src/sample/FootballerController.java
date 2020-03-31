@@ -23,8 +23,13 @@ public class FootballerController {
         this.pageOfTable = new PageOfTable(footballers);
     }
 
+
     public ArrayList<Footballer> getPage(int numberOfSide, int numbOfRecOnOneSide){
         return new ArrayList<Footballer>(pageOfTable.getCurrentSide(numberOfSide, numbOfRecOnOneSide));
+    }
+
+    public int getMaxSideOfPages(int numbOfRecOnOneSide){
+        return pageOfTable.getMaxPage(numbOfRecOnOneSide);
     }
 
     public void writeFile(File file, List<Footballer> footballers){
