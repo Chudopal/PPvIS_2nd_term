@@ -39,15 +39,9 @@ public class MainWindowHandler extends MainWindowView {
 
             FileChooser fileChooser = new FileChooser();
             fileChooser.setInitialFileName("file.xml");
-            //FileChooser.ExtensionFilter extFilter =
-            //        new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
-            //fileChooser.getExtensionFilters().add(extFilter);
             File file = fileChooser.showSaveDialog(primaryStage);
+            DOMParser.getDomParser().createXML(footballerController.getFootballers(), file);
             System.out.println(file.getPath());
-        });
-
-        this.table.getBtnRight().setOnAction(e -> {
-
         });
 
         this.table.getNumbOfStr().setOnAction(e ->{
@@ -108,10 +102,6 @@ public class MainWindowHandler extends MainWindowView {
 
         this.btnAdd.setOnAction(e -> {
             AddWindow addWindow = new AddWindow(800, 400, this.footballerController);
-            //this.footballerController.setFootballers(addWindow.getFootballers());
-            //this.numbSide = 1;
-            //this.table.getSideOfPage().setText(Integer.toString(this.numbSide)+ "/" + this.maxNumbOfSides);
-            //this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
         });
 
         this.btnFind.setOnAction(e -> {

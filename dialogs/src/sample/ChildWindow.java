@@ -28,6 +28,11 @@ class ChildWindow{
     protected TextField structure = new TextField("structure");
     protected TextField position = new TextField("position");
 
+    protected int numbSide = 1 ;
+    protected int numbOfRecOnSide = 5 ;
+    protected int maxNumbOfSides;
+
+
     protected Button button = new Button();
 
 
@@ -66,7 +71,64 @@ class ChildWindow{
         );
         vBox.getChildren().addAll(hBox, button);
         this.root.getChildren().addAll(vBox);
+        this.handler();
 
     }
 
+    private void handler(){
+        this.table.setFootballers(footballerController.getPage(1,5));
+
+        this.maxNumbOfSides = this.footballerController.getMaxSideOfPages(5);
+        this.table.getNumbOfStr().setOnAction(e ->{
+            try {
+                this.numbOfRecOnSide = Integer.parseInt((String) this.table.getNumbOfStr().getValue());
+                numbSide = 1;
+                this.table.setFootballers(footballerController.getPage(this.numbSide, numbOfRecOnSide));
+                this.maxNumbOfSides = this.footballerController.getMaxSideOfPages(this.numbOfRecOnSide);
+                this.table.getSideOfPage().setText(Integer.toString(this.numbSide) + "/" + this.maxNumbOfSides);
+            } catch(Exception exc){
+                this.table.getSideOfPage().setText("Don't select a file");
+            }
+        });
+
+        this.table.getBtnRight().setOnAction(e -> {
+            if (this.maxNumbOfSides > this.numbSide) {
+                this.numbSide++;
+                this.table.getSideOfPage().setText(Integer.toString(this.numbSide) + "/" + this.maxNumbOfSides);
+                this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
+            }
+        });
+
+        this.table.getBtnLeft().setOnAction(e -> {
+            try{
+                if (this.numbSide != 1) {
+                    this.numbSide--;
+                    this.table.getSideOfPage().setText(Integer.toString(this.numbSide) + "/" + this.maxNumbOfSides);
+                    this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
+                }
+            }
+            catch(Exception exc){
+                this.table.getSideOfPage().setText("Don't select a file");
+            }
+        });
+
+        this.table.getBtnBegin().setOnAction(e -> {
+            try {
+                this.numbSide = 1;
+                this.table.getSideOfPage().setText(Integer.toString(this.numbSide) + "/" + this.maxNumbOfSides);
+                this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
+            }
+            catch(Exception exc){
+                this.table.getSideOfPage().setText("Don't select a file");
+            }
+        });
+
+        this.table.getBtnEnd().setOnAction(e -> {
+            if(this.maxNumbOfSides > this.numbSide){
+                this.numbSide = this.maxNumbOfSides;
+                this.table.getSideOfPage().setText(Integer.toString(this.numbSide)+ "/" + this.maxNumbOfSides);
+                this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
+            }
+        });
+    }
 }

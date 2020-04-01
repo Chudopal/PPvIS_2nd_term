@@ -28,6 +28,20 @@ public class Footballer {
 
     }
 
+    public boolean equal(Footballer footballer){
+        if(footballer.getFirstName().equals(this.firstName)                &&
+           footballer.getMiddleName().equals(this.middleName)              &&
+           footballer.getSurName().equals(this.surName)                    &&
+           footballer.getHomeCity().equals(this.homeCity)                  &&
+           footballer.getBirthDate().equals(this.birthDate)                &&
+           footballer.getTeam().equals(this.team)                          &&
+           footballer.getCommandStructure().equals(this.commandStructure)  &&
+           footballer.getPosition().equals(this.position)){
+            return true;
+        }
+        return false;
+    }
+
     public String getSurName(){
         return this.surName;
     }

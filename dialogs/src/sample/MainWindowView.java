@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 /**This class is creating a space for other
  * buttons, text boxes, and labels*/
-public class MainWindowView {
+public class MainWindowView  {
 
     protected Stage primaryStage;
 
@@ -55,4 +55,5 @@ public class MainWindowView {
         mainStruct.setAlignment(Pos.BOTTOM_CENTER);
         mainStruct.getChildren().addAll(this.btnAdd, this.btnDel, this.btnFind, this.btnSave);
     }
+
 }

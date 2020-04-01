@@ -1,6 +1,5 @@
 package sample;
 
-import java.util.ArrayList;
 
 public class AddWindow extends ChildWindow {
     AddWindow(double sizeX, double sizeY, FootballerController footballerController){
@@ -10,7 +9,6 @@ public class AddWindow extends ChildWindow {
 
     private void add(){
         this.button.setText("Add");
-        this.table.setFootballers(footballerController.getFootballers());
         this.handler();
     }
 
@@ -26,8 +24,9 @@ public class AddWindow extends ChildWindow {
                     this.structure.getText(),
                     this.position.getText()
             ));
-            this.table.setFootballers(footballerController.getFootballers());
         });
+
+
     }
 
 }

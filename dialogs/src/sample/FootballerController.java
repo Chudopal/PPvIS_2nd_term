@@ -42,6 +42,17 @@ public class FootballerController {
         this.footballers.addAll(footballers);
     }
 
+    public void delete(Footballer footballer){
+        int i = 0;
+        for(Footballer footballer1: footballers){
+            i++;
+            if(footballer1.equal(footballer)){
+                footballers.remove(i);
+                break;
+            }
+        }
+    }
+
     public void add(Footballer footballer){
         this.footballers.add(footballer);
     }
