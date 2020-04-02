@@ -15,56 +15,56 @@ public class FindWindow extends ChildWindow {
         this.button.setOnAction(e -> {
             for(Footballer footballer: footballerController.getFootballers()){
                 boolean equal = false;
-                if(this.dateOfBirth != null){
+                if(this.dateOfBirth.getValue() != null){
                     if(this.dateOfBirth.equals(footballer.getBirthDate())){
                         equal = true;
                     }
                 }
-                if(!this.surName.equals("")){
-                    if(this.surName.equals(footballer.getSurName())){
+                if(!this.surName.getText().equals("")){
+                    if(this.surName.getText().equals(footballer.getSurName())){
                         equal = true;
                     }else{
                         equal = false;
                     }
                 }
-                if(!this.firstName.equals("")){
-                    if(this.firstName.equals(footballer.getFirstName())){
+                if(!this.firstName.getText().equals("")){
+                    if(this.firstName.getText().equals(footballer.getFirstName())){
                         equal = true;
                     }else{
                         equal = false;
                     }
                 }
-                if(!this.middleName.equals("")){
-                    if(this.middleName.equals(footballer.getMiddleName())){
+                if(!this.middleName.getText().equals("")){
+                    if(this.middleName.getText().equals(footballer.getMiddleName())){
                         equal = true;
                     }else{
                         equal = false;
                     }
                 }
-                if(!this.homeCity.equals("")){
-                    if(this.homeCity.equals(footballer.getHomeCity())){
+                if(!this.homeCity.getText().equals("")){
+                    if(this.homeCity.getText().equals(footballer.getHomeCity())){
                         equal = true;
                     }else{
                         equal = false;
                     }
                 }
-                if(!this.structure.equals("")){
-                    if(this.structure.equals(footballer.getCommandStructure())){
+                if(!this.structure.getText().equals("")){
+                    if(this.structure.getText().equals(footballer.getCommandStructure())){
                         equal = true;
                     }else{
                         equal = false;
                     }
 
                 }
-                if(!this.team.equals("")){
-                    if(this.team.equals(footballer.getTeam())){
+                if(!this.team.getText().equals("")){
+                    if(this.team.getText().equals(footballer.getTeam())){
                         equal = true;
                     }else{
                         equal = false;
                     }
                 }
-                if(!this.position.equals("")){
-                    if(this.position.equals(footballer.getPosition())){
+                if(!this.position.getText().equals("")){
+                    if(this.position.getText().equals(footballer.getPosition())){
                         equal = true;
                     }else{
                         equal = false;

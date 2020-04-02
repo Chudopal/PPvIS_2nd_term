@@ -105,7 +105,7 @@ public class MainWindowHandler extends MainWindowView {
         });
 
         this.btnFind.setOnAction(e -> {
-            DeleteWindow deleteWindow = new DeleteWindow(800, 400, this.footballerController);
+            FindWindow findWindow = new FindWindow(800, 400, this.footballerController);
         });
     }
 }
