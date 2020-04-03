@@ -40,8 +40,9 @@ public class MainWindowHandler extends MainWindowView {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setInitialFileName("file.xml");
             File file = fileChooser.showSaveDialog(primaryStage);
-            DOMParser.getDomParser().createXML(footballerController.getFootballers(), file);
-            System.out.println(file.getPath());
+            footballerController.writeFile(file, footballerController.getFootballers());
+            //DOMParser.getDomParser().createXML(footballerController.getFootballers(), file);
+            //System.out.println(file.getPath());
         });
 
         this.table.getNumbOfStr().setOnAction(e ->{

@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FootballerController {
+public class FootballerController implements FootballerControllerInterface {
 
     private ArrayList<Footballer> footballers = new ArrayList<>();
     private PageOfTable pageOfTable;
@@ -36,11 +36,6 @@ public class FootballerController {
     }
 
     public ArrayList<Footballer> getFootballers(){return footballers;}
-
-    public void setFootballers(ArrayList<Footballer> footballers){
-        this.footballers.clear();
-        this.footballers.addAll(footballers);
-    }
 
     public void delete(Footballer footballer){
         int i = 0;
