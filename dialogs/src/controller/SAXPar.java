@@ -13,6 +13,9 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**This class is for reading information from xml-file.
+ * This is singleton.
+ */
 public class SAXPar extends DefaultHandler {
 
     private static ArrayList <Footballer> footballers = new ArrayList<>();
@@ -20,6 +23,11 @@ public class SAXPar extends DefaultHandler {
 
     private SAXPar(){}
 
+
+    /** Allows to access to single
+     * exenplar of class.
+     * @return exemplar of class.
+     */
     public static SAXPar getSaxPar(){
         if(saxPar == null){
             saxPar = new SAXPar();
@@ -27,6 +35,10 @@ public class SAXPar extends DefaultHandler {
         return saxPar;
     }
 
+
+    /**This method is for begin work SAX parser.
+     * @param file - file for read.
+     */
     public void setFile(File file) throws ParserConfigurationException, SAXException, IOException {
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser parser = factory.newSAXParser();
@@ -39,6 +51,8 @@ public class SAXPar extends DefaultHandler {
         return footballers;
     }
 
+    /**Class for reading
+     */
     private static class XMLHandler extends DefaultHandler {
         private String surName;
         private String firstName;

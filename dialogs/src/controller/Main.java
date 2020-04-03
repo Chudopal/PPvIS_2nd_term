@@ -1,14 +1,15 @@
 /**The football table application
- * It is a table with 6 columns, in wich
+ * It is a table with 6 columns, in witch
  * is information about people in the team.
- * The user can add new rows, delete ald rows,
+ * The user can add the new rows, delete the rows,
+ * find the rows
  * and watch records.
  @author Alexandr Chudopal*/
 
-package view;
-import controller.FootballerController;
+package controller;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import view.MainWindowHandler;
 
 public class Main extends Application {
 

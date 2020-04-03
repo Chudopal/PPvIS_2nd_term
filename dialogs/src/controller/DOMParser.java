@@ -16,10 +16,17 @@ import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+/**This is singleton
+ * Class for writing List of
+ * footballers to xml-file.
+ */
 public class DOMParser {
 
     private static DOMParser domParser;
 
+    /**Method for access to the object.
+     * @return single exemplar of this class.
+     */
     public static DOMParser getDomParser(){
         if(domParser == null){
             domParser = new DOMParser();
@@ -29,6 +36,10 @@ public class DOMParser {
 
     private DOMParser() {}
 
+    /**This method saves all information
+     * @param footballers - list with footballers,
+     * @param file - file in witch need to save.
+     */
     public void createXML(List<Footballer> footballers, File file){
         System.out.println("here");
         try {
@@ -57,6 +68,12 @@ public class DOMParser {
         }
     }
 
+    /**This method creates rows of xml-document in
+     * file.
+     * @param rootElement - main element
+     * @param doc - document for saves,
+     * @param realFootballer - array with footballers.
+     */
     private void createRows(Element rootElement, Document doc, Footballer realFootballer){
         Element footballer = doc.createElement("footballer");
         rootElement.appendChild(footballer);

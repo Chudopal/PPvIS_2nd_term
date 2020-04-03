@@ -5,14 +5,23 @@ import model.Footballer;
 
 import java.util.ArrayList;
 
+/** Window for find record in list of footballers
+ */
 public class FindWindow extends ChildWindow {
     ArrayList<Footballer> footballers = new ArrayList<>();
 
+    /** This is constructor of class
+     * @param sizeX - x-coordinate size of window,
+     * @param sizeY - y-coordinate size of window,
+     * @param footballerController - controller of footballers.
+     */
     FindWindow(double sizeX, double sizeY, FootballerController footballerController){
         super(sizeX, sizeY, footballerController);
         this.find();
     }
 
+    /** This is method for search records in maim list.
+     */
     private void find(){
         this.button.setText("Find");
         this.button.setOnAction(e -> {

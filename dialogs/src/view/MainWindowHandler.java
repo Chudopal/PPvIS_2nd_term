@@ -6,19 +6,30 @@ import javafx.stage.Stage;
 
 import java.io.File;
 
+/** This is class for buttons and its actions
+ */
 public class MainWindowHandler extends MainWindowView {
     private FootballerController footballerController;
     private int numbSide;
     private int numbOfRecOnSide;
     private int maxNumbOfSides;
 
-
-    MainWindowHandler(FootballerController footballerController, Stage primaryStage, double sizeX, double sizeY){
+    /** Constructor of class. Here is initialisation of
+     * parameters.
+     * @param footballerController - controller
+     * @param primaryStage - main window
+     * @param sizeX - x-coordinate of window,
+     * @param sizeY - y-coordinate of window,
+     */
+    public MainWindowHandler(FootballerController footballerController, Stage primaryStage, double sizeX, double sizeY){
         super(primaryStage, sizeX, sizeY);
         this.footballerController = footballerController;
         this.Handler();
     }
 
+    /** Here for each button on main window
+     * creating action.
+     */
     private void Handler(){
         this.table.getBtnOpen().setOnAction(e->{
             FileChooser fileChooser = new FileChooser();

@@ -2,6 +2,8 @@ package model;
 
 import java.time.LocalDate;
 
+/** Class for footballer model
+ */
 public class Footballer {
     private String surName = "";
     private String firstName = "";
@@ -28,6 +30,10 @@ public class Footballer {
 
     }
 
+    /** Class for comparison of 2 objects.
+     * @param footballer - object for comparison,
+     * @return true if equal, else false.
+     */
     public boolean equal(Footballer footballer){
         if(footballer.getFirstName().equals(this.firstName)                &&
            footballer.getMiddleName().equals(this.middleName)              &&

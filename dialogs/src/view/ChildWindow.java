@@ -11,12 +11,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/** Class for making child windows.
+ */
 class ChildWindow{
 
     protected Group root = new Group();
-
-    FootballerController footballerController;
-
+    protected FootballerController footballerController;
     protected Table table;
     protected TextField surName = new TextField("surname");
     protected TextField firstName = new TextField("first name");
@@ -26,15 +26,16 @@ class ChildWindow{
     protected TextField homeCity = new TextField("home city");
     protected TextField structure = new TextField("structure");
     protected TextField position = new TextField("position");
-
     protected int numbSide = 1 ;
     protected int numbOfRecOnSide = 5 ;
     protected int maxNumbOfSides;
-
-
     protected Button button = new Button();
 
-
+    /** There is creating of a new window.
+     * @param sizeX - x-coordinate size of window,
+     * @param sizeY - y-coordinate size of window,
+     * @param footballerController - controller of footballers.
+     */
     ChildWindow(double sizeX, double sizeY, FootballerController footballerController){
         this.footballerController = footballerController;
         Stage stage = new Stage();
@@ -43,6 +44,10 @@ class ChildWindow{
         stage.show();
     }
 
+    /** Here each element puts on window.
+     * @param sizeX - x-coordinate size of window,
+     * @param sizeY - y-coordinate size of window,
+     */
     private void makeLook(double sizeX, double sizeY){
         VBox vBox = new VBox();
         HBox hBox = new HBox();
@@ -74,6 +79,8 @@ class ChildWindow{
 
     }
 
+    /** Here for each button made action.
+     */
     private void handler(){
         this.table.setFootballers(footballerController.getPage(1,5));
 

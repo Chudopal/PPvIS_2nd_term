@@ -13,6 +13,8 @@ import model.Footballer;
 import java.util.ArrayList;
 
 
+/** Class for table and buttons.
+ */
 public class Table {
     TableDisplay tableDisplay;
     private VBox mainBox = new VBox();
@@ -24,12 +26,20 @@ public class Table {
     private ChoiceBox numbOfStr = new ChoiceBox<String>(FXCollections.observableArrayList("5", "10"));
     private Button btnOpen = new Button("Open");
 
+    /** Constructor of class.
+     * @param root - where the table will locate,
+     * @param sizeX - size of x-coordinate of window,
+     * @param sizeY - size of x-coordinate of window.
+     */
     Table(VBox root, double sizeX, double sizeY){
         tableDisplay = new TableDisplay(this.mainBox, sizeX, sizeY);
         this.createButtons();
         root.getChildren().add(this.mainBox);
     }
 
+    /**This method allows to put each button
+     * onto the window.
+     */
     private void createButtons(){
         HBox buttonLayout = new HBox();
         buttonLayout.setSpacing(20);
@@ -58,9 +68,13 @@ public class Table {
     }
 
     public Button getBtnLeft(){return btnLeft;}
+
     public Button getBtnRight(){return btnRight;}
+
     public Button getBtnBegin(){return btnBegin;}
+
     public Button getBtnEnd(){return btnEnd;}
+
     public Button getBtnOpen() {
         return btnOpen;
     }

@@ -11,6 +11,9 @@ import model.Footballer;
 import java.util.ArrayList;
 
 
+/**
+ * Class for table
+ */
 public class TableDisplay {
 
     private VBox root;
@@ -48,22 +51,36 @@ public class TableDisplay {
     private TableColumn<Footballer, String> positionCol
             = new TableColumn<Footballer, String>("Position");
 
+    /** Class for initialisations field.
+     * @param root - where the table will be located
+     * @param sizeX - x-coordinate of main window,
+     * @param sizeY - y -coordinate of main window.
+     */
     TableDisplay(VBox root, double sizeX, double sizeY){
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.root = root;
     }
 
+    /** This method allows to set list witch will be displayed in
+     * table.
+     * @param footballers - list of objects
+     */
     public void setFootballers(ArrayList<Footballer> footballers){
         this.footballers.clear();
         this.footballers.setAll(footballers);
     }
 
-
+    /** The method allows to delete all information
+     * on table.
+     */
     public void clearTable(){
         table.getItems().clear();
     }
 
+    /** The method allows to create table with set
+     * parameters
+     */
     public void createTable(){
 
         surnameCol.setCellValueFactory(new PropertyValueFactory<>("surName"));
