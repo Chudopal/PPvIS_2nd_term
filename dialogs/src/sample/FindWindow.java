@@ -74,9 +74,7 @@ public class FindWindow extends ChildWindow {
                     footballers.add(footballer);
                 }
             }
-            for(Footballer footballer: footballers){
-                System.out.println(footballer.getSurName());
-            }
+            this.table.setFootballers(footballers);
         });
     }
 }
