@@ -6,7 +6,7 @@
  * and watch records.
  @author Alexandr Chudopal*/
 
-package controller;
+import controller.FootballerController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import view.MainWindowHandler;

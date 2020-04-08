@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface FootballerControllerInterface {
     void readFile(File file);
-    ArrayList<Footballer> getPage(int numberOfSide, int numbOfRecOnOneSide);
+    List<Footballer> getPage(int numberOfSide, int numbOfRecOnOneSide);
     int getMaxSideOfPages(int numbOfRecOnOneSide);
     void writeFile(File file, List<Footballer> footballers);
-    ArrayList<Footballer> getFootballers();
+    List<Footballer> getFootballers();
     void add(Footballer footballer);
 }

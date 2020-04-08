@@ -9,6 +9,7 @@ import javafx.scene.layout.VBox;
 import model.Footballer;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -66,7 +67,7 @@ public class TableDisplay {
      * table.
      * @param footballers - list of objects
      */
-    public void setFootballers(ArrayList<Footballer> footballers){
+    public void setFootballers(List<Footballer> footballers){
         this.footballers.clear();
         this.footballers.setAll(footballers);
     }

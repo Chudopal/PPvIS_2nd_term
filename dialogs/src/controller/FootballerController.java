@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class FootballerController implements FootballerControllerInterface {
 
-    private ArrayList<Footballer> footballers = new ArrayList<>();
+    private List<Footballer> footballers = new ArrayList<>();
     private PageOfTable pageOfTable;
 
     public FootballerController(){}
@@ -36,7 +36,7 @@ public class FootballerController implements FootballerControllerInterface {
      * @param numbOfRecOnOneSide - user can choice numb of rec
      * @return records on the current page.
      */
-    public ArrayList<Footballer> getPage(int numberOfSide, int numbOfRecOnOneSide){
+    public List<Footballer> getPage(int numberOfSide, int numbOfRecOnOneSide){
         return new ArrayList<Footballer>(pageOfTable.getCurrentSide(numberOfSide, numbOfRecOnOneSide));
     }
 
@@ -56,7 +56,7 @@ public class FootballerController implements FootballerControllerInterface {
         DOMParser.getDomParser().createXML(footballers, file);
     }
 
-    public ArrayList<Footballer> getFootballers(){return footballers;}
+    public List<Footballer> getFootballers(){return footballers;}
 
     /** The method allows to delete records in list of footballers
      * @param footballer - the object witch need to delete.

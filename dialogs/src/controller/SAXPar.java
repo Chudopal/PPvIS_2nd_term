@@ -12,13 +12,14 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 /**This class is for reading information from xml-file.
  * This is singleton.
  */
 public class SAXPar extends DefaultHandler {
 
-    private static ArrayList <Footballer> footballers = new ArrayList<>();
+    private static List<Footballer> footballers = new ArrayList<>();
     private static SAXPar saxPar;
 
     private SAXPar(){}
@@ -47,7 +48,7 @@ public class SAXPar extends DefaultHandler {
         parser.parse(file, handler);
     }
 
-    public ArrayList<Footballer> getFootballers(){
+    public List<Footballer> getFootballers(){
         return footballers;
     }
 

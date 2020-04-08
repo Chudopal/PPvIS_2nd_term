@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
 import model.Footballer;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /** Class for table and buttons.
@@ -63,7 +64,7 @@ public class Table {
         tableDisplay.clearTable();
     }
 
-    public void setFootballers(ArrayList <Footballer> footballers){
+    public void setFootballers(List<Footballer> footballers){
         tableDisplay.setFootballers(footballers);
     }
 

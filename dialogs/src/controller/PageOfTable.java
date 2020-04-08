@@ -10,13 +10,13 @@ import java.util.List;
  */
 public class PageOfTable {
 
-    private ArrayList<Footballer> footballers;
+    private List<Footballer> footballers;
 
     /** The constructor. There is just an initialisation of
      * main list of footballers.
      * @param footballers - list of footballers.
      */
-    public PageOfTable(ArrayList<Footballer> footballers){
+    public PageOfTable(List<Footballer> footballers){
         this.footballers = footballers;
     }
 

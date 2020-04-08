@@ -4,11 +4,12 @@ import controller.FootballerController;
 import model.Footballer;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /** Window for find record in list of footballers
  */
 public class FindWindow extends ChildWindow {
-    ArrayList<Footballer> footballers = new ArrayList<>();
+    List<Footballer> footballers = new ArrayList<>();
 
     /** This is constructor of class
      * @param sizeX - x-coordinate size of window,
