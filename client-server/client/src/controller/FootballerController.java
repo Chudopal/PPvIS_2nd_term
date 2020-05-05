@@ -1,10 +1,13 @@
 package controller;
 
 import model.Footballer;
-
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /** Class for controlling interaction of footballers and
  * table.
@@ -16,19 +19,16 @@ public class FootballerController implements FootballerControllerInterface {
 
     public FootballerController(){}
 
-    /** This method allows read information from xml-file.
-     * @param file - file for save
-     */
-    public void readFile(File file){
-        SAXPar.getSaxPar();
-        try {
-            SAXPar.getSaxPar().setFile(file);
-            footballers.clear();
-            footballers.addAll(SAXPar.getSaxPar().getFootballers());
-        } catch (Exception e){
-            e.printStackTrace();
+    public void read() throws IOException {
+        try(Socket s = new Socket("localhost", 8000)){
+            InputStream inStream = s.getInputStream();
+            Scanner in = new Scanner(inStream);
+            while (in.hasNextLine())
+            {
+                String line = in.nextLine();
+                System.out.println(line);
+            }
         }
-        this.pageOfTable = new PageOfTable(footballers);
     }
 
     /** This method return current page of list
@@ -53,7 +53,6 @@ public class FootballerController implements FootballerControllerInterface {
      * @param footballers - list of footballers
      */
     public void writeFile(File file, List<Footballer> footballers){
-        DOMParser.getDomParser().createXML(footballers, file);
     }
 
     public List<Footballer> getFootballers(){return footballers;}

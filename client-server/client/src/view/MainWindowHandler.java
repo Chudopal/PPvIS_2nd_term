@@ -38,7 +38,7 @@ public class MainWindowHandler extends MainWindowView {
             fileChooser.getExtensionFilters().add(extFilter);
             File file = fileChooser.showOpenDialog(primaryStage);
 
-            footballerController.readFile(file);
+            footballerController.read(file);
             this.table.clearTable();
             this.numbSide = 1;
             this.numbOfRecOnSide = 5;

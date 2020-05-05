@@ -14,7 +14,7 @@ import view.MainWindowHandler;
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         FootballerController footballerController = new FootballerController();
         MainWindowHandler mainWindowHandler = new MainWindowHandler(
                 footballerController,
@@ -23,7 +23,7 @@ public class Main extends Application {
                 600);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         launch(args);
     }
 }
