@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <footballers>
     <footballer>
-        <name firstname="Роман" middlename="Станиславович" surname="Адамов1"/>
+        <name firstname="Роман1" middlename="Станиславович" surname="Адамов1"/>
         <date date="1982-06-21"/>
         <team>СССР</team>
         <homeCity>Москва</homeCity>
