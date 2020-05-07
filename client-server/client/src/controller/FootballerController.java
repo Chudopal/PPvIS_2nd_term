@@ -4,6 +4,7 @@ import model.Footballer;
 
 import java.io.*;
 import java.net.Socket;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -46,7 +47,7 @@ public class FootballerController implements FootballerControllerInterface {
             System.out.println(line);
             listOfPaths.add(line);
         }
-        System.out.println("rere");
+        //System.out.println("rere");
         return listOfPaths;
     }
 
@@ -57,15 +58,39 @@ public class FootballerController implements FootballerControllerInterface {
      * @return records on the current page.
      */
     public List<Footballer> getPage(int numberOfSide, int numbOfRecOnOneSide){
-        this.getInformationFromServer();
+        this.sendInfo(Integer.toString(numberOfSide));
+
+        this.makeFootballerFromString(this.getInformationFromServer());
         return new ArrayList<Footballer>(pageOfTable.getCurrentSide(numberOfSide, numbOfRecOnOneSide));
     }
 
-    private List<Footballer> makeFootballerFromString(ArrayList<String> footballersInString){
+    private List<Footballer> makeFootballerFromString(List<String> footballersInString){
         ArrayList<Footballer> footballers = new ArrayList<>();
-        for(String footballerInString: footballersInString){
 
+        for(String footballerInString: footballersInString){
+            ArrayList<String> properties = new ArrayList<>();
+            for(int i = 0; i < 8; i++) {
+                    String buff = footballerInString.substring(
+                            footballerInString.indexOf("{"),
+                            footballerInString.indexOf("}") + 1);
+                    footballerInString = footballerInString.substring(footballerInString.indexOf("}") + 1, footballerInString.length());
+                buff = buff.substring(1, buff.length() - 1);
+                properties.add(buff);
+            }
+            footballers.add(
+              new Footballer(
+                      properties.get(0),
+                      properties.get(1),
+                      properties.get(2),
+                      LocalDate.parse(properties.get(3)),
+                      properties.get(4),
+                      properties.get(5),
+                      properties.get(6),
+                      properties.get(7)
+              )
+            );
         }
+        return footballers;
     }
 
     /**
