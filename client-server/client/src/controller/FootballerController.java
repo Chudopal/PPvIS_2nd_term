@@ -1,9 +1,8 @@
 package controller;
 
 import model.Footballer;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,20 +15,41 @@ public class FootballerController implements FootballerControllerInterface {
 
     private List<Footballer> footballers = new ArrayList<>();
     private PageOfTable pageOfTable;
+    private Socket socket;
+    OutputStream outStream;
+    PrintWriter out;
+    InputStream inStream;
+    Scanner in;
 
-    public FootballerController(){}
 
-    public void read() throws IOException {
-        try(Socket s = new Socket("localhost", 8000)){
-            InputStream inStream = s.getInputStream();
-            Scanner in = new Scanner(inStream);
-            while (in.hasNextLine())
-            {
-                String line = in.nextLine();
-                System.out.println(line);
-            }
-        }
+    public FootballerController() throws IOException{
+        this.socket = new Socket("localhost", 8000);
+        this.outStream = this.socket.getOutputStream();
+        this.out = new PrintWriter(this.outStream, true);
+        this.inStream = this.socket.getInputStream();
+        this.in = new Scanner(this.inStream);
     }
+
+    public void sendInfo(String info){
+        this.out.println(info);
+    }
+
+    public List<String> getInformationFromServer(){
+        ArrayList<String> listOfPaths = new ArrayList<>();
+
+        while (in.hasNextLine())
+        {
+            String line = in.nextLine();
+            if(line.equals("all")){
+                return listOfPaths;
+            }
+            System.out.println(line);
+            listOfPaths.add(line);
+        }
+        System.out.println("rere");
+        return listOfPaths;
+    }
+
 
     /** This method return current page of list
      * @param numberOfSide  - number of current page,
@@ -37,7 +57,15 @@ public class FootballerController implements FootballerControllerInterface {
      * @return records on the current page.
      */
     public List<Footballer> getPage(int numberOfSide, int numbOfRecOnOneSide){
+        this.getInformationFromServer();
         return new ArrayList<Footballer>(pageOfTable.getCurrentSide(numberOfSide, numbOfRecOnOneSide));
+    }
+
+    private List<Footballer> makeFootballerFromString(ArrayList<String> footballersInString){
+        ArrayList<Footballer> footballers = new ArrayList<>();
+        for(String footballerInString: footballersInString){
+
+        }
     }
 
     /**
@@ -52,7 +80,7 @@ public class FootballerController implements FootballerControllerInterface {
      * @param file - file for writing
      * @param footballers - list of footballers
      */
-    public void writeFile(File file, List<Footballer> footballers){
+    public void write(File file, List<Footballer> footballers){
     }
 
     public List<Footballer> getFootballers(){return footballers;}
