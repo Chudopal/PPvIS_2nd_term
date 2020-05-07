@@ -12,16 +12,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChoseFileWindow {
-    private Group root = new Group();
-    private double sizeX = 300;
-    private double sizeY = 500;
-    private FootballerController footballerController;
-    private List<Button> listOfAvailableFiles = new ArrayList<>();
+    final FootballerController footballerController;
+    final List<Button> listOfAvailableFiles = new ArrayList<>();
+    final Stage stage = new Stage();
+    final MainWindowHandler handler;
 
-    public ChoseFileWindow(FootballerController footballerController){
+    public ChoseFileWindow(FootballerController footballerController, MainWindowHandler handler){
+        double sizeX = 300;
+        double sizeY = 500;
+        Group root = new Group();
+        this.handler = handler;
         footballerController.sendInfo("open");
         VBox vBox = new VBox();
-        Stage stage = new Stage();
         stage.setScene(new Scene(root, sizeX, sizeY));
         stage.show();
         this.footballerController = footballerController;
@@ -43,7 +45,14 @@ public class ChoseFileWindow {
         button.setOnAction(e->{
             footballerController.sendInfo("filename");
             footballerController.sendInfo(button.getText());
-            footballerController.getPage(1,5);
+            stage.close();
+            System.out.println("DDDDD");
+            this.handler.getTable().clearTable();
+            this.handler.setNumbSide(1);
+            this.handler.setNumbOfRecOnSide(5);
+            this.handler.setMaxNumbOfSides(this.footballerController.getMaxSideOfPages(this.handler.getNumbOfRecOnSide()));
+            this.handler.getTable().getSideOfPage().setText(Integer.toString(this.handler.getNumbSide())+ "/" + this.handler.getMaxNumbOfSides());
+            this.handler.getTable().setFootballers(footballerController.getPage(this.handler.getNumbSide(), this.handler.getNumbOfRecOnSide()));
         });
     }
 }

@@ -27,41 +27,51 @@ public class MainWindowHandler extends MainWindowView {
         this.Handler();
     }
 
+    public void setNumbSide(int numbSide) {
+        this.numbSide = numbSide;
+    }
+
+    public void setMaxNumbOfSides(int maxNumbOfSides) {
+        this.maxNumbOfSides = maxNumbOfSides;
+    }
+
+    public void setNumbOfRecOnSide(int numbOfRecOnSide) {
+        this.numbOfRecOnSide = numbOfRecOnSide;
+    }
+
+    public Table getTable(){
+        return table;
+    }
+
+    public int getNumbOfRecOnSide() {
+        return numbOfRecOnSide;
+    }
+
+    public int getNumbSide() {
+        return numbSide;
+    }
+
+    public int getMaxNumbOfSides() {
+        return maxNumbOfSides;
+    }
+
     /** Here for each button on main window
      * creating action.
      */
     private void Handler(){
         this.table.getBtnOpen().setOnAction(e->{
-            /*FileChooser fileChooser = new FileChooser();
-            FileChooser.ExtensionFilter extFilter =
-                    new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
-            fileChooser.getExtensionFilters().add(extFilter);
-            File file = fileChooser.showOpenDialog(primaryStage);
-
-            //footballerController.readFile(file);
-            this.table.clearTable();
-            this.numbSide = 1;
-            this.numbOfRecOnSide = 5;
-            this.maxNumbOfSides = this.footballerController.getMaxSideOfPages(this.numbOfRecOnSide);
-            this.table.getSideOfPage().setText(Integer.toString(this.numbSide)+ "/" + this.maxNumbOfSides);
-            //this.table.setFootballers(footballerController.getPage(numbSide, this.numbOfRecOnSide));*/
-            System.out.println("here");
-            ChoseFileWindow choseFileWindow = new ChoseFileWindow(footballerController);
+            ChoseFileWindow choseFileWindow = new ChoseFileWindow(footballerController, this);
         });
 
         this.btnSave.setOnAction(e -> {
-
             FileChooser fileChooser = new FileChooser();
             fileChooser.setInitialFileName("file.xml");
             File file = fileChooser.showSaveDialog(primaryStage);
-            //footballerController.writeFile(file, footballerController.getFootballers());
-            //DOMParser.getDomParser().createXML(footballerController.getFootballers(), file);
-            //System.out.println(file.getPath());
         });
 
         this.table.getNumbOfStr().setOnAction(e ->{
             try {
-                this.numbOfRecOnSide = Integer.parseInt((String) this.table.getNumbOfStr().getValue());
+                this.numbOfRecOnSide = Integer.parseInt((String)this.table.getNumbOfStr().getValue());
                 numbSide = 1;
                 this.table.setFootballers(footballerController.getPage(this.numbSide, numbOfRecOnSide));
                 this.maxNumbOfSides = this.footballerController.getMaxSideOfPages(this.numbOfRecOnSide);
@@ -75,7 +85,7 @@ public class MainWindowHandler extends MainWindowView {
                 if (this.maxNumbOfSides > this.numbSide) {
                     this.numbSide++;
                     this.table.getSideOfPage().setText(Integer.toString(this.numbSide) + "/" + this.maxNumbOfSides);
-                    //this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
+                    this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
                 }
         });
 

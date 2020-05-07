@@ -47,7 +47,6 @@ public class FootballerController implements FootballerControllerInterface {
             System.out.println(line);
             listOfPaths.add(line);
         }
-        //System.out.println("rere");
         return listOfPaths;
     }
 
@@ -58,10 +57,12 @@ public class FootballerController implements FootballerControllerInterface {
      * @return records on the current page.
      */
     public List<Footballer> getPage(int numberOfSide, int numbOfRecOnOneSide){
+        this.sendInfo("numberOfRecords");
+        this.sendInfo(Integer.toString(numbOfRecOnOneSide));
+
         this.sendInfo(Integer.toString(numberOfSide));
 
-        this.makeFootballerFromString(this.getInformationFromServer());
-        return new ArrayList<Footballer>(pageOfTable.getCurrentSide(numberOfSide, numbOfRecOnOneSide));
+        return this.makeFootballerFromString(this.getInformationFromServer());
     }
 
     private List<Footballer> makeFootballerFromString(List<String> footballersInString){
@@ -98,7 +99,8 @@ public class FootballerController implements FootballerControllerInterface {
      * @return the max number of page in table.
      */
     public int getMaxSideOfPages(int numbOfRecOnOneSide){
-        return pageOfTable.getMaxPage(numbOfRecOnOneSide);
+        this.sendInfo("getMaxSizeOfPages");
+        return Integer.parseInt(this.getInformationFromServer().get(0));
     }
 
     /** This method allows to write information to the xml-file
