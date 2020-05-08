@@ -82,7 +82,7 @@ class ChildWindow{
     /** Here for each button made action.
      */
     private void handler(){
-        //this.table.setFootballers(footballerController.getPage(1,5));
+        this.table.setFootballers(footballerController.getPage(1,5));
 
         this.maxNumbOfSides = this.footballerController.getMaxSideOfPages(5);
         this.table.getNumbOfStr().setOnAction(e ->{
@@ -101,7 +101,7 @@ class ChildWindow{
             if (this.maxNumbOfSides > this.numbSide) {
                 this.numbSide++;
                 this.table.getSideOfPage().setText(Integer.toString(this.numbSide) + "/" + this.maxNumbOfSides);
-                //this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
+                this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
             }
         });
 
@@ -110,7 +110,7 @@ class ChildWindow{
                 if (this.numbSide != 1) {
                     this.numbSide--;
                     this.table.getSideOfPage().setText(Integer.toString(this.numbSide) + "/" + this.maxNumbOfSides);
-                    //this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
+                    this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
                 }
             }
             catch(Exception exc){
@@ -122,7 +122,7 @@ class ChildWindow{
             try {
                 this.numbSide = 1;
                 this.table.getSideOfPage().setText(Integer.toString(this.numbSide) + "/" + this.maxNumbOfSides);
-                //this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
+                this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
             }
             catch(Exception exc){
                 this.table.getSideOfPage().setText("Don't select a file");
@@ -133,7 +133,7 @@ class ChildWindow{
             if(this.maxNumbOfSides > this.numbSide){
                 this.numbSide = this.maxNumbOfSides;
                 this.table.getSideOfPage().setText(Integer.toString(this.numbSide)+ "/" + this.maxNumbOfSides);
-                //this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
+                this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
             }
         });
     }

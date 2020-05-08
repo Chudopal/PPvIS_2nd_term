@@ -65,6 +65,12 @@ public class FootballerController implements FootballerControllerInterface {
         return this.makeFootballerFromString(this.getInformationFromServer());
     }
 
+    private String makeStringFromFootballer(Footballer footballer){
+        return ("{" + footballer.getSurName() + "} {" + footballer.getFirstName() + "} {" + footballer.getMiddleName() + "} {" +
+                footballer.getBirthDate() + "} {" + footballer.getTeam() + "} {" + footballer.getHomeCity() + "} {" +
+                footballer.getCommandStructure() + "} {" + footballer.getPosition() + "}");
+    }
+
     private List<Footballer> makeFootballerFromString(List<String> footballersInString){
         ArrayList<Footballer> footballers = new ArrayList<>();
 
@@ -130,6 +136,7 @@ public class FootballerController implements FootballerControllerInterface {
      * @param footballer - the object, witch need to add.
      */
     public void add(Footballer footballer){
-        this.footballers.add(footballer);
+        sendInfo("add");
+        sendInfo(makeStringFromFootballer(footballer));
     }
 }
