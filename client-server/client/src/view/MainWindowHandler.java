@@ -117,7 +117,7 @@ public class MainWindowHandler extends MainWindowView {
             if(this.maxNumbOfSides > this.numbSide){
                 this.numbSide = this.maxNumbOfSides;
                 this.table.getSideOfPage().setText(Integer.toString(this.numbSide)+ "/" + this.maxNumbOfSides);
-                //this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
+                this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
             }
         });
 

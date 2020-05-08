@@ -62,6 +62,7 @@ class ThreadedEchoHandler implements Runnable {
         }
             else{
         if(delData){
+            footballerController.delete(line);
             delData = false;
         }
         if(addData){
@@ -110,7 +111,7 @@ class ThreadedEchoHandler implements Runnable {
                         }
                         out.println("all");
                     } catch (NumberFormatException e) {
-                        out.println("It is not a number");
+                        //out.println("It is not a number");
                     }
                 }
             }

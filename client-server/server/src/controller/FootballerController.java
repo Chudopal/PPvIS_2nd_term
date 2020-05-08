@@ -60,24 +60,24 @@ public class FootballerController implements FootballerControllerInterface {
     public List<Footballer> getFootballers(){return footballers;}
 
     /** The method allows to delete records in list of footballers
-     * @param footballer - the object witch need to delete.
+     * @param line - the object witch need to delete.
      */
-    public void delete(Footballer footballer){
+    public void delete(String line){
+        Footballer footballer = makeFootballerFromString(line);
         int i = 0;
         for(Footballer footballer1: footballers){
-            i++;
             if(footballer1.equal(footballer)){
                 footballers.remove(i);
                 break;
             }
+            i++;
         }
     }
 
     /** The method allows to add exemplars to list of footballers
      * @param line - the object, witch need to add.
      */
-    public void add(String line)
-    {
+    private Footballer makeFootballerFromString(String line){
         ArrayList<String> properties = new ArrayList<>();
         for(int i = 0; i < 8; i++) {
             String buff = line.substring(
@@ -87,17 +87,22 @@ public class FootballerController implements FootballerControllerInterface {
             buff = buff.substring(1, buff.length() - 1);
             properties.add(buff);
         }
+        return new Footballer(
+                properties.get(0),
+                properties.get(1),
+                properties.get(2),
+                LocalDate.parse(properties.get(3)),
+                properties.get(4),
+                properties.get(5),
+                properties.get(6),
+                properties.get(7)
+        );
+    }
+
+    public void add(String line)
+    {
         footballers.add(
-                new Footballer(
-                        properties.get(0),
-                        properties.get(1),
-                        properties.get(2),
-                        LocalDate.parse(properties.get(3)),
-                        properties.get(4),
-                        properties.get(5),
-                        properties.get(6),
-                        properties.get(7)
-                )
+                makeFootballerFromString(line)
         );
     }
 }

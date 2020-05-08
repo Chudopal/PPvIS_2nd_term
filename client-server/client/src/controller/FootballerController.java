@@ -77,10 +77,11 @@ public class FootballerController implements FootballerControllerInterface {
         for(String footballerInString: footballersInString){
             ArrayList<String> properties = new ArrayList<>();
             for(int i = 0; i < 8; i++) {
-                    String buff = footballerInString.substring(
+                System.out.println(footballerInString);
+                String buff = footballerInString.substring(
                             footballerInString.indexOf("{"),
                             footballerInString.indexOf("}") + 1);
-                    footballerInString = footballerInString.substring(footballerInString.indexOf("}") + 1, footballerInString.length());
+                footballerInString = footballerInString.substring(footballerInString.indexOf("}") + 1, footballerInString.length());
                 buff = buff.substring(1, buff.length() - 1);
                 properties.add(buff);
             }
@@ -122,14 +123,8 @@ public class FootballerController implements FootballerControllerInterface {
      * @param footballer - the object witch need to delete.
      */
     public void delete(Footballer footballer){
-        int i = 0;
-        for(Footballer footballer1: footballers){
-            i++;
-            if(footballer1.equal(footballer)){
-                footballers.remove(i);
-                break;
-            }
-        }
+        sendInfo("delete");
+        sendInfo(makeStringFromFootballer(footballer));
     }
 
     /** The method allows to add exemplars to list of footballers
