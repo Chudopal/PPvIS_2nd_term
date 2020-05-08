@@ -3,6 +3,7 @@ package controller;
 import model.Footballer;
 
 import java.io.File;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,9 +74,30 @@ public class FootballerController implements FootballerControllerInterface {
     }
 
     /** The method allows to add exemplars to list of footballers
-     * @param footballer - the object, witch need to add.
+     * @param line - the object, witch need to add.
      */
-    public void add(Footballer footballer){
-        this.footballers.add(footballer);
+    public void add(String line)
+    {
+        ArrayList<String> properties = new ArrayList<>();
+        for(int i = 0; i < 8; i++) {
+            String buff = line.substring(
+                    line.indexOf("{"),
+                    line.indexOf("}") + 1);
+            line = line.substring(line.indexOf("}") + 1, line.length());
+            buff = buff.substring(1, buff.length() - 1);
+            properties.add(buff);
+        }
+        footballers.add(
+                new Footballer(
+                        properties.get(0),
+                        properties.get(1),
+                        properties.get(2),
+                        LocalDate.parse(properties.get(3)),
+                        properties.get(4),
+                        properties.get(5),
+                        properties.get(6),
+                        properties.get(7)
+                )
+        );
     }
 }

@@ -25,10 +25,14 @@ public class PageOfTable {
      * @return list of footballers on one page.
      */
     public List<Footballer> getCurrentSide(int currentSide, int numbOfRecOnOneSide){
-        try {
-            return footballers.subList((currentSide - 1) * numbOfRecOnOneSide, currentSide * numbOfRecOnOneSide);
-        }catch (Exception e){
-            return footballers.subList((currentSide - 1) * numbOfRecOnOneSide, footballers.size());
+        try{
+            try {
+                return footballers.subList((currentSide - 1) * numbOfRecOnOneSide, currentSide * numbOfRecOnOneSide);
+            }catch (Exception e){
+                return footballers.subList((currentSide - 1) * numbOfRecOnOneSide, footballers.size());
+            }
+        }catch (Exception e) {
+            return footballers.subList(0, numbOfRecOnOneSide);
         }
     }
 

@@ -10,10 +10,13 @@ import java.util.List;
 import java.util.Scanner;
 
 class ThreadedEchoHandler implements Runnable {
-    private Socket incoming;
-    private FootballerController footballerController;
+    final Socket incoming;
+    final FootballerController footballerController;
+    private int numbOfRectOnOneSide = 5;
     private boolean choseFile = false;
     private boolean delData = false;
+    private boolean addData = false;
+    private boolean numbOfRec = false;
 
 
     /**
@@ -53,7 +56,6 @@ class ThreadedEchoHandler implements Runnable {
 
     public void listener(String line, PrintWriter out){
         if(choseFile){
-            System.out.println("here");
             File file = new File(line);
             footballerController.readFile(file);
             choseFile = false;
@@ -61,6 +63,14 @@ class ThreadedEchoHandler implements Runnable {
             else{
         if(delData){
             delData = false;
+        }
+        if(addData){
+            addData = false;
+            footballerController.add(line);
+        }
+        if(numbOfRec){
+            numbOfRec = false;
+            numbOfRectOnOneSide = Integer.parseInt(line);
         }
         else {
             switch (line) {
@@ -71,6 +81,7 @@ class ThreadedEchoHandler implements Runnable {
                     for (File file : lst) {
                         out.println(file.toString());
                     }
+                    out.println("all");
                     break;
                 case "filename":
                     choseFile = true;
@@ -80,13 +91,24 @@ class ThreadedEchoHandler implements Runnable {
                 case "delete":
                     delData = true;
                     break;
+                case "numberOfRecords":
+                    numbOfRec = true;
+                    break;
+                case "add":
+                    addData = true;
+                    break;
+                case "getMaxSizeOfPages":
+                    out.println(footballerController.getMaxSideOfPages(numbOfRectOnOneSide));
+                    out.println("all");
+                    break;
                 default:
                     try {
-                        for (Footballer footballer : footballerController.getPage(Integer.parseInt(line), 10)) {
+                        for (Footballer footballer : footballerController.getPage(Integer.parseInt(line), numbOfRectOnOneSide)) {
                             out.println("{" + footballer.getSurName() + "} {" + footballer.getFirstName() + "} {" + footballer.getMiddleName() + "} {" +
                                     footballer.getBirthDate() + "} {" + footballer.getTeam() + "} {" + footballer.getHomeCity() + "} {" +
                                     footballer.getCommandStructure() + "} {" + footballer.getPosition() + "}");
                         }
+                        out.println("all");
                     } catch (NumberFormatException e) {
                         out.println("It is not a number");
                     }

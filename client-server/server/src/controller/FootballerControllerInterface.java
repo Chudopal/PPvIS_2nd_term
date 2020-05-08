@@ -11,5 +11,5 @@ public interface FootballerControllerInterface {
     int getMaxSideOfPages(int numbOfRecOnOneSide);
     void writeFile(File file, List<Footballer> footballers);
     List<Footballer> getFootballers();
-    void add(Footballer footballer);
+    void add(String line);
 }
