@@ -46,7 +46,6 @@ public class ChoseFileWindow {
             footballerController.sendInfo("filename");
             footballerController.sendInfo(button.getText());
             stage.close();
-            System.out.println("DDDDD");
             this.handler.getTable().clearTable();
             this.handler.setNumbSide(1);
             this.handler.setNumbOfRecOnSide(5);

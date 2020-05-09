@@ -1,15 +1,10 @@
 package view;
 
 import controller.FootballerController;
-import model.Footballer;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /** Window for find record in list of footballers
  */
 public class FindWindow extends ChildWindow {
-    List<Footballer> footballers = new ArrayList<>();
 
     /** This is constructor of class
      * @param sizeX - x-coordinate size of window,
@@ -26,68 +21,48 @@ public class FindWindow extends ChildWindow {
     private void find(){
         this.button.setText("Find");
         this.button.setOnAction(e -> {
-            for(Footballer footballer: footballerController.getFootballers()){
-                boolean equal = false;
-                if(this.dateOfBirth.getValue() != null){
-                    if(this.dateOfBirth.equals(footballer.getBirthDate())){
-                        equal = true;
-                    }
-                }
-                if(!this.surName.getText().equals("")){
-                    if(this.surName.getText().equals(footballer.getSurName())){
-                        equal = true;
-                    }else{
-                        equal = false;
-                    }
-                }
-                if(!this.firstName.getText().equals("")){
-                    if(this.firstName.getText().equals(footballer.getFirstName())){
-                        equal = true;
-                    }else{
-                        equal = false;
-                    }
-                }
-                if(!this.middleName.getText().equals("")){
-                    if(this.middleName.getText().equals(footballer.getMiddleName())){
-                        equal = true;
-                    }else{
-                        equal = false;
-                    }
-                }
-                if(!this.homeCity.getText().equals("")){
-                    if(this.homeCity.getText().equals(footballer.getHomeCity())){
-                        equal = true;
-                    }else{
-                        equal = false;
-                    }
-                }
-                if(!this.structure.getText().equals("")){
-                    if(this.structure.getText().equals(footballer.getCommandStructure())){
-                        equal = true;
-                    }else{
-                        equal = false;
-                    }
-
-                }
-                if(!this.team.getText().equals("")){
-                    if(this.team.getText().equals(footballer.getTeam())){
-                        equal = true;
-                    }else{
-                        equal = false;
-                    }
-                }
-                if(!this.position.getText().equals("")){
-                    if(this.position.getText().equals(footballer.getPosition())){
-                        equal = true;
-                    }else{
-                        equal = false;
-                    }
-                }
-                if(equal){
-                    footballers.add(footballer);
-                }
+            String line = "";
+            if (this.surName.getText().equals("")) {
+                line += "{} ";
+            } else {
+                line += "{" + this.surName.getText() + "} ";
             }
-            this.table.setFootballers(footballers);
+            if (this.firstName.getText().equals("")) {
+                line += "{} ";
+            } else {
+                line += "{" + this.firstName.getText() + "} ";
+            }
+            if (this.middleName.getText().equals("")) {
+                line += "{} ";
+            } else {
+                line += "{" + this.middleName.getText() + "} ";
+            }
+            if (this.dateOfBirth.getValue() == null) {
+                line += "{} ";
+            } else {
+                line += "{" + this.dateOfBirth.getValue().toString() + "} ";
+            }
+            if (this.team.getText().equals("")) {
+                line += "{} ";
+            } else {
+                line += "{" + this.team.getText() + "} ";
+            }
+            if (this.homeCity.getText().equals("")) {
+                line += "{} ";
+            } else {
+                line += "{" + this.homeCity.getText() + "} ";
+            }
+            if (this.structure.getText().equals("")) {
+                line += "{} ";
+            } else {
+                line += "{" + this.structure.getText() + "} ";
+            }
+            if (this.position.getText().equals("")) {
+                line += "{}";
+            } else {
+                line += "{" + this.position.getText() + "}";
+            }
+            this.table.setFootballers(footballerController.find(line));
         });
     }
 }

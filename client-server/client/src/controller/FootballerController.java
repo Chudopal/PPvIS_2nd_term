@@ -21,6 +21,7 @@ public class FootballerController implements FootballerControllerInterface {
     PrintWriter out;
     InputStream inStream;
     Scanner in;
+    private int numbOfStrFromServer = 0;
 
 
     public FootballerController() throws IOException{
@@ -32,22 +33,25 @@ public class FootballerController implements FootballerControllerInterface {
     }
 
     public void sendInfo(String info){
+        System.out.println(info);
         this.out.println(info);
     }
 
     public List<String> getInformationFromServer(){
-        ArrayList<String> listOfPaths = new ArrayList<>();
-
+        ArrayList<String> list = new ArrayList<>();
         while (in.hasNextLine())
         {
+            System.out.println("HERE");
             String line = in.nextLine();
             if(line.equals("all")){
-                return listOfPaths;
+                for (String str: list) {
+                    System.out.println(str);
+                }
+                return list;
             }
-            System.out.println(line);
-            listOfPaths.add(line);
+            list.add(line);
         }
-        return listOfPaths;
+        return list;
     }
 
 
@@ -77,7 +81,6 @@ public class FootballerController implements FootballerControllerInterface {
         for(String footballerInString: footballersInString){
             ArrayList<String> properties = new ArrayList<>();
             for(int i = 0; i < 8; i++) {
-                System.out.println(footballerInString);
                 String buff = footballerInString.substring(
                             footballerInString.indexOf("{"),
                             footballerInString.indexOf("}") + 1);
@@ -107,7 +110,8 @@ public class FootballerController implements FootballerControllerInterface {
      */
     public int getMaxSideOfPages(int numbOfRecOnOneSide){
         this.sendInfo("getMaxSizeOfPages");
-        return Integer.parseInt(this.getInformationFromServer().get(0));
+
+        return Integer.parseInt(getInformationFromServer().get(0));
     }
 
     /** This method allows to write information to the xml-file
@@ -133,5 +137,12 @@ public class FootballerController implements FootballerControllerInterface {
     public void add(Footballer footballer){
         sendInfo("add");
         sendInfo(makeStringFromFootballer(footballer));
+    }
+
+    public List<Footballer> find(String line){
+        ArrayList<Footballer> footballers;
+        sendInfo("find");
+        sendInfo(line);
+        return this.makeFootballerFromString(this.getInformationFromServer());
     }
 }
