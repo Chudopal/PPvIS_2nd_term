@@ -37,7 +37,7 @@ public class FootballerController implements FootballerControllerInterface {
             this.in = new Scanner(this.inStream);
         }
         catch(Exception exp){
-            exp.printStackTrace();
+            System.out.println("Server stops");
         }
     }
 

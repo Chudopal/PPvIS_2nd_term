@@ -1,6 +1,7 @@
 package server;
 
 import controller.FootballerController;
+import javafx.scene.control.TextArea;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -12,12 +13,15 @@ public class Server {
     private ServerSocket s ;
     private FootballerController footballerController;
     private boolean isRunning = false;
+    TextArea text = new TextArea();
+
+    public void addTextArea(TextArea area){
+        text = area;
+    }
 
     public Server(FootballerController footballerController) throws IOException {
         this.footballerController = footballerController;
 
-
-        //this.startServer();
     }
 
     public void makeTrue(){
@@ -52,7 +56,7 @@ public class Server {
                     Socket incoming = s.accept();
                     sockets.add(incoming);
                     System.out.println("Spawning " + numbOfThread);
-                    Runnable runnable = new ThreadedEchoHandler(incoming, footballerController);
+                    Runnable runnable = new ThreadedEchoHandler(incoming, footballerController, text);
                     Thread t = new Thread(runnable);
                     t.start();
                     numbOfThread++;

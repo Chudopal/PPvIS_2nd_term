@@ -1,6 +1,7 @@
 package server;
 
 import controller.FootballerController;
+import javafx.scene.control.TextArea;
 import model.Footballer;
 
 import java.io.*;
@@ -19,14 +20,17 @@ class ThreadedEchoHandler implements Runnable {
     private boolean numbOfRec = false;
     private boolean findData = false;
     private boolean saveData = false;
+    private TextArea text = new TextArea();
+    private String log = "";
 
     /**
      * Конструирует обработчик
      * @param currentSocket Входящий сокет
      */
-    public ThreadedEchoHandler(Socket currentSocket, FootballerController footballerController) {
+    public ThreadedEchoHandler(Socket currentSocket, FootballerController footballerController, TextArea text) {
         this.footballerController = footballerController;
         this.incoming = currentSocket;
+        this.text = text;
     }
     public void run() {
         try {
@@ -39,6 +43,8 @@ class ThreadedEchoHandler implements Runnable {
                 boolean done = false;
                 while (!done && in.hasNextLine()) {
                     String line = in.nextLine();
+                    log += line + '\n';
+                    text.setText(log);
                     if (line.trim().equals("BYE"))
                         done = true;
                     else {
@@ -81,9 +87,12 @@ class ThreadedEchoHandler implements Runnable {
             if (findData) {
                 findData = false;
                 for (Footballer footballer : footballerController.find(line)) {
-                    out.println("{" + footballer.getSurName() + "} {" + footballer.getFirstName() + "} {" + footballer.getMiddleName() + "} {" +
+                    String dataFootballer = ("{" + footballer.getSurName() + "} {" + footballer.getFirstName() + "} {" + footballer.getMiddleName() + "} {" +
                             footballer.getBirthDate() + "} {" + footballer.getTeam() + "} {" + footballer.getHomeCity() + "} {" +
                             footballer.getCommandStructure() + "} {" + footballer.getPosition() + "}");
+                    out.println(dataFootballer);
+                    log += dataFootballer + '\n';
+                    text.setText(log);
                 }
                 out.println("all");
             }
@@ -96,6 +105,8 @@ class ThreadedEchoHandler implements Runnable {
                     List<File> lst = Arrays.asList(arrFiles);
                     for (File file : lst) {
                         out.println(file.toString());
+                        log += file.toString() + '\n';
+                        text.setText(log);
                     }
                     out.println("all");
                     break;
@@ -125,13 +136,18 @@ class ThreadedEchoHandler implements Runnable {
                 default:
                     try {
                         for (Footballer footballer : footballerController.getPage(Integer.parseInt(line), numbOfRectOnOneSide)) {
-                            out.println("{" + footballer.getSurName() + "} {" + footballer.getFirstName() + "} {" + footballer.getMiddleName() + "} {" +
+                            String dataFootballer = ("{" + footballer.getSurName() + "} {" + footballer.getFirstName() + "} {" + footballer.getMiddleName() + "} {" +
                                     footballer.getBirthDate() + "} {" + footballer.getTeam() + "} {" + footballer.getHomeCity() + "} {" +
                                     footballer.getCommandStructure() + "} {" + footballer.getPosition() + "}");
+                            out.println(dataFootballer);
+                            log += dataFootballer + '\n';
+                            text.setText(log);
                         }
                         out.println("all");
                     } catch (NumberFormatException e) {
                         System.out.println("it is not a number");
+                        log += "it is not a number\n";
+                        text.setText(log);
                     }
                 }
             }

@@ -19,14 +19,15 @@ public class MainWindow {
 
 
     public MainWindow(Stage stage, Server server){
+        TextArea actions = new TextArea();
         this.server = server;
+        this.server.addTextArea(actions);
         stage.setTitle("server");
         Group root = new Group();
         VBox vBox = new VBox();
         HBox hBox = new HBox();
         run.setMinSize(250,250);
         stop.setMinSize(250,250);
-        TextArea actions = new TextArea();
         hBox.getChildren().setAll(run, stop);
         vBox.getChildren().addAll(hBox, actions);
         root.getChildren().addAll(vBox);
