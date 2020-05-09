@@ -25,11 +25,20 @@ public class FootballerController implements FootballerControllerInterface {
 
 
     public FootballerController() throws IOException{
-        this.socket = new Socket("localhost", 8000);
-        this.outStream = this.socket.getOutputStream();
-        this.out = new PrintWriter(this.outStream, true);
-        this.inStream = this.socket.getInputStream();
-        this.in = new Scanner(this.inStream);
+        this.createSocket();
+    }
+
+    public void createSocket() throws IOException{
+        try {
+            this.socket = new Socket("localhost", 8000);
+            this.outStream = this.socket.getOutputStream();
+            this.out = new PrintWriter(this.outStream, true);
+            this.inStream = this.socket.getInputStream();
+            this.in = new Scanner(this.inStream);
+        }
+        catch(Exception exp){
+            exp.printStackTrace();
+        }
     }
 
     public void sendInfo(String info){

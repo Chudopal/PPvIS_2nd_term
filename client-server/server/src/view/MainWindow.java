@@ -37,14 +37,16 @@ public class MainWindow {
 
     private void addListeners(){
         run.setOnAction((e)->{
-            try{server.startServer();}
-            catch (IOException exp){
-                exp.printStackTrace();
-            }
+            server.makeTrue();
+            server.runServer();
+
         });
 
         stop.setOnAction((e)->{
-            try{server.stopServer();}
+            try{
+                server.makeFalse();
+                server.stopServer();
+            }
             catch (IOException exp){
                 exp.printStackTrace();
             }

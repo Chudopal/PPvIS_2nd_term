@@ -3,6 +3,8 @@ package view;
 import controller.FootballerController;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 /** This is class for buttons and its actions
  */
 public class MainWindowHandler extends MainWindowView {
@@ -57,6 +59,11 @@ public class MainWindowHandler extends MainWindowView {
      */
     private void Handler(){
         this.table.getBtnOpen().setOnAction(e->{
+            try {
+                footballerController.createSocket();
+            }catch (IOException exp){
+                exp.printStackTrace();
+            }
             ChoseFileWindow choseFileWindow = new ChoseFileWindow(footballerController, this);
         });
 

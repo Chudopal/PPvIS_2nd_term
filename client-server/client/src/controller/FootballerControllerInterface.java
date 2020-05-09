@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface FootballerControllerInterface {
     void sendInfo(String info);
+    public void createSocket() throws IOException;
     List<String> getInformationFromServer();
     List<Footballer> getPage(int numberOfSide, int numbOfRecOnOneSide) throws IOException;
     int getMaxSideOfPages(int numbOfRecOnOneSide);
