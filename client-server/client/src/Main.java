@@ -21,7 +21,6 @@ public class Main extends Application {
                 primaryStage,
                 800,
                 600);
-        //footballerController.getPage(1,5);
     }
 
     public static void main(String[] args){

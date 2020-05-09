@@ -1,18 +1,20 @@
 import controller.FootballerController;
-import model.Footballer;
+import javafx.application.Application;
+import javafx.stage.Stage;
 import server.Server;
+import view.MainWindow;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
+public class Main extends Application {
 
-public class Main{
-
-
-    public static void main(String[] args) throws IOException {
-
+    @Override
+    public void start(Stage primaryStage) throws Exception{
         FootballerController footballerController = new FootballerController();
         Server server = new Server(footballerController);
+        MainWindow mainWindow = new MainWindow(primaryStage, server);
+    }
+
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }
