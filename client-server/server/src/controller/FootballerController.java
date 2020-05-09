@@ -50,10 +50,10 @@ public class FootballerController implements FootballerControllerInterface {
     }
 
     /** This method allows to write information to the xml-file
-     * @param file - file for writing
-     * @param footballers - list of footballers
+     * @param line - file for writing
      */
-    public void writeFile(File file, List<Footballer> footballers){
+    public void writeFile(String line){
+        File file = new File(line);
         DOMParser.getDomParser().createXML(footballers, file);
     }
 

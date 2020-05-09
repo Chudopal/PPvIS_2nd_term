@@ -18,6 +18,7 @@ class ThreadedEchoHandler implements Runnable {
     private boolean addData = false;
     private boolean numbOfRec = false;
     private boolean findData = false;
+    private boolean saveData = false;
 
     /**
      * Конструирует обработчик
@@ -55,11 +56,15 @@ class ThreadedEchoHandler implements Runnable {
     }
 
     public void listener(String line, PrintWriter out){
-        if(choseFile || delData || addData || numbOfRec || findData){
+        if(choseFile || delData || addData || numbOfRec || findData || saveData){
             if(choseFile){
                 File file = new File(line);
                 footballerController.readFile(file);
                 choseFile = false;
+            }
+            if(saveData){
+                saveData = false;
+                footballerController.writeFile(line);
             }
             if (delData) {
                 footballerController.delete(line);
@@ -98,6 +103,7 @@ class ThreadedEchoHandler implements Runnable {
                     choseFile = true;
                     break;
                 case "save":
+                    saveData = true;
                     break;
                 case "delete":
                     delData = true;
@@ -125,7 +131,7 @@ class ThreadedEchoHandler implements Runnable {
                         }
                         out.println("all");
                     } catch (NumberFormatException e) {
-                        //out.println("It is not a number");
+                        System.out.println("it is not a number");
                     }
                 }
             }

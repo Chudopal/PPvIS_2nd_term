@@ -1,10 +1,7 @@
 package view;
 
 import controller.FootballerController;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-import java.io.File;
 
 /** This is class for buttons and its actions
  */
@@ -64,9 +61,10 @@ public class MainWindowHandler extends MainWindowView {
         });
 
         this.btnSave.setOnAction(e -> {
-            FileChooser fileChooser = new FileChooser();
+            SaveWindow saveWindow = new SaveWindow(footballerController);
+            /*FileChooser fileChooser = new FileChooser();
             fileChooser.setInitialFileName("file.xml");
-            File file = fileChooser.showSaveDialog(primaryStage);
+            File file = fileChooser.showSaveDialog(primaryStage);*/
         });
 
         this.table.getNumbOfStr().setOnAction(e ->{
