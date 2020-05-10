@@ -15,22 +15,32 @@ import java.util.Scanner;
 public class FootballerController implements FootballerControllerInterface {
 
     private List<Footballer> footballers = new ArrayList<>();
-    private PageOfTable pageOfTable;
     private Socket socket;
     OutputStream outStream;
     PrintWriter out;
     InputStream inStream;
     Scanner in;
     private int numbOfStrFromServer = 0;
+    private String host = "localhost";
+    private int port = 8000;
 
-
-    public FootballerController() throws IOException{
+    public FootballerController(){
         this.createSocket();
     }
 
-    public void createSocket() throws IOException{
+    public void setHost(String host, int port ){
+        this.host = host;
+        this.port = port;
+        try{
+            this.createSocket();
+        }catch (Exception exp){
+            exp.printStackTrace();
+        }
+    }
+
+    public void createSocket(){
         try {
-            this.socket = new Socket("localhost", 8000);
+            this.socket = new Socket(host, port);
             this.outStream = this.socket.getOutputStream();
             this.out = new PrintWriter(this.outStream, true);
             this.inStream = this.socket.getInputStream();

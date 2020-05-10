@@ -3,8 +3,6 @@ package view;
 import controller.FootballerController;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 /** This is class for buttons and its actions
  */
 public class MainWindowHandler extends MainWindowView {
@@ -59,19 +57,12 @@ public class MainWindowHandler extends MainWindowView {
      */
     private void Handler(){
         this.table.getBtnOpen().setOnAction(e->{
-            try {
-                footballerController.createSocket();
-            }catch (IOException exp){
-                exp.printStackTrace();
-            }
+            footballerController.createSocket();
             ChoseFileWindow choseFileWindow = new ChoseFileWindow(footballerController, this);
         });
 
         this.btnSave.setOnAction(e -> {
             SaveWindow saveWindow = new SaveWindow(footballerController);
-            /*FileChooser fileChooser = new FileChooser();
-            fileChooser.setInitialFileName("file.xml");
-            File file = fileChooser.showSaveDialog(primaryStage);*/
         });
 
         this.table.getNumbOfStr().setOnAction(e ->{
@@ -87,20 +78,20 @@ public class MainWindowHandler extends MainWindowView {
         });
 
         this.table.getBtnRight().setOnAction(e -> {
-                if (this.maxNumbOfSides > this.numbSide) {
-                    this.numbSide++;
-                    this.table.getSideOfPage().setText(Integer.toString(this.numbSide) + "/" + this.maxNumbOfSides);
-                    this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
-                }
+            if (this.maxNumbOfSides > this.numbSide) {
+                this.numbSide++;
+                this.table.getSideOfPage().setText(Integer.toString(this.numbSide) + "/" + this.maxNumbOfSides);
+                this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
+            }
         });
 
         this.table.getBtnLeft().setOnAction(e -> {
             try{
-            if (this.numbSide != 1) {
-                this.numbSide--;
-                this.table.getSideOfPage().setText(Integer.toString(this.numbSide) + "/" + this.maxNumbOfSides);
-                this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
-            }
+                if (this.numbSide != 1) {
+                    this.numbSide--;
+                    this.table.getSideOfPage().setText(Integer.toString(this.numbSide) + "/" + this.maxNumbOfSides);
+                    this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
+                }
             }
             catch(Exception exc){
                 this.table.getSideOfPage().setText("Don't select a file");
@@ -114,8 +105,8 @@ public class MainWindowHandler extends MainWindowView {
                 this.table.setFootballers(footballerController.getPage(this.numbSide, this.numbOfRecOnSide));
             }
             catch(Exception exc){
-                    this.table.getSideOfPage().setText("Don't select a file");
-                }
+                this.table.getSideOfPage().setText("Don't select a file");
+            }
         });
 
         this.table.getBtnEnd().setOnAction(e -> {
@@ -136,6 +127,10 @@ public class MainWindowHandler extends MainWindowView {
 
         this.btnFind.setOnAction(e -> {
             FindWindow findWindow = new FindWindow(800, 400, this.footballerController);
+        });
+
+        this.setHost.setOnAction((e)->{
+            SetHostWindow setHostWindow = new SetHostWindow(footballerController);
         });
     }
 }

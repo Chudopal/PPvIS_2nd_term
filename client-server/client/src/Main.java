@@ -20,7 +20,7 @@ public class Main extends Application {
                 footballerController,
                 primaryStage,
                 800,
-                600);
+                650);
     }
 
     public static void main(String[] args){

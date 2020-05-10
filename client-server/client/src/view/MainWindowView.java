@@ -18,6 +18,7 @@
         protected Button btnDel = new Button("Delete a record");
         protected Button btnFind = new Button("Find a record");
         protected Button btnSave = new Button("Save");
+        protected Button setHost = new Button("Change host");
         private double sizeX;
         private double sizeY;
 
@@ -51,9 +52,10 @@
             this.btnFind.setMinSize(600, 50);
             this.btnDel.setMinSize(600, 50);
             this.btnSave.setMinSize(200, 40);
+            this.setHost.setMinSize(150, 20);
             mainStruct.setSpacing(15);
             mainStruct.setAlignment(Pos.BOTTOM_CENTER);
-            mainStruct.getChildren().addAll(this.btnAdd, this.btnDel, this.btnFind, this.btnSave);
+            mainStruct.getChildren().addAll(this.btnAdd, this.btnDel, this.btnFind, this.btnSave, this.setHost);
         }
 
     }
