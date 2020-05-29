@@ -3,12 +3,10 @@ package view;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.util.*;
@@ -51,6 +49,9 @@ public class MainWindow{
     protected Button rightTriangleBtn = new Button(">");
     //delete info
     protected Button delBtn = new Button("C");
+    //tree view
+    protected TextField result = new TextField();
+    protected TreeView<String> tree = new TreeView<>();
 
     public MainWindow(Stage primaryStage){
         Group root = new Group();
@@ -63,7 +64,7 @@ public class MainWindow{
     private void makeView(Group root){
         HBox mainView = new HBox();
         this.buttonsMakeList();
-        this.setProperties();
+        this.setProperties(mainView);
         this.createButtons(mainView);
         root.getChildren().addAll(mainView);
     }
@@ -103,7 +104,7 @@ public class MainWindow{
         );
     }
 
-    private void setProperties(){
+    private void setProperties(HBox mainView){
         buttonDigitList.forEach(button -> {
             button.setMinSize(50,50);
             button.setBackground(
@@ -121,7 +122,7 @@ public class MainWindow{
             button.setBackground(
                     new Background(
                             new BackgroundFill(
-                                    Color.CORAL,
+                                    Color.MISTYROSE,
                                     CornerRadii.EMPTY,
                                     Insets.EMPTY
                             )
@@ -132,12 +133,50 @@ public class MainWindow{
         resultBtn.setBackground(
                 new Background(
                         new BackgroundFill(
-                                Color.DEEPSKYBLUE,
+                                Color.PALETURQUOISE,
                                 CornerRadii.EMPTY,
                                 Insets.EMPTY
                         )
                 )
         );
+        mainView.setBackground(
+                new Background(
+                        new BackgroundFill(
+                                Color.SEASHELL,
+                                CornerRadii.EMPTY,
+                                Insets.EMPTY
+                        )
+                )
+        );
+        result.setBackground(
+                new Background(
+                        new BackgroundFill(
+                                Color.LIGHTPINK,
+                                CornerRadii.EMPTY,
+                                Insets.EMPTY
+                        )
+                )
+        );
+        viewStr.setBackground(
+                new Background(
+                        new BackgroundFill(
+                                Color.SEASHELL,
+                                CornerRadii.EMPTY,
+                                Insets.EMPTY
+                        )
+                )
+        );
+        tree.setBackground(
+                new Background(
+                        new BackgroundFill(
+                                Color.SEASHELL,
+                                CornerRadii.EMPTY,
+                                Insets.EMPTY
+                        )
+                )
+        );
+        result.setFont(Font.font ("Verdana", 30));
+        result.setMaxWidth(200);
     }
 
     private void createButtons(HBox mainView){
@@ -187,7 +226,11 @@ public class MainWindow{
         buttons.add(sqrBtn,             3, 4);
         buttons.add(resultBtn,          4, 4);
 
+        VBox treeView = new VBox();
+        tree.setMaxSize(200, 250);
+
+        treeView.getChildren().addAll(result, tree);
         calculatorPane.getChildren().addAll(viewStr,buttons, isPowerMode);
-        mainView.getChildren().addAll(calculatorPane);
+        mainView.getChildren().addAll(treeView, calculatorPane);
     }
 }
