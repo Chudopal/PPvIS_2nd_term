@@ -22,4 +22,16 @@ public class Node {
     public void setValue(String value) {
         this.value = value;
     }
+
+    public Node getLeft() {
+        return left;
+    }
+
+    public Node getRight() {
+        return right;
+    }
+
+    public String getValue() {
+        return value;
+    }
 }
