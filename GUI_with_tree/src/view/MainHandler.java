@@ -33,6 +33,13 @@ public class MainHandler extends MainWindow {
                 buttons.getChildren().remove(powerBtn);
             }
         });
+        this.delBtn.setOnAction(e->{
+            strOfDigits = "";
+            viewStr.setText(strOfDigits);
+        });
+        this.result.setOnAction(e->{
+
+        });
     }
 
 }
