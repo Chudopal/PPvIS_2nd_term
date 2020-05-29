@@ -12,8 +12,8 @@ import javafx.stage.Stage;
 import java.util.*;
 
 public class MainWindow{
-    List<Button> buttonDigitList = new ArrayList<>();
-    List<Button> buttonActionList = new ArrayList<>();
+    protected List<Button> buttonDigitList = new ArrayList<>();
+    protected List<Button> buttonActionList = new ArrayList<>();
     //view
     protected TextField viewStr = new TextField();
     //numbers
@@ -32,9 +32,9 @@ public class MainWindow{
     protected Button difBtn = new Button("-");
     protected Button mulBtn = new Button("*");
     protected Button divBtn = new Button("\\");
-    protected Button sqrBtn = new Button("sqrt");
+    protected Button sqrBtn = new Button("√");
     protected Button proBtn = new Button("%");
-    protected Button oneDiv = new Button("1/x");
+    protected Button oneDiv = new Button("1/");
     protected Button point = new Button(".");
     //result
     protected Button resultBtn = new Button("=");
@@ -52,6 +52,8 @@ public class MainWindow{
     //tree view
     protected TextField result = new TextField();
     protected TreeView<String> tree = new TreeView<>();
+
+    protected GridPane buttons = new GridPane();
 
     public MainWindow(Stage primaryStage){
         Group root = new Group();
@@ -97,8 +99,6 @@ public class MainWindow{
                         powerBtn,
                         leftBracketBtn,
                         rightBracketBtn,
-                        leftTriangleBtn,
-                        rightTriangleBtn,
                         delBtn
                 )
         );
@@ -117,6 +117,26 @@ public class MainWindow{
                     )
             );
         });
+        leftTriangleBtn.setMinSize(50,50);
+        leftTriangleBtn.setBackground(
+                new Background(
+                        new BackgroundFill(
+                                Color.MISTYROSE,
+                                CornerRadii.EMPTY,
+                                Insets.EMPTY
+                        )
+                )
+        );
+        rightTriangleBtn.setMinSize(50,50);
+        rightTriangleBtn.setBackground(
+                new Background(
+                        new BackgroundFill(
+                                Color.MISTYROSE,
+                                CornerRadii.EMPTY,
+                                Insets.EMPTY
+                        )
+                )
+        );
         buttonActionList.forEach(button -> {
             button.setMinSize(50,50);
             button.setBackground(
@@ -181,7 +201,6 @@ public class MainWindow{
 
     private void createButtons(HBox mainView){
         VBox calculatorPane = new VBox();
-        GridPane buttons = new GridPane();
         buttons.getColumnConstraints().addAll(
                 new ColumnConstraints(50),
                 new ColumnConstraints(50),
