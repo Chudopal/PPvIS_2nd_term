@@ -5,17 +5,17 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.List;
+import java.util.*;
 
 public class MainWindow{
-    List<Button> buttonList = new ArrayList<>();
+    List<Button> buttonDigitList = new ArrayList<>();
+    List<Button> buttonActionList = new ArrayList<>();
     //view
     protected TextField viewStr = new TextField();
     //numbers
@@ -56,53 +56,88 @@ public class MainWindow{
         Group root = new Group();
         primaryStage.setTitle("Calculator");
         this.makeView(root);
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 
     private void makeView(Group root){
         HBox mainView = new HBox();
-        this.setButtonsView();
+        this.buttonsMakeList();
+        this.setProperties();
         this.createButtons(mainView);
         root.getChildren().addAll(mainView);
     }
 
-    private void setButtonsView(){
-        //digits
-        nulBtn.setMinSize(50,50);
-        oneBtn.setMinSize(50,50);
-        twoBtn.setMinSize(50,50);
-        treBtn.setMinSize(50,50);
-        forBtn.setMinSize(50,50);
-        fifBtn.setMinSize(50,50);
-        sixBtn.setMinSize(50,50);
-        sevBtn.setMinSize(50,50);
-        eitBtn.setMinSize(50,50);
-        ninBtn.setMinSize(50,50);
-        //actions
-        leftTriangleBtn.setMinSize(50,50);
-        leftTriangleBtn.setBackground(
+    private void buttonsMakeList(){
+        buttonDigitList.addAll(
+                Arrays.asList(
+                        oneBtn,
+                        twoBtn,
+                        treBtn,
+                        forBtn,
+                        fifBtn,
+                        sixBtn,
+                        sevBtn,
+                        eitBtn,
+                        ninBtn,
+                        nulBtn
+                )
+        );
+        buttonActionList.addAll(
+                Arrays.asList(
+                        sumBtn,
+                        difBtn,
+                        divBtn,
+                        mulBtn,
+                        sqrBtn,
+                        proBtn,
+                        oneDiv,
+                        point,
+                        powerBtn,
+                        leftBracketBtn,
+                        rightBracketBtn,
+                        leftTriangleBtn,
+                        rightTriangleBtn,
+                        delBtn
+                )
+        );
+    }
+
+    private void setProperties(){
+        buttonDigitList.forEach(button -> {
+            button.setMinSize(50,50);
+            button.setBackground(
+                    new Background(
+                            new BackgroundFill(
+                                    Color.CORNSILK,
+                                    CornerRadii.EMPTY,
+                                    Insets.EMPTY
+                            )
+                    )
+            );
+        });
+        buttonActionList.forEach(button -> {
+            button.setMinSize(50,50);
+            button.setBackground(
+                    new Background(
+                            new BackgroundFill(
+                                    Color.CORAL,
+                                    CornerRadii.EMPTY,
+                                    Insets.EMPTY
+                            )
+                    )
+            );
+        });
+        resultBtn.setMinSize(50,50);
+        resultBtn.setBackground(
                 new Background(
                         new BackgroundFill(
-                                Color.CORAL,
+                                Color.DEEPSKYBLUE,
                                 CornerRadii.EMPTY,
                                 Insets.EMPTY
                         )
                 )
         );
-        rightTriangleBtn.setMinSize(50,50);
-        leftBracketBtn.setMinSize(50,50);
-        rightBracketBtn.setMinSize(50,50);
-        sumBtn.setMinSize(50,50);
-        difBtn.setMinSize(50,50);
-        divBtn.setMinSize(50,50);
-        mulBtn.setMinSize(50,50);
-        delBtn.setMinSize(50,50);
-        oneDiv.setMinSize(50,50);
-        proBtn.setMinSize(50,50);
-        sqrBtn.setMinSize(50,50);
-        point.setMinSize(50,50);
-        resultBtn.setMinSize(50,50);
     }
 
     private void createButtons(HBox mainView){
@@ -152,7 +187,7 @@ public class MainWindow{
         buttons.add(sqrBtn,             3, 4);
         buttons.add(resultBtn,          4, 4);
 
-        calculatorPane.getChildren().addAll(viewStr ,buttons);
+        calculatorPane.getChildren().addAll(viewStr,buttons, isPowerMode);
         mainView.getChildren().addAll(calculatorPane);
     }
 }
