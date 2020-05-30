@@ -1,6 +1,7 @@
 package view;
 
 import javafx.stage.Stage;
+import treatment.TreatmentOfStr;
 
 public class MainHandler extends MainWindow {
 
@@ -37,8 +38,10 @@ public class MainHandler extends MainWindow {
             strOfDigits = "";
             viewStr.setText(strOfDigits);
         });
-        this.result.setOnAction(e->{
-
+        this.resultBtn.setOnAction(e->{
+            strOfDigits = viewStr.getText();
+            TreatmentOfStr treatmentOfStr = new TreatmentOfStr(strOfDigits);
+            this.result.setText(Integer.toString(treatmentOfStr.getResult()));
         });
     }
 

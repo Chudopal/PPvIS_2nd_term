@@ -31,7 +31,7 @@ public class MainWindow{
     protected Button sumBtn = new Button("+");
     protected Button difBtn = new Button("-");
     protected Button mulBtn = new Button("*");
-    protected Button divBtn = new Button("\\");
+    protected Button divBtn = new Button("/");
     protected Button sqrBtn = new Button("√");
     protected Button proBtn = new Button("%");
     protected Button oneDiv = new Button("1/");
