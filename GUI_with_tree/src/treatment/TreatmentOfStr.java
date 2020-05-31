@@ -3,8 +3,6 @@ package treatment;
 import tree.Node;
 import tree.Tree;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class TreatmentOfStr {
 
@@ -17,7 +15,6 @@ public class TreatmentOfStr {
     public TreatmentOfStr(String str){
         tree = new Tree(str);
         this.createTree(tree.getRoot());
-        System.out.println("Here" + this.getSum(tree.getRoot()));
     }
 
     private void createTree(Node node){
@@ -94,23 +91,21 @@ public class TreatmentOfStr {
         return false;
     }
 
-    public int getResult(){
-        int result = 0;
-
-        return result;
+    public double getResult(){
+        return findSum(tree.getRoot());
     }
 
 
-    public double getSum(Node node){
+    public double findSum(Node node){
         double result = 0;
         double firstEl = 0;
         double secondEl = 0;
         if (node.getLeft() != null || node.getRight() != null){
             if(node.getLeft() != null){
-                firstEl = getSum(node.getLeft());
+                firstEl = findSum(node.getLeft());
             }
             if(node.getRight() != null ){
-                secondEl = getSum(node.getRight());
+                secondEl = findSum(node.getRight());
             }
             result = action(firstEl, secondEl, node.getValue());
         }else{
@@ -135,5 +130,9 @@ public class TreatmentOfStr {
                 return Math.sqrt(firstEl);
         }
         return 0;
+    }
+
+    public Tree getTree() {
+        return tree;
     }
 }
