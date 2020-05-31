@@ -17,7 +17,7 @@ public class TreatmentOfStr {
     public TreatmentOfStr(String str){
         tree = new Tree(str);
         this.createTree(tree.getRoot());
-        //this.createNode(tree.getRoot());
+        System.out.println("Here" + this.getSum(tree.getRoot()));
     }
 
     private void createTree(Node node){
@@ -62,10 +62,6 @@ public class TreatmentOfStr {
             String firstPart = node.getValue().substring(0, findCharacter-1);
             String secondPart = node.getValue().substring(findCharacter);
 
-            System.out.println(firstPart);
-            System.out.println(node.getValue().toCharArray()[findCharacter-1]);
-            System.out.println(secondPart);
-
             node.setLeft(new Node(firstPart));
             node.setValue(Character.toString(node.getValue().toCharArray()[findCharacter-1]));
             node.setRight(new Node(secondPart));
@@ -102,5 +98,42 @@ public class TreatmentOfStr {
         int result = 0;
 
         return result;
+    }
+
+
+    public double getSum(Node node){
+        double result = 0;
+        double firstEl = 0;
+        double secondEl = 0;
+        if (node.getLeft() != null || node.getRight() != null){
+            if(node.getLeft() != null){
+                firstEl = getSum(node.getLeft());
+            }
+            if(node.getRight() != null ){
+                secondEl = getSum(node.getRight());
+            }
+            result = action(firstEl, secondEl, node.getValue());
+        }else{
+            result = Double.parseDouble(node.getValue());
+        }
+        return result;
+    }
+
+    private double action(double firstEl, double secondEl, String sign){
+        switch (sign){
+            case "+":
+                return firstEl + secondEl;
+            case "-":
+                return firstEl - secondEl;
+            case "*":
+                return firstEl * secondEl;
+            case "/":
+                return firstEl / secondEl;
+            case "^":
+                return Math.pow(firstEl,secondEl);
+            case "√":
+                return Math.sqrt(firstEl);
+        }
+        return 0;
     }
 }

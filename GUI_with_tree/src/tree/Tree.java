@@ -16,7 +16,5 @@ public class Tree {
         this.root = root;
     }
 
-    public void addNode(String node){
 
-    }
 }
