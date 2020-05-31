@@ -13,7 +13,6 @@ public class TreatmentOfStr {
     private String primaryCharacters = "*/";
     private String secondaryCharacters = "+-";
     private String thirdCharacters = "√^";
-    //private ArrayList<String> set;
 
     public TreatmentOfStr(String str){
         tree = new Tree(str);
@@ -21,9 +20,14 @@ public class TreatmentOfStr {
     }
 
     private void createTree(Node node){
+        if(isInBrackets(node.getValue())){
+            node.setValue(node.getValue().substring(1,node.getValue().length() - 1));
+        }
+        System.out.println(node.getValue());
         int numbOfBracket = 0;
         int i = 0;
         int findCharacter = 0;
+        boolean findPrimary = false;
         for(char character: node.getValue().toCharArray()){
             i++;
             if (character == '('){
@@ -37,23 +41,44 @@ public class TreatmentOfStr {
                     findCharacter = i;
                     break;
                 }
-                if(findCharacter == 0 && secondaryCharacters.indexOf(character) != -1){
+                if((findCharacter == 0 || findPrimary) && secondaryCharacters.indexOf(character) != -1){
                     findCharacter = i;
                 }
-                if(primaryCharacters.indexOf(character) != -1){
+                if(findCharacter == 0 && primaryCharacters.indexOf(character) != -1){
+                    findPrimary = true;
                     findCharacter = i;
                 }
             }
         }
-        String firstPart = node.getValue().substring(0, findCharacter-1);
-        String secondPart = node.getValue().substring(findCharacter);
-        System.out.println(firstPart);
-        System.out.println(node.getValue().toCharArray()[findCharacter-1]);
-        System.out.println(secondPart);
+        if(findCharacter != 0){
+            String firstPart = node.getValue().substring(0, findCharacter-1);
+            String secondPart = node.getValue().substring(findCharacter);
 
+            System.out.println(firstPart);
+            System.out.println(node.getValue().toCharArray()[findCharacter-1]);
+            System.out.println(secondPart);
+
+            node.setLeft(new Node(firstPart));
+            node.setValue(Character.toString(node.getValue().toCharArray()[findCharacter-1]));
+            node.setRight(new Node(secondPart));
+        }
     }
 
-
+    private boolean isInBrackets(String str){
+        int insideCounter = 0;
+        for (char character: str.toCharArray()){
+            if(character == '('){
+                insideCounter++;
+            }
+            if(insideCounter == 0){
+                return false;
+            }
+            if(character == ')'){
+                insideCounter--;
+            }
+        }
+        return true;
+    }
 
     public int getResult(){
         int result = 0;
