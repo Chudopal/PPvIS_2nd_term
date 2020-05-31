@@ -2,19 +2,22 @@ package treatment;
 
 import tree.Node;
 import tree.Tree;
+import view.Main;
 
 
 public class TreatmentOfStr {
 
     private Tree tree;
+    private Tree currentTree;
     private int power;
     private final String primaryCharacters = "√^";
-    private final String secondaryCharacters = "*/";
+    private final String secondaryCharacters = "*/%";
     private final String thirdCharacters = "+-";
 
     public TreatmentOfStr(String str){
         tree = new Tree(str);
         this.createTree(tree.getRoot());
+        currentTree = tree;
     }
 
     private void createTree(Node node){
@@ -95,7 +98,6 @@ public class TreatmentOfStr {
         return findSum(tree.getRoot());
     }
 
-
     public double findSum(Node node){
         double result = 0;
         double firstEl = 0;
@@ -127,12 +129,62 @@ public class TreatmentOfStr {
             case "^":
                 return Math.pow(firstEl,secondEl);
             case "√":
-                return Math.sqrt(firstEl);
+                return Math.sqrt(secondEl);
+            case "%":
+                return firstEl * 0.01;
         }
         return 0;
     }
 
     public Tree getTree() {
         return tree;
+    }
+
+    private int calculatePower(Node node, int power){
+        int leftPower = 0, rightPower = 0;
+        if (node.getLeft() != null){
+            power++;
+            leftPower = this.calculatePower(node.getLeft(), power);
+        }
+        if (node.getRight() != null){
+            power++;
+            rightPower = this.calculatePower(node.getRight(), power);
+        }
+        if(node.getRight() == null && node.getLeft() == null){
+            return power;
+        }
+        return Math.max(leftPower, rightPower);
+    }
+
+    private void calculateNode(Node node, int power){
+        if (node.getLeft() != null || node.getRight() != null) {
+            power++;
+            if (node.getLeft() != null){
+                this.calculateNode(node.getLeft(), power);
+            }
+            if (node.getRight() != null){
+                this.calculateNode(node.getRight(), power);
+            }
+
+        }
+        if (power == this.power - 1 && node.getLeft() != null){
+            node.setValue(Double.toString(this.findSum(node)));
+            System.out.println("HERE");
+            System.out.println(node.getValue());
+            node.setLeft(null);
+            node.setRight(null);
+        }
+    }
+
+    public Tree coagulation(){
+        power = calculatePower(currentTree.getRoot(), 0);
+        calculateNode(currentTree.getRoot(), 1);
+        return currentTree;
+    }
+
+
+    public Tree deployment(){
+        currentTree = tree;
+        return currentTree;
     }
 }

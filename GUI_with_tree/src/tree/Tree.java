@@ -3,6 +3,7 @@ package tree;
 public class Tree {
 
     private Node root;
+    private int power;
 
     public Tree(String root){
         this.root = new Node(root);
@@ -16,5 +17,11 @@ public class Tree {
         this.root = root;
     }
 
+    public int getPower() {
+        return power;
+    }
 
+    public void setPower(int power) {
+        this.power = power;
+    }
 }
