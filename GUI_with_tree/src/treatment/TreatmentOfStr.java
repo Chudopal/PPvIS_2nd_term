@@ -10,16 +10,25 @@ public class TreatmentOfStr {
 
     private Tree tree;
     private int power;
-    private String primaryCharacters = "*/";
-    private String secondaryCharacters = "+-";
-    private String thirdCharacters = "√^";
+    private final String primaryCharacters = "√^";
+    private final String secondaryCharacters = "*/";
+    private final String thirdCharacters = "+-";
 
     public TreatmentOfStr(String str){
         tree = new Tree(str);
         this.createTree(tree.getRoot());
+        //this.createNode(tree.getRoot());
     }
 
     private void createTree(Node node){
+        if (this.isSignInExpresion(node.getValue())){
+            this.createNode(node);
+            this.createTree(node.getLeft());
+            this.createTree(node.getRight());
+        }
+    }
+
+    private void createNode(Node node){
         if(isInBrackets(node.getValue())){
             node.setValue(node.getValue().substring(1,node.getValue().length() - 1));
         }
@@ -39,7 +48,6 @@ public class TreatmentOfStr {
             if (numbOfBracket == 0){
                 if (thirdCharacters.indexOf(character) != -1){
                     findCharacter = i;
-                    break;
                 }
                 if((findCharacter == 0 || findPrimary) && secondaryCharacters.indexOf(character) != -1){
                     findCharacter = i;
@@ -78,6 +86,16 @@ public class TreatmentOfStr {
             }
         }
         return true;
+    }
+
+    private boolean isSignInExpresion(String str){
+        String signs = primaryCharacters + secondaryCharacters + thirdCharacters;
+        for (char character: str.toCharArray()){
+            if (signs.indexOf(character) != -1){
+                return true;
+            }
+        }
+        return false;
     }
 
     public int getResult(){
