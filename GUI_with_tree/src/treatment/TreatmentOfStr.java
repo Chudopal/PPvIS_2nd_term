@@ -163,11 +163,9 @@ public class TreatmentOfStr {
 
 
     public Tree coagulation(){
-        tree.printTree(tree.getRoot());
+
         power = calculatePower(currentTree.getRoot(), 0);
         calculateNode(currentTree.getRoot(), 1);
-        System.out.println("HERE");
-        tree.printTree(tree.getRoot());
         return currentTree;
     }
 
@@ -190,21 +188,27 @@ public class TreatmentOfStr {
     }
 
     public Tree deployment(){
+        currentTree.printTree(currentTree.getRoot());
         compareTrees(tree.getRoot(), currentTree.getRoot());
         return currentTree;
     }
 
     private void compareTrees(Node primaryTree, Node currentTree){
+        System.out.println(primaryTree.getValue() + " | " + currentTree.getValue());
         if((primaryTree.getLeft() != null || primaryTree.getRight() != null
         || currentTree.getLeft() != null || currentTree.getRight() != null) && currentTree != null){
-            if(primaryTree.getLeft() != null && currentTree.getLeft() == null){
+            if((primaryTree.getLeft() != null && currentTree.getLeft() == null) ||
+                    primaryTree.getRight() != null && currentTree.getRight() == null){
                 currentTree.setValue(primaryTree.getValue());
                 currentTree.setLeft(primaryTree.getLeft());
                 currentTree.setRight(primaryTree.getRight());
-                //return;
-            } else if(primaryTree.getLeft() != null && currentTree.getLeft() != null){
+                return;
+            }
+            if(primaryTree.getLeft() != null && currentTree.getLeft() != null){
                 compareTrees(primaryTree.getLeft(), currentTree.getLeft());
-                compareTrees(primaryTree.getRight(), primaryTree.getRight());
+            }
+            if(primaryTree.getRight() != null && currentTree.getRight() != null){
+                compareTrees(primaryTree.getRight(), currentTree.getRight());
             }
         }
     }
