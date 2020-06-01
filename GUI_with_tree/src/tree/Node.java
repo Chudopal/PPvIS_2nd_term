@@ -1,6 +1,6 @@
 package tree;
 
-public class Node {
+public class Node implements Cloneable {
     private String value;
     private Node left;
     private Node right;
@@ -33,5 +33,14 @@ public class Node {
 
     public String getValue() {
         return value;
+    }
+
+    public Node clone() throws CloneNotSupportedException{
+        Node newNode = (Node) super.clone();
+        if(left != null || right != null){
+            newNode.setLeft(left.clone());
+            newNode.setRight(right.clone());
+        }
+        return newNode;
     }
 }

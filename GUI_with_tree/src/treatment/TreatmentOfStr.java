@@ -1,5 +1,6 @@
 package treatment;
 
+import com.sun.javafx.geom.AreaOp;
 import tree.Node;
 import tree.Tree;
 import view.Main;
@@ -17,7 +18,11 @@ public class TreatmentOfStr {
     public TreatmentOfStr(String str){
         tree = new Tree(str);
         this.createTree(tree.getRoot());
-        currentTree = tree;
+        try{
+            currentTree = tree.clone();
+        } catch (CloneNotSupportedException exception){
+            exception.printStackTrace();
+        }
     }
 
     private void createTree(Node node){
@@ -156,6 +161,16 @@ public class TreatmentOfStr {
         return Math.max(leftPower, rightPower);
     }
 
+
+    public Tree coagulation(){
+        tree.printTree(tree.getRoot());
+        power = calculatePower(currentTree.getRoot(), 0);
+        calculateNode(currentTree.getRoot(), 1);
+        System.out.println("HERE");
+        tree.printTree(tree.getRoot());
+        return currentTree;
+    }
+
     private void calculateNode(Node node, int power){
         if (node.getLeft() != null || node.getRight() != null) {
             power++;
@@ -169,22 +184,29 @@ public class TreatmentOfStr {
         }
         if (power == this.power - 1 && node.getLeft() != null){
             node.setValue(Double.toString(this.findSum(node)));
-            System.out.println("HERE");
-            System.out.println(node.getValue());
             node.setLeft(null);
             node.setRight(null);
         }
     }
 
-    public Tree coagulation(){
-        power = calculatePower(currentTree.getRoot(), 0);
-        calculateNode(currentTree.getRoot(), 1);
-        return currentTree;
-    }
-
-
     public Tree deployment(){
-        currentTree = tree;
+        compareTrees(tree.getRoot(), currentTree.getRoot());
         return currentTree;
     }
+
+    private void compareTrees(Node primaryTree, Node currentTree){
+        if((primaryTree.getLeft() != null || primaryTree.getRight() != null
+        || currentTree.getLeft() != null || currentTree.getRight() != null) && currentTree != null){
+            if(primaryTree.getLeft() != null && currentTree.getLeft() == null){
+                currentTree.setValue(primaryTree.getValue());
+                currentTree.setLeft(primaryTree.getLeft());
+                currentTree.setRight(primaryTree.getRight());
+                //return;
+            } else if(primaryTree.getLeft() != null && currentTree.getLeft() != null){
+                compareTrees(primaryTree.getLeft(), currentTree.getLeft());
+                compareTrees(primaryTree.getRight(), primaryTree.getRight());
+            }
+        }
+    }
+
 }
